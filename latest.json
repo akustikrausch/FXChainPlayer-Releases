@@ -1,11 +1,11 @@
 {
-  "version": "0.27.0",
+  "version": "0.27.1",
   "date": "2026-04-11",
   "installer": {
-    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.27.0/FXChainPlayer-Setup-0.27.0.exe",
-    "size": 20092918,
-    "sha256": "6ff843fb2c9d32a143fff097bb728c7b5688648b80c946d1c93ff3172023c6b7"
+    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.27.1/FXChainPlayer-Setup-0.27.1.exe",
+    "size": 20157862,
+    "sha256": "218c491e1c219892180aa699015695de9d0a28f1301fa2981965e85821582ef6"
   },
-  "changelog": "## v0.27.0\n\n- **TagLib Integration** — Universal metadata reading for all formats\n- **SQLite Caches** — SmartScan and Waveform caches migrated from JSON to SQLite\n- **Auto-Update System** — In-app update checking with download and silent install\n- **pugixml** — XML parser integrated for future use\n- **MurmurHash3** — Fast non-cryptographic hashing for cache keys",
+  "changelog": "## v0.27.1\n\n- **Fix** — Installer music and demofx now work on systems without MSVC runtime (static CRT linking)\n\n## v0.27.0\n\n- **TagLib Integration** — Universal metadata reading for all formats\n- **SQLite Caches** — SmartScan and Waveform caches migrated from JSON to SQLite\n- **Auto-Update System** — In-app update checking with download and silent install\n- **pugixml** — XML parser integrated for future use\n- **MurmurHash3** — Fast non-cryptographic hashing for cache keys",
   "minVersion": "0.20.0"
 }
