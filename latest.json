@@ -6,6 +6,6 @@
     "size": 20157862,
     "sha256": "218c491e1c219892180aa699015695de9d0a28f1301fa2981965e85821582ef6"
   },
-  "changelog": "## v0.27.1\n\n- **Fix** — Installer music and demofx now work on systems without MSVC runtime (static CRT linking)\n\n## v0.27.0\n\n- **TagLib Integration** — Universal metadata reading for all formats\n- **SQLite Caches** — SmartScan and Waveform caches migrated from JSON to SQLite\n- **Auto-Update System** — In-app update checking with download and silent install\n- **pugixml** — XML parser integrated for future use\n- **MurmurHash3** — Fast non-cryptographic hashing for cache keys",
+  "changelog": "### Fix\n- Installer music and demo effect now work on all systems (static CRT linking, no vcruntime140.dll dependency)\n\n### Download\nRun `FXChainPlayer-Setup-0.27.1.exe` to install or update.\n",
   "minVersion": "0.20.0"
 }
