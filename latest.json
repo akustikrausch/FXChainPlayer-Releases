@@ -1,11 +1,11 @@
 {
-  "version": "0.27.1",
-  "date": "2026-04-11",
+  "version": "0.28.0",
+  "date": "2026-04-12",
   "installer": {
-    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.27.1/FXChainPlayer-Setup-0.27.1.exe",
-    "size": 20157862,
-    "sha256": "218c491e1c219892180aa699015695de9d0a28f1301fa2981965e85821582ef6"
+    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.28.0/FXChainPlayer-Setup-0.28.0.exe",
+    "size": 20094309,
+    "sha256": "55b8f7d1585cf670410d0a44a9da0273d3785df852069b96fd167ceca85ccabc"
   },
-  "changelog": "### Fix\n- Installer music and demo effect now work on all systems (static CRT linking, no vcruntime140.dll dependency)\n\n### Download\nRun `FXChainPlayer-Setup-0.27.1.exe` to install or update.\n",
+  "changelog": "## v0.28.0 (2026-04-12)\n\n### New Features\n- **Installer dark theme** \u2014 Obsidian Studio dark theme for the installer via Pascal Script. Matches the player's dark UI appearance.\n- **Extended File Info** \u2014 10 new ID3 tag fields: Album Artist, Composer, Track/Disc number, BPM, Key, Label, ISRC, Copyright, Encoder, Comment. Works across MP3, FLAC, OGG, APE, and all TagLib-supported formats.\n\n### Improvements\n- **Transport icons** \u2014 Redesigned shuffle icon (smooth cubic curves) and repeat icon (loop arrows with arrowheads). Repeat button moved next to Next track for logical grouping.\n- **Open URL icon** \u2014 Replaced bright emoji with theme-colored arrow symbol.\n\n---\n\n**Downloads:**\n- `FXChainPlayer-Setup-0.28.0.exe` \u2014 Windows Installer\n- `FXChainPlayer-v0.28.0.zip` \u2014 Portable ZIP\n",
   "minVersion": "0.20.0"
 }
