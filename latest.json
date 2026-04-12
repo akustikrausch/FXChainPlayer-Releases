@@ -1,11 +1,11 @@
 {
-  "version": "0.28.0",
+  "version": "0.28.1",
   "date": "2026-04-12",
   "installer": {
-    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.28.0/FXChainPlayer-Setup-0.28.0.exe",
-    "size": 20094309,
-    "sha256": "55b8f7d1585cf670410d0a44a9da0273d3785df852069b96fd167ceca85ccabc"
+    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.28.1/FXChainPlayer-Setup-0.28.1.exe",
+    "size": 20096016,
+    "sha256": "4c203bb70ad87a40d960fe4e2abdbdeba935d4dc09ad0af132bf9293b62abf1f"
   },
-  "changelog": "## v0.28.0 (2026-04-12)\n\n### New Features\n- **Installer dark theme** \u2014 Obsidian Studio dark theme for the installer via Pascal Script. Matches the player's dark UI appearance.\n- **Extended File Info** \u2014 10 new ID3 tag fields: Album Artist, Composer, Track/Disc number, BPM, Key, Label, ISRC, Copyright, Encoder, Comment. Works across MP3, FLAC, OGG, APE, and all TagLib-supported formats.\n\n### Improvements\n- **Transport icons** \u2014 Redesigned shuffle icon (smooth cubic curves) and repeat icon (loop arrows with arrowheads). Repeat button moved next to Next track for logical grouping.\n- **Open URL icon** \u2014 Replaced bright emoji with theme-colored arrow symbol.\n\n---\n\n**Downloads:**\n- `FXChainPlayer-Setup-0.28.0.exe` \u2014 Windows Installer\n- `FXChainPlayer-v0.28.0.zip` \u2014 Portable ZIP\n",
+  "changelog": "## v0.28.1 (2026-04-12)\n\n### Fixes\n- **QML fatal crash** \u2014 Fixed `Font.StyleItalic` property error in FileInfoPanel that prevented app startup.\n- **Update dialog** \u2014 Auto-opens update dialog when new version is detected (previously required manual banner click).\n- **MIDI playback** \u2014 Clear error message when no SoundFont is configured instead of silent failure.\n- **SID URL rejection** \u2014 URLs pointing to non-streamable formats (SID, MOD, tracker) are now rejected with a warning.\n- **M4A sample rate** \u2014 Removed forced MF resampling; native file rate preserved, r8brain handles conversion.\n- **Installer** \u2014 Added `CloseApplications` directive to close running instance before update.\n- **Taskbar** \u2014 Removed redundant ThumbBarAddButtons calls, reduced retries from 15 to 3.\n- **Error display** \u2014 Decode failures now shown in status bar for 5 seconds.\n- **Buffer size** \u2014 Settings panel shows actual WASAPI buffer size in shared mode when it differs from configured value.\n\n---\n\n**Downloads:**\n- `FXChainPlayer-Setup-0.28.1.exe` \u2014 Windows Installer\n- `FXChainPlayer-v0.28.1.zip` \u2014 Portable ZIP\n",
   "minVersion": "0.20.0"
 }
