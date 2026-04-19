@@ -39,6 +39,7 @@ More reasons than you'd expect.
 - **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
 - **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
 - **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
+- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#-export-through-your-vst3-chain--killer-feature).
 
 Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
 
@@ -111,8 +112,20 @@ Next track is pre-loaded and swapped in sample-accurately across the decoder fam
 ### 📁 Integrated file browser & smart-scan
 Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions.
 
-### 🖨️ Batch render through the FX chain (Ctrl+E)
-Process entire albums through your VST3 chain offline (faster than real-time) and export to WAV. Loudness-normalized listening copies, mastering test prints, format conversion with processing — all in one pass.
+### 💎 **Export through your VST3 chain — killer feature**
+
+Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
+
+This is what most audio players can't do. Some concrete use cases:
+
+- **Bake your headphone correction into a file.** Apply Sonarworks / SoundID Reference / Beyerdynamic Headphone Lab / Morphit to a playlist and render it for on-the-go listening on a phone or portable player — no need for the correction plugin on the destination.
+- **Loudness-normalized listening copies.** A compressor + limiter chain applied to an inconsistent album → uniform playback level, works on any device afterward.
+- **Mastering test prints.** Run a master through your client's playback chain (their EQ curve, their monitoring profile) and A/B the result outside the DAW.
+- **Spatial-audio baked captures.** dearVR MONITOR, Waves Nx or Dolby Atmos Production Suite produce a binauralized stereo file you can listen back to with any headphones, any app.
+- **Format conversion with processing in one pass.** Convert FLAC → WAV / MP3 / OGG while simultaneously applying EQ, dynamics and dither — no DAW round-trip, no intermediate files.
+- **Demo / preview versions.** Apply saturation, tape emulation or a creative chain to a track for a quick demo render.
+
+Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
 
 ### 🛡️ Plugin crash protection
 SEH-wrapped plugin process calls, automatic crash journaling, safe-mode after repeated failures, per-`(path, classID)` blacklist so a single crashing plugin in a multi-class shell (e.g. Waves WaveShell with 600+ effects) doesn't take out the rest. Auto-restart watchdog subprocess.
