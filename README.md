@@ -15,6 +15,17 @@
 
 ---
 
+## 🆕 What's new in v0.33.3 (April 2026)
+
+- **40+ new audio formats.** Console chiptunes via **libgme** (GBS · SPC · VGM / VGZ · AY · NSF · KSS · HES · SAP · SGC · GYM) and 30+ additional tracker formats via **libopenmpt** (Digibooster, Imago Orpheus, Graoumf Tracker, Liquid Tracker, Octalyser, Disorder Tracker 2, TCB, X-Tracker, STMIK, and more).
+- **HVSC SID MD5 now correct.** Commodore 64 tune durations resolve against the High Voltage SID Collection's 60 000+ entry database on first playback — previous releases mis-hashed the canonical PSID fingerprint.
+- **IFF 8SVX parser rewritten.** Correctly handles multi-octave Amiga samples and refuses unsupported Fibonacci/Exponential-compressed bodies rather than playing garbage.
+- **Diagnostic shutdown trace** and explicit VST3 plugin-cache load log for easier post-mortem.
+
+[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.3)
+
+---
+
 ## Why VST3 in an audio player?
 
 More reasons than you'd expect.
