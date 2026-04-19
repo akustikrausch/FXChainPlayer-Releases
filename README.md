@@ -17,10 +17,10 @@
 
 ## 🆕 What's new in v0.33.3 (April 2026)
 
-- **40+ new audio formats.** Console chiptunes via **libgme** (GBS · SPC · VGM / VGZ · AY · NSF · KSS · HES · SAP · SGC · GYM) and 30+ additional tracker formats via **libopenmpt** (Digibooster, Imago Orpheus, Graoumf Tracker, Liquid Tracker, Octalyser, Disorder Tracker 2, TCB, X-Tracker, STMIK, and more).
-- **HVSC SID MD5 now correct.** Commodore 64 tune durations resolve against the High Voltage SID Collection's 60 000+ entry database on first playback — previous releases mis-hashed the canonical PSID fingerprint.
-- **IFF 8SVX parser rewritten.** Correctly handles multi-octave Amiga samples and refuses unsupported Fibonacci/Exponential-compressed bodies rather than playing garbage.
-- **Diagnostic shutdown trace** and explicit VST3 plugin-cache load log for easier post-mortem.
+- **Now 80+ supported audio formats** — this release adds native playback for the full **libgme** console-chiptune family (Game Boy `.gbs`, Super Nintendo `.spc`, Sega `.vgm` / `.vgz`, ZX Spectrum `.ay`, NES `.nsf` / `.nsfe`, MSX `.kss`, PC Engine `.hes`, Atari 8-bit `.sap`, Sega SG-1000 `.sgc`, Sega Genesis `.gym`) plus a much broader tracker roster via **libopenmpt** (Digibooster, Imago Orpheus, Graoumf Tracker, Liquid Tracker, Octalyser, Disorder Tracker 2, TCB Tracker, X-Tracker, STMIK, and more). See the full format table below.
+- **HVSC SID durations correct** — Commodore 64 tunes now match the High Voltage SID Collection's 60 000+ entry length database on first playback.
+- **Amiga IFF 8SVX parser rewritten** — correctly handles multi-octave samples and refuses unsupported Fibonacci / Exponential-compressed bodies rather than producing noise.
+- **Diagnostic shutdown trace** and an explicit VST3 plugin-cache load log.
 
 [Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.3)
 
