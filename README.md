@@ -15,14 +15,17 @@
 
 ---
 
-## 🆕 What's new in v0.33.3 (April 2026)
+## What's new in v0.33.4 (April 2026)
 
-- **Now 80+ supported audio formats** — this release adds native playback for the full **libgme** console-chiptune family (Game Boy `.gbs`, Super Nintendo `.spc`, Sega `.vgm` / `.vgz`, ZX Spectrum `.ay`, NES `.nsf` / `.nsfe`, MSX `.kss`, PC Engine `.hes`, Atari 8-bit `.sap`, Sega SG-1000 `.sgc`, Sega Genesis `.gym`) plus a much broader tracker roster via **libopenmpt** (Digibooster, Imago Orpheus, Graoumf Tracker, Liquid Tracker, Octalyser, Disorder Tracker 2, TCB Tracker, X-Tracker, STMIK, and more). See the full format table below.
-- **HVSC SID durations correct** — Commodore 64 tunes now match the High Voltage SID Collection's 60 000+ entry length database on first playback.
-- **Amiga IFF 8SVX parser rewritten** — correctly handles multi-octave samples and refuses unsupported Fibonacci / Exponential-compressed bodies rather than producing noise.
-- **Diagnostic shutdown trace** and an explicit VST3 plugin-cache load log.
+- **Per-track export from the playlist.** The right-click menu now includes *Export to format…*, which opens the render dialog with just the selected track. Batch export via `Ctrl+E` is unchanged.
+- **Export progress in the status bar.** A compact indicator shows the current track and percentage while a render is running. The render dialog can be closed without cancelling the job.
+- **Clearer errors when a track fails to play.** Missing, corrupt or locked files now produce a visible red message in the status bar and the playlist automatically advances to the next track after a short delay.
+- **Improved update check.** Failed checks now surface a visible error with a link to the releases page, and the check runs periodically during long sessions so a mid-session release is picked up without restarting the app.
+- **Application log is overwritten per session** (the previous session is kept as `.prev` for diagnostics), so the log file no longer grows without bound.
+- **Tracker Pattern view fixed.** The view rendered as a black panel in earlier builds; pattern data now scrolls correctly.
+- **Channel Scopes is hidden for tracker modules with more than 4 channels** while a dedicated multi-channel layout is in development. Stereo material and 4-channel trackers keep the mode.
 
-[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.3)
+[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.4)
 
 ---
 
