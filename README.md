@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.6.exe"><img src="https://img.shields.io/badge/Download-v0.33.6-0078D6" alt="Download v0.33.6"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.7.exe"><img src="https://img.shields.io/badge/Download-v0.33.7-0078D6" alt="Download v0.33.7"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,14 +11,18 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.6.exe"><strong>⬇ Download FXChainPlayer-Setup-0.33.6.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.7.exe"><strong>⬇ Download FXChainPlayer-Setup-0.33.7.exe</strong></a></p>
 
 ---
 
-## What's new in v0.33.6 (April 2026)
+## What's new in v0.33.7 (April 2026)
 
-- **New download location.** The installer is now served directly from this project repository rather than from a release page. The download button above points at the current file. The in-app update check has been adjusted to match; from v0.33.6 onward, updates install through the app's built-in updater as usual.
-- **One-time manual step for v0.33.5 and older users.** Because the download URL changed, the in-app update check in v0.33.5 and earlier can no longer see this release. Please download v0.33.6 once using the button above and run the installer. After that, the built-in updater works again for all future versions.
+- **Maintenance release.** No user-visible changes from v0.33.6. Installed through the built-in updater as usual.
+
+Earlier in v0.33.6:
+
+- **New download location.** The installer is served directly from this project repository. The in-app updater was updated to match; v0.33.6 and newer receive updates automatically.
+- **One-time manual step for v0.33.5 and older users.** The download URL changed, so the in-app update check in v0.33.5 and earlier can no longer see newer releases. Download the current installer once using the button above; after that, the built-in updater works again for all future versions.
 
 Earlier in v0.33.5:
 
