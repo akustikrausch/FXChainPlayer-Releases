@@ -15,17 +15,20 @@
 
 ---
 
-## What's new in v0.33.4 (April 2026)
+## What's new in v0.33.5 (April 2026)
 
-- **Per-track export from the playlist.** The right-click menu now includes *Export to format…*, which opens the render dialog with just the selected track. Batch export via `Ctrl+E` is unchanged.
-- **Export progress in the status bar.** A compact indicator shows the current track and percentage while a render is running. The render dialog can be closed without cancelling the job.
-- **Clearer errors when a track fails to play.** Missing, corrupt or locked files now produce a visible red message in the status bar and the playlist automatically advances to the next track after a short delay.
-- **Improved update check.** Failed checks now surface a visible error with a link to the releases page, and the check runs periodically during long sessions so a mid-session release is picked up without restarting the app.
-- **Application log is overwritten per session** (the previous session is kept as `.prev` for diagnostics), so the log file no longer grows without bound.
+- **Update check fixed.** The About panel no longer flashes *"Up to date"* before the update banner appears, and the result of a manual check is now shown inline next to the *Check for Updates* button as *"Version X available"*. A second click produces the same visible response as the first.
+- **Log file size bounded.** The log folder now keeps at most two files — the current session and the previous one. Older archive files from earlier versions are removed on the next start so the folder size stays predictable.
+
+Earlier in v0.33.4:
+
+- **Per-track export from the playlist.** Right-click → *Export to format…* opens the render dialog with just the selected track. Batch export via `Ctrl+E` is unchanged.
+- **Export progress in the status bar**, visible while a render is running. The render dialog can be closed without cancelling the job.
+- **Clearer errors when a track fails to play.** Missing, corrupt or locked files now produce a visible red message and the playlist auto-advances.
 - **Tracker Pattern view fixed.** The view rendered as a black panel in earlier builds; pattern data now scrolls correctly.
-- **Channel Scopes is hidden for tracker modules with more than 4 channels** while a dedicated multi-channel layout is in development. Stereo material and 4-channel trackers keep the mode.
+- **Channel Scopes is hidden for tracker modules with more than 4 channels** while a dedicated multi-channel layout is in development.
 
-[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.4)
+[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.5)
 
 ---
 
