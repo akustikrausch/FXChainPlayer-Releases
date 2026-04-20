@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest"><img src="https://img.shields.io/github/v/release/akustikrausch/FXChainPlayer-Releases?label=Download&color=0078D6" alt="Download"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.5.exe"><img src="https://img.shields.io/badge/Download-v0.33.5-0078D6" alt="Download v0.33.5"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest"><strong>⬇ Download the latest release</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads/FXChainPlayer-Setup-0.33.5.exe"><strong>⬇ Download FXChainPlayer-Setup-0.33.5.exe</strong></a></p>
 
 ---
 
@@ -28,7 +28,7 @@ Earlier in v0.33.4:
 - **Tracker Pattern view fixed.** The view rendered as a black panel in earlier builds; pattern data now scrolls correctly.
 - **Channel Scopes is hidden for tracker modules with more than 4 channels** while a dedicated multi-channel layout is in development.
 
-[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.33.5)
+[Full release notes →](https://github.com/akustikrausch/FXChainPlayer-Releases/blob/main/README.md#whats-new-in-v0335-april-2026)
 
 ---
 
@@ -149,7 +149,7 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGG
 
 ## Download
 
-**[⬇ Latest release on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest)**
+**[⬇ Latest release on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads)**
 
 Two distribution options:
 
@@ -199,7 +199,7 @@ The binaries use and statically/dynamically link the following open-source compo
 
 ## Links
 
-- **Latest release:** https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest
+- **Latest release:** https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads
 - **Author:** [Andreas Wendorf / Akustikrausch](https://github.com/akustikrausch)
 
 ---
