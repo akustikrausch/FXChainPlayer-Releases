@@ -180,9 +180,14 @@ The binaries use and statically/dynamically link the following open-source compo
 
 ---
 
+## Community
+
+Join the FXChainPlayer Discord for questions, feedback, plugin recommendations, and bug reports: **<https://discord.gg/sfHBZFhG>**
+
 ## Links
 
-- **Latest release:** https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads
+- **Latest release:** https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest
+- **Discord:** https://discord.gg/sfHBZFhG
 - **Author:** [Andreas Wendorf / Akustikrausch](https://github.com/akustikrausch)
 
 ---
