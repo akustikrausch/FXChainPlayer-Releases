@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.33.9/FXChainPlayer-Setup-0.33.9.exe"><img src="https://img.shields.io/badge/Download-v0.33.9-0078D6" alt="Download v0.33.9"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.1/FXChainPlayer-Setup-0.34.1.exe"><img src="https://img.shields.io/badge/Download-v0.34.1-0078D6" alt="Download v0.34.1"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,45 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.33.9/FXChainPlayer-Setup-0.33.9.exe"><strong>⬇ Download FXChainPlayer-Setup-0.33.9.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.1/FXChainPlayer-Setup-0.34.1.exe"><strong>⬇ Download FXChainPlayer-Setup-0.34.1.exe</strong></a></p>
+
+---
+
+## What's new in v0.34.1
+
+**New**
+- **VST3 effects now require a one-time free email confirmation.** Type in your email, enter the 6-digit code we mail you, and the effect chain is yours permanently. No subscription, no paywall — a contact address for major updates.
+- **Clipping-protection indicator** next to the peak meters — grey when off, amber/red when the output limiter is engaging.
+- **Tracker Instrument → Channel split view** in the analyzer's right-click menu: one card per instrument, chips for the channels currently triggering it, aggregated VU.
+- **Waveform time-zoom** (1× / 2× / 4× / 8× / 16×) with smooth auto-scroll on long tracks.
+- **Help panel rewritten** with concrete "Where to find it" pointers per feature.
+
+**Playback & formats**
+- Smoother playback on long MP3s at 2× / 4× waveform zoom.
+- Commodore 64 SID: song-length lookup is now correct for RSID files via the HVSC database.
+- Tracker channel mute and SID voice mute take effect immediately.
+- Shorter gap between consecutive SID tracks.
+- Game Boy, MSX, NES, PC Engine, Atari, Sega Genesis and ZX Spectrum chiptunes now play through to the real end of the tune.
+- Unsupported container files are reported as a warning and auto-skipped instead of logged as errors.
+
+**Transport & UI**
+- Fullscreen toggle (F11) restores the previous window size correctly.
+- Escape closes Info / Help / Settings / About / Update dialogs.
+- VST plugin browser shows the full name on hover when truncated.
+- ASIO: preview panel in Settings (final license pending).
+
+**About panel**
+- "Open Crash Dumps" opens a dedicated `crash/` subfolder. Legacy files migrate on first launch.
+
+**Stability**
+- Layered crash protection across the audio pipeline.
+- Runtime exception catch-net logs the actual cause of Qt runtime errors instead of a bare error code.
+- Session logs from crashed sessions are preserved with timestamped copies.
+- Scanner refuses to open files that previously crashed the app.
+- Background waveform analysis is skipped for synthesised formats (SID, chiptunes, MIDI) — faster playlist loads.
+
+**Auto-update**
+- The in-app update checker downloads a SHA-256-verified installer and restarts silently.
 
 ---
 
