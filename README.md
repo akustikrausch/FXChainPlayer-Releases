@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.1/FXChainPlayer-Setup-0.34.1.exe"><img src="https://img.shields.io/badge/Download-v0.34.1-0078D6" alt="Download v0.34.1"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.2/FXChainPlayer-Setup-0.34.2.exe"><img src="https://img.shields.io/badge/Download-v0.34.2-0078D6" alt="Download v0.34.2"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,45 +11,30 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.1/FXChainPlayer-Setup-0.34.1.exe"><strong>⬇ Download FXChainPlayer-Setup-0.34.1.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.2/FXChainPlayer-Setup-0.34.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.34.2.exe</strong></a></p>
 
 ---
 
-## What's new in v0.34.1
+## What's new in v0.34.2
 
-**New**
-- **VST3 effects now require a one-time free email confirmation.** Type in your email, enter the 6-digit code we mail you, and the effect chain is yours permanently. No subscription, no paywall — a contact address for major updates.
-- **Clipping-protection indicator** next to the peak meters — grey when off, amber/red when the output limiter is engaging.
-- **Tracker Instrument → Channel split view** in the analyzer's right-click menu: one card per instrument, chips for the channels currently triggering it, aggregated VU.
-- **Waveform time-zoom** (1× / 2× / 4× / 8× / 16×) with smooth auto-scroll on long tracks.
-- **Help panel rewritten** with concrete "Where to find it" pointers per feature.
+Critical fix release for the SID pipeline. Replaces v0.34.1.
 
-**Playback & formats**
-- Smoother playback on long MP3s at 2× / 4× waveform zoom.
-- Commodore 64 SID: song-length lookup is now correct for RSID files via the HVSC database.
-- Tracker channel mute and SID voice mute take effect immediately.
-- Shorter gap between consecutive SID tracks.
-- Game Boy, MSX, NES, PC Engine, Atari, Sega Genesis and ZX Spectrum chiptunes now play through to the real end of the tune.
-- Unsupported container files are reported as a warning and auto-skipped instead of logged as errors.
+**SID**
+- **SID playback no longer crashes after ~50 ms.** A hidden deadlock in the C64 emulator guard made every SID session terminate the app immediately after play. Root cause is gone — the singleton is now a lock-free pointer, no mutex to re-enter.
+- **The SID Voices analyzer mode works.** Voice mute (1 / 2 / 3), filter bypass and the 6581 / 8580 / auto chip-model cycle interact live. In v0.34.0 / v0.34.1 the same deadlock ate every register read, so the mode rendered an empty grid.
+- **Subtune navigation works.** Jumping between subtunes used to stall on the same deadlock when the pattern view rebound; fixed as part of the root-cause fix.
+- **Playlist-scan crash with a preloaded SID fixed.** Adding a folder to the playlist while a SID was playing or preloaded reliably crashed the app once the scanner reached the next SID file. Same root cause.
 
-**Transport & UI**
-- Fullscreen toggle (F11) restores the previous window size correctly.
-- Escape closes Info / Help / Settings / About / Update dialogs.
-- VST plugin browser shows the full name on hover when truncated.
-- ASIO: preview panel in Settings (final license pending).
+**Activation**
+- **Activate / Change-email button in About.** The activation row has an inline button that opens the activation dialog. Filled accent when not yet activated, outlined pill when activated. About stays visible behind the dialog; the row updates in place as soon as verification succeeds.
 
-**About panel**
-- "Open Crash Dumps" opens a dedicated `crash/` subfolder. Legacy files migrate on first launch.
+**Transport & dialogs**
+- **F11 fullscreen exit reliably returns to desktop-maximized.** A maximized window used to drop back to its compact size on exit because Qt's visibility enum lagged the OS caption-bar state; we now track transitions continuously with a screen-size fallback.
+- **ESC closes Help / About / Settings / File Info / Update dialogs.** `CloseOnEscape` alone was not enough on Qt 6 modal popups — each popup now claims focus on open so the Escape key actually reaches it.
+- **Right-click menu in the analyzer always lists Pattern / SID Voices.** They used to be hidden when no tracker/SID was playing; they are now always visible, enabled only when the corresponding playback type is active.
 
-**Stability**
-- Layered crash protection across the audio pipeline.
-- Runtime exception catch-net logs the actual cause of Qt runtime errors instead of a bare error code.
-- Session logs from crashed sessions are preserved with timestamped copies.
-- Scanner refuses to open files that previously crashed the app.
-- Background waveform analysis is skipped for synthesised formats (SID, chiptunes, MIDI) — faster playlist loads.
-
-**Auto-update**
-- The in-app update checker downloads a SHA-256-verified installer and restarts silently.
+**Ship hygiene**
+- App cleans unrelated top-level files in `%APPDATA%\FXChainPlayer\` on startup. Your logs, crash dumps, settings, plugin cache and Songlengths database are untouched; stray markdown or Office files that landed there during testing are removed. CI also refuses to bundle non-whitelisted files into the shipping package.
 
 ---
 
