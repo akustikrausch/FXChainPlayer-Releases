@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.2/FXChainPlayer-Setup-0.34.2.exe"><img src="https://img.shields.io/badge/Download-v0.34.2-0078D6" alt="Download v0.34.2"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.7/FXChainPlayer-Setup-0.35.7.exe"><img src="https://img.shields.io/badge/Download-v0.35.7-0078D6" alt="Download v0.35.7"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,30 +11,146 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.34.2/FXChainPlayer-Setup-0.34.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.34.2.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.7/FXChainPlayer-Setup-0.35.7.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.7.exe</strong></a></p>
 
 ---
 
-## What's new in v0.34.2
+## What's new in v0.35.7
 
-Critical fix release for the SID pipeline. Replaces v0.34.1.
+Biggest public update in a while — v0.35 consolidates five months of
+internal polish into a single release.
 
-**SID**
-- **SID playback no longer crashes after ~50 ms.** A hidden deadlock in the C64 emulator guard made every SID session terminate the app immediately after play. Root cause is gone — the singleton is now a lock-free pointer, no mutex to re-enter.
-- **The SID Voices analyzer mode works.** Voice mute (1 / 2 / 3), filter bypass and the 6581 / 8580 / auto chip-model cycle interact live. In v0.34.0 / v0.34.1 the same deadlock ate every register read, so the mode rendered an empty grid.
-- **Subtune navigation works.** Jumping between subtunes used to stall on the same deadlock when the pattern view rebound; fixed as part of the root-cause fix.
-- **Playlist-scan crash with a preloaded SID fixed.** Adding a folder to the playlist while a SID was playing or preloaded reliably crashed the app once the scanner reached the next SID file. Same root cause.
+### Layout you can actually shape
 
-**Activation**
-- **Activate / Change-email button in About.** The activation row has an inline button that opens the activation dialog. Filled accent when not yet activated, outlined pill when activated. About stays visible behind the dialog; the row updates in place as soon as verification succeeds.
+- **Named layout presets.** Pick *Default*, *DJ Mode*, *Studio Mode*
+  or *Playlist Mode* from *Settings → Display*, or save your own as
+  *Custom*. The app restores your choice on every launch.
+  - **Default** — sidebar playlist, FX chain, analyzer. The
+    balanced view.
+  - **DJ Mode** — full-width playlist, expanded transport docked at
+    the bottom, no other panels. Pure deck focus.
+  - **Studio Mode** — sidebar playlist with FX chain, parametric
+    EQ, and the analyzer all visible. Everything reachable.
+  - **Playlist Mode** — full-width playlist on top, analyzer
+    beneath on full width. Library browsing with a visual companion.
+- **Full-width playlist with split view.** Pressing `Shift+P` (or
+  the chevron in the playlist header) expands the playlist to the
+  full window width and hides FX / Analyzer for clean focus. Re-
+  enable either from within full-width and they appear in a bottom
+  half beneath the playlist — one panel takes the full width, both
+  split it 50/50. Pressing `Shift+P` again smart-restores the
+  panels you had before.
+- **Playlist search.** `Ctrl+F` focuses an inline search field
+  above the playlist. Live substring filter across title and
+  path; clear with `Esc` or the X button.
+- **Extended playlist columns.** Year, BPM, Key in addition to
+  Bitrate, Rate, Size, Date on wide windows. Click any header to
+  sort; click the ★ to sort by Favorites first.
 
-**Transport & dialogs**
-- **F11 fullscreen exit reliably returns to desktop-maximized.** A maximized window used to drop back to its compact size on exit because Qt's visibility enum lagged the OS caption-bar state; we now track transitions continuously with a screen-size fallback.
-- **ESC closes Help / About / Settings / File Info / Update dialogs.** `CloseOnEscape` alone was not enough on Qt 6 modal popups — each popup now claims focus on open so the Escape key actually reaches it.
-- **Right-click menu in the analyzer always lists Pattern / SID Voices.** They used to be hidden when no tracker/SID was playing; they are now always visible, enabled only when the corresponding playback type is active.
+### New formats and format handling
 
-**Ship hygiene**
-- App cleans unrelated top-level files in `%APPDATA%\FXChainPlayer\` on startup. Your logs, crash dumps, settings, plugin cache and Songlengths database are untouched; stray markdown or Office files that landed there during testing are removed. CI also refuses to bundle non-whitelisted files into the shipping package.
+- **ZIP / RAR / LHA / LZX archives** at add-time — libarchive
+  extracts the audio in-place. Matches how users actually store
+  scene releases and demoscene packs.
+- **Amiga retro-packers** (StoneCracker, Imploder, PackIce,
+  CrunchMania) on MOD / XM / S3M / IT files — the ancient library
+  handles the de-pack transparently. Drag a `.pp` or packed `.mod`
+  onto the window and it just plays.
+- **More tracker formats** — 30+ retro tracker formats now covered
+  via libopenmpt 0.8.6 (DigiBooster, DigiTrakker, Imago Orpheus,
+  Graoumf, Liquid Tracker, Octalyser, PolyTracker, UltraTracker,
+  X-Tracker, Soundtracker Pro II, TCB Tracker, …).
+- **SID song lengths (HVSC).** Drop the HVSC `Songlengths.txt` in
+  the right spot (see *Settings → Library*) and SIDs play their
+  actual authored duration from a database of 60 000+ tunes instead
+  of the 180 s default.
+
+### Tracker modules: pattern view, mutes, navigation
+
+- **Live ProTracker-style pattern view** for `.mod` / `.xm` / `.s3m`
+  / `.it` / all the historical trackers — highlighted row follows
+  the audio, not the render-ahead. Right-click the analyzer to
+  switch views.
+- **Channel Scopes.** Per-channel oscilloscopes for trackers up to
+  four channels; the view hides itself for higher channel counts
+  where it would be illegible.
+- **Instrument → Channel split view.** Shows one card per
+  instrument with the channels currently triggering it and an
+  aggregated VU — useful for XM / IT modules where the same
+  instrument fires across several channels.
+- **Channel mute on trackers.** Toggle channels inside the
+  pattern view; ring-buffer is flushed so the mute is audible
+  within one WASAPI buffer instead of a second later.
+- **Pattern navigation with no lag.** "Next Pattern" / "Previous
+  Pattern" now snap both the audio and the UI pattern counter
+  within ~20 ms of the button press (was up to a second).
+
+### Killer feature: Export through your VST3 chain
+
+Every build includes full **batch export** through the VST3
+effect chain to WAV (16-bit PCM / 24-bit PCM / 32-bit float) and
+MP3 (128 / 192 / 320 kbps). Offline, faster-than-real-time,
+sample-accurate. Right-click a track in the playlist →
+*Export to format…* for a single file, or press `Ctrl+E` for the
+batch dialog.
+
+- **Bake headphone correction.** Apply Sonarworks / SoundID
+  Reference / Beyerdynamic Headphone Lab / Morphit to a playlist
+  and render it for on-the-go listening — no correction plugin
+  needed on the destination device.
+- **Bake spatial audio.** dearVR MONITOR / Waves Nx / Dolby
+  Atmos Production Suite produce a binauralized stereo file you
+  can listen to with any headphones, any app.
+- **Loudness-normalized listening copies.** Compressor + limiter
+  chain → uniform playback level, works everywhere afterward.
+- **Format conversion with processing in one pass.** FLAC → MP3
+  with EQ + dynamics + dither baked in, no DAW round-trip, no
+  intermediate files.
+
+In this release: **SID → MP3 export fixed** (Media Foundation
+was not always initialized, causing silent failures; now
+bootstrapped on demand). Unusual device sample rates
+(88.2 / 96 / 192 kHz) are snapped to 32 / 44.1 / 48 kHz for the
+MP3 encoder via r8brain (260 dB SNR).
+
+### UI polish
+
+- **Interactive graphic EQ.** 8 parametric bands rendered as a
+  GPU-accelerated frequency-response curve. Click and drag bands
+  directly on the curve, scroll-wheel for Q, `Shift` snaps to
+  1/3 octaves and standard dB grid. Stereo-linked and mid/side
+  modes. Pre/post FX chain placement.
+- **Favorites tab** (★) alongside Playlist and Browse. `Ctrl+D`
+  toggles favourite on the current track; the ★ column in the
+  playlist reflects live state.
+- **Drag-out to Explorer / Desktop.** Drag selected playlist rows
+  out of the window to copy the underlying files.
+- **File Info panel reorganised** — AUDIO + TRACKER MODULE /
+  DSD STREAM / SID TUNE sections render first now; the song-info
+  tag card (mostly empty for trackers and SIDs anyway) follows
+  below, where it no longer pushes the technical data out of the
+  visible area.
+- **True file delete** via the Windows Recycle Bin (not just
+  a playlist remove).
+- **Arrow-key navigation** across playlist and file browser.
+- **Status-bar** cleanup — output cluster (Mute / Volume / %) sits
+  next to FX Bypass, before the navigation buttons; L / R peak
+  meters, CPU bar and Volume % are all fixed-width so the row no
+  longer jitters when a digit crosses a boundary.
+
+### Reliability
+
+- **Plugin crash isolation** per `(path, classID)` — a single
+  crashing plugin in a multi-class shell like Waves WaveShell
+  (600+ effects) doesn't take out the rest. Automatic safe mode
+  after repeated failures.
+- **Crash guard for file scanning** — scanning large folders
+  with broken / malformed tracker files no longer blows up the
+  app.
+- **Playlist auto-recovery** on failed track load — player state
+  clears, next track plays, export skips URL streams cleanly.
+- **Session restoration** when the app is relaunched (crash or
+  normal).
 
 ---
 
@@ -51,7 +167,7 @@ More reasons than you'd expect.
 - **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
 - **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
 - **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
-- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#-export-through-your-vst3-chain--killer-feature).
+- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details above](#killer-feature-export-through-your-vst3-chain).
 
 Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
 
@@ -83,7 +199,6 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 - **KSS** — MSX
 - **HES** — PC Engine / TurboGrafx-16
 - **SAP** — Atari 8-bit
-- **SGC** — Sega SG-1000
 - **GYM** — Sega Genesis / Mega Drive
 
 ### Retro / specialty
@@ -92,6 +207,8 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 - **IFF 8SVX** — Amiga samples
 - **MIDI** / **RMI** — SoundFont 2 (SF2) rendering via TinySoundFont, with Windows Media Foundation fallback
 - **CUE sheets** — multi-track audio with proper track split and gapless playback
+- **Packed / crunched Amiga files** — StoneCracker, Imploder, PackIce, CrunchMania unpacked transparently
+- **ZIP / RAR / LHA / LZX archives** — audio extracted at add-time via libarchive
 
 **80+ file extensions total.** If you throw something at it, chances are it plays.
 
@@ -110,7 +227,7 @@ FabFilter-style interactive graphic control on a GPU-accelerated frequency respo
 - **LED HiFi** — 32-band segmented display
 - **Frequency Landscape** — 3D waterfall
 
-Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo) and a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback.
+Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes.
 
 ### 🎚️ Studio Compare (A/B)
 Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a 64-sample crossfade. Compare masters, codecs, headphones, plugin chains.
@@ -122,20 +239,11 @@ Smooth your stereo on headphones without a plugin slot. Continuous blend slider,
 Next track is pre-loaded and swapped in sample-accurately across the decoder families that allow it (FLAC→MP3, MOD→XM, cross-format — all work). Mixed-format playlists play back cleanly end-to-end.
 
 ### 📁 Integrated file browser & smart-scan
-Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions.
+Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
 
 ### 💎 **Export through your VST3 chain — killer feature**
 
 Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
-
-This is what most audio players can't do. Some concrete use cases:
-
-- **Bake your headphone correction into a file.** Apply Sonarworks / SoundID Reference / Beyerdynamic Headphone Lab / Morphit to a playlist and render it for on-the-go listening on a phone or portable player — no need for the correction plugin on the destination.
-- **Loudness-normalized listening copies.** A compressor + limiter chain applied to an inconsistent album → uniform playback level, works on any device afterward.
-- **Mastering test prints.** Run a master through your client's playback chain (their EQ curve, their monitoring profile) and A/B the result outside the DAW.
-- **Spatial-audio baked captures.** dearVR MONITOR, Waves Nx or Dolby Atmos Production Suite produce a binauralized stereo file you can listen back to with any headphones, any app.
-- **Format conversion with processing in one pass.** Convert FLAC → WAV / MP3 / OGG while simultaneously applying EQ, dynamics and dither — no DAW round-trip, no intermediate files.
-- **Demo / preview versions.** Apply saturation, tape emulation or a creative chain to a track for a quick demo render.
 
 Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
 
@@ -147,22 +255,11 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGG
 
 ---
 
-## Screenshots
-
-> *Coming soon — main window, FX chain, spectrum analyzer, tracker pattern view.*
-
----
-
 ## Download
 
-**[⬇ Latest release on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/raw/main/downloads)**
+**[⬇ Latest installer on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest)**
 
-Two distribution options:
-
-- **Installer** — `FXChainPlayer-Setup-X.Y.Z.exe` (recommended). Full install with file associations, Start menu entries, uninstaller.
-- **Portable ZIP** — `FXChainPlayer-vX.Y.Z.zip`. Unpack anywhere, run. Stores settings in the app folder.
-
-Both include all required Qt DLLs and the VST3 host process.
+One installer, one click: `FXChainPlayer-Setup-X.Y.Z.exe` (Inno Setup). Full install with file associations, Start menu entries, uninstaller. All required Qt DLLs and the VST3 host process are included.
 
 ### Auto-update
 
@@ -199,7 +296,7 @@ Instruments (VSTi) are filtered out automatically — FXChainPlayer is a playbac
 
 FXChainPlayer is proprietary software by **Andreas Wendorf (Akustikrausch)**.
 
-The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog.
+The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, zlib.
 
 ---
 
