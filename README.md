@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.7/FXChainPlayer-Setup-0.35.7.exe"><img src="https://img.shields.io/badge/Download-v0.35.7-0078D6" alt="Download v0.35.7"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.8/FXChainPlayer-Setup-0.35.8.exe"><img src="https://img.shields.io/badge/Download-v0.35.8-0078D6" alt="Download v0.35.8"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,14 +11,46 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.7/FXChainPlayer-Setup-0.35.7.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.7.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.8/FXChainPlayer-Setup-0.35.8.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.8.exe</strong></a></p>
 
 ---
 
-## What's new in v0.35.7
+## What's new in v0.35.8
 
-Biggest public update in a while — v0.35 consolidates five months of
-internal polish into a single release.
+Follow-up fixes on top of the v0.35 feature drop.
+
+- **Gapless tracker→tracker crash fixed.** Queueing MOD / XM / S3M /
+  IT modules back-to-back could crash after ~20 transitions due to
+  a decoder/UI thread race around the libopenmpt module lifetime.
+  Destroy and pattern-view read are now mutually exclusive — no
+  more dangling-pointer deref.
+- **VST3 per-slot wet/dry mix respected in offline export.** Setting
+  a chain slot to 60 % wet and exporting to MP3 used to render as
+  100 % wet because the mix buffer was sized to the real-time
+  audio-device block. Exports now sound the same as real-time
+  playback, regardless of device buffer size.
+- **Playlist Mode preset now splits playlist + analyzer 50/50.** The
+  preset sometimes left the analyzer covering the whole window with
+  no playlist visible; fixed by matching explicit preferred heights
+  on both rows.
+- **Playlist column headers stay over their columns at every width.**
+  A trailing fillWidth spacer in both the header and delegate rows
+  absorbs leftover space deterministically past the ~1400 px
+  breakpoint — header labels and data columns stay aligned. Also
+  carries forward the v0.35.7 scroll-bar-reserve fix (header and
+  delegate both reserve the 14 px overlay area).
+- **Context-menu highlight readable across every menu.** All nine
+  right-click menus (playlist, analyzer, peak meter, FX slot,
+  transport, file browser, VST browser, empty areas) now use a
+  shared styled component with a consistent soft-grey selection
+  highlight — no more white-on-white text on any Windows theme /
+  DPI combination.
+
+See the [v0.35.8 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.8) for the full list.
+
+---
+
+## What's in the v0.35 cycle
 
 ### Layout you can actually shape
 
