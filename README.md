@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.8/FXChainPlayer-Setup-0.35.8.exe"><img src="https://img.shields.io/badge/Download-v0.35.8-0078D6" alt="Download v0.35.8"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.9/FXChainPlayer-Setup-0.35.9.exe"><img src="https://img.shields.io/badge/Download-v0.35.9-0078D6" alt="Download v0.35.9"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,57 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.8/FXChainPlayer-Setup-0.35.8.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.8.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.9/FXChainPlayer-Setup-0.35.9.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.9.exe</strong></a></p>
+
+---
+
+## What's new in v0.35.9
+
+Layout, stability and UX polish on top of v0.35.8.
+
+- **Waveform expand works in every layout constellation.** Playlist Mode
+  and a handful of wide-window states could silently fail to expand the
+  waveform — the orange "Close" button and the purple DJ pill appeared
+  but the waveform stayed missing. Root cause was a three-way fight
+  between the expanded transport slot, the main content row and the
+  bottom split host, and a 250 ms animation that shrank the slot to
+  zero before the fill value kicked in. Both issues are gone.
+- **Playlist fills the width when no right-side panel is visible.**
+  Turning off FX + Analyzer + EQ used to leave a 340-px playlist on
+  the left with two thirds of the window empty and dark. The playlist
+  now absorbs the freed space automatically (animated, 200 ms), and
+  shrinks back to sidebar width as soon as you turn a panel on again.
+- **Reset-View button in the status bar** (`rotate-ccw` icon, next to
+  Settings, `Ctrl+Shift+R` shortcut). One click returns to the Default
+  layout regardless of the state you were in — useful when a chain of
+  toggles left the window in a constellation that's hard to back out of.
+- **Pattern view no longer goes blank at MOD→MOD / XM→XM transitions.**
+  The tracker provider wasn't re-bound on gapless decoder swaps, so
+  the view rendered an empty grid after the first back-to-back tracker
+  transition. Bind now fires on every track change.
+- **Right-click on the Spectrum Analyzer works everywhere.** In Pattern
+  / SID / Scopes / Instrument-Split modes, only a tiny 30×30 corner in
+  the top-right was actually accepting right-clicks for the mode menu
+  — users read it as "sometimes the menu doesn't open". The whole
+  analyzer area accepts right-clicks now.
+- **File Info polish.** The duplicate sample-name list for MOD/XM/S3M/IT
+  modules (once unformatted at the top, once in the Samples box) is
+  gone — the top row was TagLib's synthesized "comment" mirroring the
+  Samples list. And the Close button moved from the bottom of the
+  scroll region to a floating ✕ in the top-right corner (matches the
+  About panel), so you don't have to scroll to the end of a long
+  tracker's sample list just to close the dialog.
+- **Smaller fixes.** Status-bar info-icon hides next to "No file loaded"
+  (clicking on nothing is a no-op, now the cell matches). Playlist tabs
+  always show their separator lines (earlier revision faded them
+  depending on which tab was active — read as inconsistent). Removed
+  the redundant small chevron-down inside the waveform (the big orange
+  "Waveform" pill with text label is the single visible expand entry).
+  Chevron tooltip explains that FX + Analyzer dock below the full-width
+  playlist. Sidebar drag clamps against window width so the right stack
+  can never be squeezed invisible on narrow monitors.
+
+See the [v0.35.9 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.9) for the technical details.
 
 ---
 
