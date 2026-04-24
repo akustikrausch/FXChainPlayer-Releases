@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.9/FXChainPlayer-Setup-0.35.9.exe"><img src="https://img.shields.io/badge/Download-v0.35.9-0078D6" alt="Download v0.35.9"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.10/FXChainPlayer-Setup-0.35.10.exe"><img src="https://img.shields.io/badge/Download-v0.35.10-0078D6" alt="Download v0.35.10"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,29 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.9/FXChainPlayer-Setup-0.35.9.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.9.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.10/FXChainPlayer-Setup-0.35.10.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.10.exe</strong></a></p>
+
+---
+
+## What's new in v0.35.10
+
+Hotfix on top of v0.35.9 — the "Waveform" pill now actually gives the
+waveform the whole content area.
+
+- **Waveform-expand hides the playlist too.** Previously pressing the
+  orange "Waveform" pill expanded the transport to roughly half the
+  window, with the playlist keeping the other half — which isn't what
+  "expand the waveform" suggests. The playlist is now snapshotted and
+  hidden on expand so the waveform owns the whole content area. Press
+  `P` during expand if you want the playlist back — it reappears with
+  a compact ~30 % share at the bottom; the waveform stays dominant.
+  On collapse, the playlist smart-restores to its pre-expand value if
+  you didn't explicitly turn it back on.
+- `T`, the orange "Waveform" pill and the double-click gesture on the
+  waveform canvas all route through the same helper, so all three
+  entry points behave identically.
+
+See the [v0.35.10 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.10) for technical details.
 
 ---
 
