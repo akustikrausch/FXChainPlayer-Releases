@@ -145,8 +145,8 @@ Three fixes.
   the source model and stops playback too, matching single-track
   removal.
 
-Docs, help panel and third-party license list caught up with the
-3-Band EQ rewrite from v0.35.11 at the same time.
+Docs, help panel and third-party license list were updated in the
+same pass to match the current 3-Band EQ.
 
 ---
 
@@ -219,9 +219,8 @@ See the [v0.35.11 release notes](https://github.com/akustikrausch/FXChainPlayer-
 
 ## What's new in v0.35.10
 
-Consolidated release notes for the whole v0.35 cycle — all v0.35.x
-improvements rolled into the v0.35.10 installer. Everything below is
-live in this build.
+Consolidated release notes for the whole v0.35 cycle up to v0.35.10
+— every improvement listed below is still live in the current build.
 
 ### Playlist & library
 
