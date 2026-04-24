@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.10/FXChainPlayer-Setup-0.35.10.exe"><img src="https://img.shields.io/badge/Download-v0.35.10-0078D6" alt="Download v0.35.10"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.11/FXChainPlayer-Setup-0.35.11.exe"><img src="https://img.shields.io/badge/Download-v0.35.11-0078D6" alt="Download v0.35.11"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,74 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.10/FXChainPlayer-Setup-0.35.10.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.10.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.11/FXChainPlayer-Setup-0.35.11.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.11.exe</strong></a></p>
+
+---
+
+## What's new in v0.35.11
+
+Big round of UX polish — fifteen fixes, one feature rewrite.
+
+- **3-Band EQ, rewritten from scratch as a modal dialog.** Low Shelf
+  / Mid Bell / High Shelf with two draggable crossover-frequency
+  handles on a live FFT spectrum, and three Low/Mid/High gain knobs.
+  Opens with `Q` or from the status-bar EQ button — no more competing
+  with FX or Analyzer for sidebar space. Replaces the old 8-band
+  parametric EQ that had known usability issues. RBJ-cookbook biquads
+  with 5-ms coefficient ramping — no clicks on knob moves.
+- **Waveform-expand gets a flexible sub-panel strip below.** When the
+  transport is expanded, press `P`, `E` or `A` to bring Playlist, FX
+  Chain or Analyzer back in as a horizontal bar under the waveform.
+  Any combination, share the strip width evenly. EQ stays out of the
+  strip — its height needs a dialog anyway.
+- **UI-scale change auto-restarts the app** (Qt 6.7 has no runtime
+  scale API) — no more "Restart Now / Later" dialog, just click
+  Apply in Settings and the app relaunches with the new scale.
+- **Playlist column headers no longer vanish at full width.** After
+  the v0.35.9 auto-fill-width change, the Title / Duration / Bitrate /
+  Year / BPM / Key / ★ headers disappeared whenever the playlist
+  auto-filled without explicit `Shift+P`. Every column-alignment
+  binding now gates on `_effectiveFullWidth`, so headers follow the
+  data cells regardless of how the panel ended up wide.
+- **File Info dialog polish.** Auto-refreshes when the playlist
+  advances to the next track (no stale-metadata state). Long ID3
+  Copyright / Encoder / Composer tags cap at 260 px and elide with a
+  tooltip (a specific MP3 with a 200-char genre chain was breaking
+  the card border). The Genre pill in the header row now caps the
+  same way. Duplicate inline ✕ next to the title removed — the
+  floating ✕ in the top-right corner is the single close affordance.
+- **Reset-View persists to settings.** Pressing the status-bar reset
+  button (or `Ctrl+Shift+R`) now writes "Default" into the layout-
+  preset file too, so the next app launch actually starts at Default.
+  Previously the button appeared to "forget" its effect across
+  restarts if you'd picked another preset.
+- **Transport-position-aware waveform chevron.** When the transport
+  bar is docked at the bottom, the orange Waveform/Close pill's
+  chevron points UP on expand (because the waveform grows upwards
+  into the window). Flips automatically based on the setting.
+- **Plugin loading / unloading spinner renders clean status text.**
+  The overlay that shows "Loading plugin..." / "Unloading plugin..."
+  during VST loads was centering text in a live-repositioning Column
+  that dropped glyphs off the baseline on some font fallbacks — card-
+  based fixed layout now, no more garbled characters.
+- **Inter-font-weight fallback hardening.** On systems where Inter is
+  installed without the optional DemiBold (weight 600) variant, small
+  text in the Add Files dialog ("Add N" button, type pills) rendered
+  as garbled glyphs because Qt's fallback substitution failed
+  visually. Switched to Bold (weight 700, reliable across every Inter
+  install). Same change to the file-browser format pill and Play-All
+  button.
+- **Smaller fixes.** Playlist tabs always show separator lines.
+  Status-bar info-icon hides when no file is loaded (click-to-nothing
+  removed). Sidebar drag clamps against window width so the right
+  stack can never be squeezed invisible. Single waveform-expand entry
+  point (the big pill — the small chevron inside the waveform is
+  gone). Gapless MOD→MOD tracker transitions don't blank the pattern
+  view anymore (tracker provider re-binds on gapless swap). Right-
+  click anywhere in the analyzer / pattern view opens the mode menu
+  (was a 30-px corner hitbox).
+
+See the [v0.35.11 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.11) for the consolidated list.
 
 ---
 
