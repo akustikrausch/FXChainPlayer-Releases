@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.11/FXChainPlayer-Setup-0.35.11.exe"><img src="https://img.shields.io/badge/Download-v0.35.11-0078D6" alt="Download v0.35.11"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.12/FXChainPlayer-Setup-0.35.12.exe"><img src="https://img.shields.io/badge/Download-v0.35.12-0078D6" alt="Download v0.35.12"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
@@ -11,7 +11,142 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.11/FXChainPlayer-Setup-0.35.11.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.11.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.12/FXChainPlayer-Setup-0.35.12.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.12.exe</strong></a></p>
+
+---
+
+## Why VST3 in an audio player?
+
+More reasons than you'd expect.
+
+- **🎧 Headphone surround & spatial audio** — Run binauralizers like **dearVR MONITOR**, **Waves Nx**, or **Dolby Atmos Production Suite** to turn stereo into a full spatial soundstage on any pair of headphones. No system-wide wrapper, no virtual audio cable.
+- **🎚️ Headphone calibration & correction** — Use frequency-response plugins like **Sonarworks SoundID Reference**, **Beyerdynamic Headphone Lab**, **Waves Nx Virtual Mix Room**, or **Morphit** to flatten your specific headphone model to a neutral reference.
+- **📻 Internet radio & streaming cleanup** — Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-abusing "loudness war" tracks to tame them while you listen.
+- **🔌 Plugin auditioning** — Want to hear how that new reverb, saturator, or tape emulation sounds on real music? Drop it in. No DAW boot-up, no empty session, no audio import.
+- **🔊 Loudness normalization & limiting** — Keep playback levels consistent across tracks from wildly different sources (old CDs vs. modern streaming).
+- **🏠 Room correction** — Apply convolution IRs or parametric EQ profiles to compensate for your listening room and speaker setup.
+- **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
+- **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
+- **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
+- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details above](#killer-feature-export-through-your-vst3-chain).
+
+Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
+
+---
+
+## Plays pretty much everything
+
+FXChainPlayer is built for music listeners who don't want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, and Game Boy chiptunes — it just plays.
+
+### Lossless & Hi-Res
+
+**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512).
+
+### Lossy
+
+**MP3**, **AAC**, **M4A** / **MP4** audio, **OGG Vorbis**, **WMA**, **MPC** (Musepack SV8), **AC-3**.
+
+### Tracker modules (35+ formats via libopenmpt)
+
+**MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **Soundtracker Pro II**, **TCB Tracker**, and many more.
+
+### Console chiptunes (via libgme)
+
+- **GBS** — Nintendo Game Boy
+- **SPC** — Super Nintendo (SPC700)
+- **VGM / VGZ** — Sega Megadrive · 32X · Master System · Game Gear · Mega CD · SG-1000 · SC-3000 · BBC Micro · ColecoVision
+- **AY** — ZX Spectrum · Amstrad CPC (AY-3-8910)
+- **NSF / NSFE** — Nintendo Entertainment System
+- **KSS** — MSX
+- **HES** — PC Engine / TurboGrafx-16
+- **SAP** — Atari 8-bit
+- **GYM** — Sega Genesis / Mega Drive
+
+### Retro / specialty
+
+- **SID** — Commodore 64 (cRSID emulator, HVSC Songlengths support — 60 000+ tune durations built-in)
+- **IFF 8SVX** — Amiga samples
+- **MIDI** / **RMI** — SoundFont 2 (SF2) rendering via TinySoundFont, with Windows Media Foundation fallback
+- **CUE sheets** — multi-track audio with proper track split and gapless playback
+- **Packed / crunched Amiga files** — StoneCracker, Imploder, PackIce, CrunchMania unpacked transparently
+- **ZIP / RAR / LHA / LZX archives** — audio extracted at add-time via libarchive
+
+**80+ file extensions total.** If you throw something at it, chances are it plays.
+
+---
+
+## Pro features audiophiles and engineers actually use
+
+### 🎛️ 8-band parametric EQ (built-in, pre/post FX chain)
+FabFilter-style interactive graphic control on a GPU-accelerated frequency response curve. Click and drag bands directly on the curve, scroll-wheel for Q, Shift-snap to 1/3 octaves and standard dB values. RBJ biquad filters (peak, shelf, pass, notch). Stereo-linked and mid/side modes. Preset save/load. Toggle with `Q`. Zero latency, lock-free.
+
+### 📊 Six real-time visualization modes
+- **FFT Spectrum** — indigo hue-swept frequency analyzer, 200 log-bins
+- **Spectrogram** — scrolling waterfall
+- **Stereo Phase Scope** — Lissajous / goniometer with amplitude-brightening
+- **VU Meter** — classic PPM L/R
+- **LED HiFi** — 32-band segmented display
+- **Frequency Landscape** — 3D waterfall
+
+Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes.
+
+### 🎚️ Studio Compare (A/B)
+Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a 64-sample crossfade. Compare masters, codecs, headphones, plugin chains.
+
+### 🎧 Built-in Bauer-style crossfeed
+Smooth your stereo on headphones without a plugin slot. Continuous blend slider, proper gain + delay + lowpass filtering.
+
+### 📼 Gapless playback
+Next track is pre-loaded and swapped in sample-accurately across the decoder families that allow it (FLAC→MP3, MOD→XM, cross-format — all work). Mixed-format playlists play back cleanly end-to-end.
+
+### 📁 Integrated file browser & smart-scan
+Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
+
+### 💎 **Export through your VST3 chain — killer feature**
+
+Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
+
+Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
+
+### 🛡️ Plugin crash protection
+SEH-wrapped plugin process calls, automatic crash journaling, safe-mode after repeated failures, per-`(path, classID)` blacklist so a single crashing plugin in a multi-class shell (e.g. Waves WaveShell with 600+ effects) doesn't take out the rest. Auto-restart watchdog subprocess.
+
+### ⚡ Performance
+Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGGeometryNode — no QML Canvas anywhere). r8brain-free-src resampler (260 dB SNR, linear-phase). WASAPI shared or exclusive mode. ~50 MB RAM idle. Startup < 2 s.
+
+---
+
+## What's new in v0.35.12
+
+Three fixes.
+
+- **Bulk folder drop into the playlist no longer runs the decoder
+  twice per file.** Adding a folder of uncached mixed-format tracks
+  (chiptunes + trackers + MP3s) used to open every file with two
+  full decoder lifecycles back-to-back on the UI thread — once for
+  the inline duration probe, once via the SmartScan scanner, which
+  was meant to be a background worker but was actually synchronous.
+  With twenty-plus files and heavy codecs (libgme, libopenmpt, MF
+  MIDI fallback) that added up to forty-plus open/close cycles per
+  second and on one test machine the heap didn't survive it — the
+  app closed without leaving a crash dump, which is the signature
+  of heap corruption or exhaustion severe enough to kill the dump
+  writer too. A new `ingestInlineProbe` path reuses the first open's
+  audio info and only runs TagLib for year / BPM / key, skipping
+  the second open entirely. One decoder open per file now.
+- **3-Band EQ knobs: 0 dB sits at 12 o'clock on all three knobs.**
+  Classic hi-fi knob sweep from 7:30 through 12 o'clock (top, 0 dB)
+  to 4:30. Previously the neutral position sat at 3 o'clock, which
+  made the knob read as "almost maxed" at a glance.
+- **"Clear Playlist" → "Clear All" in the confirmation dialog
+  actually clears the playlist.** The button was wired through the
+  playlist's filter proxy, and proxies don't expose `clear()` — so
+  the click did nothing. Now routes through a dedicated signal to
+  the source model and stops playback too, matching single-track
+  removal.
+
+Docs, help panel and third-party license list caught up with the
+3-Band EQ rewrite from v0.35.11 at the same time.
 
 ---
 
@@ -353,107 +488,6 @@ for the main window layout. Toggle combinations that used to leave
 now animate into usable states automatically. The full state-space
 analysis lives in `docs/dev/LAYOUT_UX_PLAN_v0.35.9.md` in the source
 tree for developers curious about the design.
-
----
-
-## Why VST3 in an audio player?
-
-More reasons than you'd expect.
-
-- **🎧 Headphone surround & spatial audio** — Run binauralizers like **dearVR MONITOR**, **Waves Nx**, or **Dolby Atmos Production Suite** to turn stereo into a full spatial soundstage on any pair of headphones. No system-wide wrapper, no virtual audio cable.
-- **🎚️ Headphone calibration & correction** — Use frequency-response plugins like **Sonarworks SoundID Reference**, **Beyerdynamic Headphone Lab**, **Waves Nx Virtual Mix Room**, or **Morphit** to flatten your specific headphone model to a neutral reference.
-- **📻 Internet radio & streaming cleanup** — Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-abusing "loudness war" tracks to tame them while you listen.
-- **🔌 Plugin auditioning** — Want to hear how that new reverb, saturator, or tape emulation sounds on real music? Drop it in. No DAW boot-up, no empty session, no audio import.
-- **🔊 Loudness normalization & limiting** — Keep playback levels consistent across tracks from wildly different sources (old CDs vs. modern streaming).
-- **🏠 Room correction** — Apply convolution IRs or parametric EQ profiles to compensate for your listening room and speaker setup.
-- **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
-- **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
-- **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
-- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details above](#killer-feature-export-through-your-vst3-chain).
-
-Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
-
----
-
-## Plays pretty much everything
-
-FXChainPlayer is built for music listeners who don't want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, and Game Boy chiptunes — it just plays.
-
-### Lossless & Hi-Res
-
-**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512).
-
-### Lossy
-
-**MP3**, **AAC**, **M4A** / **MP4** audio, **OGG Vorbis**, **WMA**, **MPC** (Musepack SV8), **AC-3**.
-
-### Tracker modules (35+ formats via libopenmpt)
-
-**MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **Soundtracker Pro II**, **TCB Tracker**, and many more.
-
-### Console chiptunes (via libgme)
-
-- **GBS** — Nintendo Game Boy
-- **SPC** — Super Nintendo (SPC700)
-- **VGM / VGZ** — Sega Megadrive · 32X · Master System · Game Gear · Mega CD · SG-1000 · SC-3000 · BBC Micro · ColecoVision
-- **AY** — ZX Spectrum · Amstrad CPC (AY-3-8910)
-- **NSF / NSFE** — Nintendo Entertainment System
-- **KSS** — MSX
-- **HES** — PC Engine / TurboGrafx-16
-- **SAP** — Atari 8-bit
-- **GYM** — Sega Genesis / Mega Drive
-
-### Retro / specialty
-
-- **SID** — Commodore 64 (cRSID emulator, HVSC Songlengths support — 60 000+ tune durations built-in)
-- **IFF 8SVX** — Amiga samples
-- **MIDI** / **RMI** — SoundFont 2 (SF2) rendering via TinySoundFont, with Windows Media Foundation fallback
-- **CUE sheets** — multi-track audio with proper track split and gapless playback
-- **Packed / crunched Amiga files** — StoneCracker, Imploder, PackIce, CrunchMania unpacked transparently
-- **ZIP / RAR / LHA / LZX archives** — audio extracted at add-time via libarchive
-
-**80+ file extensions total.** If you throw something at it, chances are it plays.
-
----
-
-## Pro features audiophiles and engineers actually use
-
-### 🎛️ 8-band parametric EQ (built-in, pre/post FX chain)
-FabFilter-style interactive graphic control on a GPU-accelerated frequency response curve. Click and drag bands directly on the curve, scroll-wheel for Q, Shift-snap to 1/3 octaves and standard dB values. RBJ biquad filters (peak, shelf, pass, notch). Stereo-linked and mid/side modes. Preset save/load. Toggle with `Q`. Zero latency, lock-free.
-
-### 📊 Six real-time visualization modes
-- **FFT Spectrum** — indigo hue-swept frequency analyzer, 200 log-bins
-- **Spectrogram** — scrolling waterfall
-- **Stereo Phase Scope** — Lissajous / goniometer with amplitude-brightening
-- **VU Meter** — classic PPM L/R
-- **LED HiFi** — 32-band segmented display
-- **Frequency Landscape** — 3D waterfall
-
-Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes.
-
-### 🎚️ Studio Compare (A/B)
-Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a 64-sample crossfade. Compare masters, codecs, headphones, plugin chains.
-
-### 🎧 Built-in Bauer-style crossfeed
-Smooth your stereo on headphones without a plugin slot. Continuous blend slider, proper gain + delay + lowpass filtering.
-
-### 📼 Gapless playback
-Next track is pre-loaded and swapped in sample-accurately across the decoder families that allow it (FLAC→MP3, MOD→XM, cross-format — all work). Mixed-format playlists play back cleanly end-to-end.
-
-### 📁 Integrated file browser & smart-scan
-Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
-
-### 💎 **Export through your VST3 chain — killer feature**
-
-Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
-
-Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
-
-### 🛡️ Plugin crash protection
-SEH-wrapped plugin process calls, automatic crash journaling, safe-mode after repeated failures, per-`(path, classID)` blacklist so a single crashing plugin in a multi-class shell (e.g. Waves WaveShell with 600+ effects) doesn't take out the rest. Auto-restart watchdog subprocess.
-
-### ⚡ Performance
-Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGGeometryNode — no QML Canvas anywhere). r8brain-free-src resampler (260 dB SNR, linear-phase). WASAPI shared or exclusive mode. ~50 MB RAM idle. Startup < 2 s.
 
 ---
 
