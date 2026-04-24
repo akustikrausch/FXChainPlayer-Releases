@@ -17,244 +17,275 @@
 
 ## What's new in v0.35.10
 
-Hotfix on top of v0.35.9 — the "Waveform" pill now actually gives the
-waveform the whole content area.
+Consolidated release notes for the whole v0.35 cycle — all v0.35.x
+improvements rolled into the v0.35.10 installer. Everything below is
+live in this build.
 
-- **Waveform-expand hides the playlist too.** Previously pressing the
-  orange "Waveform" pill expanded the transport to roughly half the
-  window, with the playlist keeping the other half — which isn't what
-  "expand the waveform" suggests. The playlist is now snapshotted and
-  hidden on expand so the waveform owns the whole content area. Press
-  `P` during expand if you want the playlist back — it reappears with
-  a compact ~30 % share at the bottom; the waveform stays dominant.
-  On collapse, the playlist smart-restores to its pre-expand value if
-  you didn't explicitly turn it back on.
-- `T`, the orange "Waveform" pill and the double-click gesture on the
-  waveform canvas all route through the same helper, so all three
-  entry points behave identically.
+### Playlist & library
 
-See the [v0.35.10 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.10) for technical details.
+- **Multi-select.** Click to select, `Ctrl+Click` to toggle, `Shift+Click`
+  for a range, `Ctrl+A` selects everything. `Del` removes the whole
+  selection in one pass. Works identically in the compact and the
+  full-width playlist.
+- **Favorites tab (★).** Click the star in any playlist row or
+  browser entry to mark a favourite (or press `Ctrl+D` on the focused
+  row). A Favorites tab appears next to Playlist / Browse as soon as
+  the first one is added. Folder-level favourites cache the directory
+  listing at add-time, so *Play All* on a folder works offline.
+- **Playlist search.** `Ctrl+F` focuses an inline search field above
+  the playlist. Live substring filter across title and path; clear with
+  `Esc` or the ✕ button.
+- **Full-width playlist with split view.** `Shift+P` (or the chevron
+  in the playlist header) expands the playlist to full window width
+  and snapshots the current FX / Analyzer state. Enable either from
+  within full-width and they drop into a bottom half beneath the
+  playlist — one panel takes the full width, both split it 50/50.
+  `Shift+P` again smart-restores the panels you had before, or
+  preserves what you just turned on if you customised the layout.
+- **Auto-fill width when no right-side panel is visible.** Turn off
+  FX, Analyzer and EQ while in sidebar mode and the playlist absorbs
+  the freed space automatically (animated, 200 ms). Turn a panel back
+  on and the playlist shrinks to sidebar width again. No more dark
+  empty gap next to a 340-px sidebar.
+- **Extended columns (Year / BPM / Key).** Three new sortable columns
+  appear on windows ≥ 1400 px wide. Values come from ID3 / Vorbis tags
+  first (Year, BPM, INITIALKEY), with filename-regex fallback scored
+  by confidence — so `128 - 3A - Energy 52 - Café del Mar.mp3` parses
+  correctly even with multiple BPM-shaped numbers in the name.
+- **Sort by track index (folder grouping).** Click the `#` header in
+  the extended view or right-click → *Sort by Track Index*. Files from
+  the same source folder stay together; inside each folder they order
+  by numeric prefix independent of separator (`01-` / `01 ` / `01.` /
+  `01_` / `(01)`) and zero-padding.
+- **★ sort column.** Click the star header in either the playlist or
+  the file browser to float favourites to the top.
+- **Drag-out to Explorer / Desktop.** Drag selected rows to any folder
+  on your machine (or the desktop) to copy the underlying files.
+  Multi-selection comes along if the dragged row is part of one;
+  streams and CUE sub-tracks skip the drag.
+- **Delete File… (Recycle Bin).** New context-menu entry in playlist
+  and browser; confirms, then sends the file to the Windows Recycle
+  Bin and refreshes playlist / favourites / scan cache in one cascade.
+  The existing *Remove from Playlist* stays for pure list management.
+- **Arrow-key navigation** across playlist and file browser —
+  `↑` / `↓` / `Home` / `End` / `PgUp` / `PgDn` / `Enter`. The global
+  Up = Volume-Up / Down = Volume-Down yields to the list while the
+  list is focused.
+- **Detail-text brightness slider.** *Settings → Interface* lets you
+  scale the duration / bitrate / size / date text 60–130 % of the
+  theme tertiary grey. Baseline grey bumped from 39 % to 50 %
+  brightness too.
+- **Sortable file browser.** Name / Format / Size / Date as clickable
+  headers; directories always stay on top. Sort preference persists
+  across restart. Sidebar drag respects the window width so the right
+  stack can't be squeezed invisible on narrow monitors.
 
----
+### Layout & recovery
 
-## What's new in v0.35.9
-
-Layout, stability and UX polish on top of v0.35.8.
-
-- **Waveform expand works in every layout constellation.** Playlist Mode
-  and a handful of wide-window states could silently fail to expand the
-  waveform — the orange "Close" button and the purple DJ pill appeared
-  but the waveform stayed missing. Root cause was a three-way fight
-  between the expanded transport slot, the main content row and the
-  bottom split host, and a 250 ms animation that shrank the slot to
-  zero before the fill value kicked in. Both issues are gone.
-- **Playlist fills the width when no right-side panel is visible.**
-  Turning off FX + Analyzer + EQ used to leave a 340-px playlist on
-  the left with two thirds of the window empty and dark. The playlist
-  now absorbs the freed space automatically (animated, 200 ms), and
-  shrinks back to sidebar width as soon as you turn a panel on again.
-- **Reset-View button in the status bar** (`rotate-ccw` icon, next to
-  Settings, `Ctrl+Shift+R` shortcut). One click returns to the Default
-  layout regardless of the state you were in — useful when a chain of
-  toggles left the window in a constellation that's hard to back out of.
-- **Pattern view no longer goes blank at MOD→MOD / XM→XM transitions.**
-  The tracker provider wasn't re-bound on gapless decoder swaps, so
-  the view rendered an empty grid after the first back-to-back tracker
-  transition. Bind now fires on every track change.
-- **Right-click on the Spectrum Analyzer works everywhere.** In Pattern
-  / SID / Scopes / Instrument-Split modes, only a tiny 30×30 corner in
-  the top-right was actually accepting right-clicks for the mode menu
-  — users read it as "sometimes the menu doesn't open". The whole
-  analyzer area accepts right-clicks now.
-- **File Info polish.** The duplicate sample-name list for MOD/XM/S3M/IT
-  modules (once unformatted at the top, once in the Samples box) is
-  gone — the top row was TagLib's synthesized "comment" mirroring the
-  Samples list. And the Close button moved from the bottom of the
-  scroll region to a floating ✕ in the top-right corner (matches the
-  About panel), so you don't have to scroll to the end of a long
-  tracker's sample list just to close the dialog.
-- **Smaller fixes.** Status-bar info-icon hides next to "No file loaded"
-  (clicking on nothing is a no-op, now the cell matches). Playlist tabs
-  always show their separator lines (earlier revision faded them
-  depending on which tab was active — read as inconsistent). Removed
-  the redundant small chevron-down inside the waveform (the big orange
-  "Waveform" pill with text label is the single visible expand entry).
-  Chevron tooltip explains that FX + Analyzer dock below the full-width
-  playlist. Sidebar drag clamps against window width so the right stack
-  can never be squeezed invisible on narrow monitors.
-
-See the [v0.35.9 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.9) for the technical details.
-
----
-
-## What's new in v0.35.8
-
-Follow-up fixes on top of the v0.35 feature drop.
-
-- **Gapless tracker→tracker crash fixed.** Queueing MOD / XM / S3M /
-  IT modules back-to-back could crash after ~20 transitions due to
-  a decoder/UI thread race around the libopenmpt module lifetime.
-  Destroy and pattern-view read are now mutually exclusive — no
-  more dangling-pointer deref.
-- **VST3 per-slot wet/dry mix respected in offline export.** Setting
-  a chain slot to 60 % wet and exporting to MP3 used to render as
-  100 % wet because the mix buffer was sized to the real-time
-  audio-device block. Exports now sound the same as real-time
-  playback, regardless of device buffer size.
-- **Playlist Mode preset now splits playlist + analyzer 50/50.** The
-  preset sometimes left the analyzer covering the whole window with
-  no playlist visible; fixed by matching explicit preferred heights
-  on both rows.
-- **Playlist column headers stay over their columns at every width.**
-  A trailing fillWidth spacer in both the header and delegate rows
-  absorbs leftover space deterministically past the ~1400 px
-  breakpoint — header labels and data columns stay aligned. Also
-  carries forward the v0.35.7 scroll-bar-reserve fix (header and
-  delegate both reserve the 14 px overlay area).
-- **Context-menu highlight readable across every menu.** All nine
-  right-click menus (playlist, analyzer, peak meter, FX slot,
-  transport, file browser, VST browser, empty areas) now use a
-  shared styled component with a consistent soft-grey selection
-  highlight — no more white-on-white text on any Windows theme /
-  DPI combination.
-
-See the [v0.35.8 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.8) for the full list.
-
----
-
-## What's in the v0.35 cycle
-
-### Layout you can actually shape
-
-- **Named layout presets.** Pick *Default*, *DJ Mode*, *Studio Mode*
-  or *Playlist Mode* from *Settings → Display*, or save your own as
-  *Custom*. The app restores your choice on every launch.
-  - **Default** — sidebar playlist, FX chain, analyzer. The
-    balanced view.
+- **Named layout presets** in *Settings → Display*:
+  - **Default** — sidebar playlist, FX chain, analyzer. The balanced view.
   - **DJ Mode** — full-width playlist, expanded transport docked at
     the bottom, no other panels. Pure deck focus.
-  - **Studio Mode** — sidebar playlist with FX chain, parametric
-    EQ, and the analyzer all visible. Everything reachable.
-  - **Playlist Mode** — full-width playlist on top, analyzer
-    beneath on full width. Library browsing with a visual companion.
-- **Full-width playlist with split view.** Pressing `Shift+P` (or
-  the chevron in the playlist header) expands the playlist to the
-  full window width and hides FX / Analyzer for clean focus. Re-
-  enable either from within full-width and they appear in a bottom
-  half beneath the playlist — one panel takes the full width, both
-  split it 50/50. Pressing `Shift+P` again smart-restores the
-  panels you had before.
-- **Playlist search.** `Ctrl+F` focuses an inline search field
-  above the playlist. Live substring filter across title and
-  path; clear with `Esc` or the X button.
-- **Extended playlist columns.** Year, BPM, Key in addition to
-  Bitrate, Rate, Size, Date on wide windows. Click any header to
-  sort; click the ★ to sort by Favorites first.
+  - **Studio Mode** — sidebar playlist with FX chain, parametric EQ,
+    analyzer. Everything reachable.
+  - **Playlist Mode** — full-width playlist on top, analyzer beneath
+    on full width. Library browsing with a visual companion.
+  Save your own tweaks as *Custom*; *Reset to Factory Default* snaps
+  the running UI live instead of just clearing the file. A small amber
+  dot signals when the current view drifts from the saved preset.
+- **Reset-View button in the status bar** (`rotate-ccw` icon, next to
+  Settings) plus `Ctrl+Shift+R` shortcut. One click returns to the
+  Default layout regardless of what state you were in — useful when a
+  chain of toggles left panels hidden, the transport stuck expanded,
+  or the playlist in a constellation that's hard to back out of.
+- **Transport Bar position (Top / Bottom).** *Settings → Interface*.
+  Applied live; persists across restart. Status bar still sits at
+  the very bottom.
 
-### New formats and format handling
+### Transport & waveform
 
-- **ZIP / RAR / LHA / LZX archives** at add-time — libarchive
-  extracts the audio in-place. Matches how users actually store
-  scene releases and demoscene packs.
-- **Amiga retro-packers** (StoneCracker, Imploder, PackIce,
-  CrunchMania) on MOD / XM / S3M / IT files — the ancient library
-  handles the de-pack transparently. Drag a `.pp` or packed `.mod`
-  onto the window and it just plays.
-- **More tracker formats** — 30+ retro tracker formats now covered
-  via libopenmpt 0.8.6 (DigiBooster, DigiTrakker, Imago Orpheus,
-  Graoumf, Liquid Tracker, Octalyser, PolyTracker, UltraTracker,
-  X-Tracker, Soundtracker Pro II, TCB Tracker, …).
+- **Waveform-expand gives the waveform the whole content area.**
+  The orange "Waveform" pill / `T` key / double-click on the waveform
+  all snapshot the playlist's visibility, hide it, and give the
+  waveform the full content area. Press `P` during expand to bring
+  the playlist back — it reappears with a compact ~30 % share at the
+  bottom; the waveform stays dominant. On collapse, the playlist is
+  smart-restored to its pre-expand visibility if you didn't explicitly
+  turn it back on.
+- **Reliable expand in every layout constellation.** Playlist Mode
+  and several wide-window states could silently fail to expand the
+  waveform — the orange "Close" button and the purple DJ pill would
+  appear but the waveform stayed missing. Root cause was a three-way
+  fight between the expanded transport slot, the main content row and
+  the bottom split host, and a 250 ms animation that shrank the slot
+  to zero before the fill kicked in. Both issues are gone.
+- **Waveform zoom + scrolling.** 1×–16× horizontal time-zoom buttons;
+  when zoomed, a scroll slider and FOLLOW pill appear. FOLLOW keeps
+  the playhead centred automatically. Stutter at 2× / 4× on long
+  MP3 files is fixed (sub-pixel offset was zeroed in capped-zoom
+  mode). Dedicated dB-Zoom slider magnifies quiet passages.
+- **DJ-mode scrolling waveform** (purple DJ pill in the expanded bar)
+  for mixing-style playback; classic overview stays one click away.
+
+### Format support
+
+- **ZIP / RAR / LHA / LZX archives at add-time.** Drag a `.zip` /
+  `.rar` / `.lha` / `.lzh` / `.lzx` onto the playlist and FXChainPlayer
+  unpacks every audio entry to a per-archive cache and drops them in.
+  Subsequent adds hit the cache instead of re-unpacking. Entries
+  older than 30 days are swept on startup. Via **libarchive 3.7.7**.
+- **Amiga retro-packers** (StoneCracker SC/S3xx/S4xx, Imploder,
+  PackIce, CrunchMania and ~20 more). Gepackte Tracker-Dateien werden
+  beim Hinzufügen automatisch entpackt — via **ancient 2.1.x**.
+  PowerPacker (PP20), XPK and MMCMP are handled inside libopenmpt
+  and have worked since v0.33.
+- **More tracker formats.** 30+ retro tracker formats via libopenmpt
+  0.8.6 — DigiBooster, DigiTrakker, Imago Orpheus, Graoumf, Liquid
+  Tracker, Octalyser, PolyTracker, UltraTracker, X-Tracker,
+  Soundtracker Pro II, TCB Tracker, and more.
 - **SID song lengths (HVSC).** Drop the HVSC `Songlengths.txt` in
   the right spot (see *Settings → Library*) and SIDs play their
-  actual authored duration from a database of 60 000+ tunes instead
-  of the 180 s default.
-
-### Tracker modules: pattern view, mutes, navigation
-
-- **Live ProTracker-style pattern view** for `.mod` / `.xm` / `.s3m`
-  / `.it` / all the historical trackers — highlighted row follows
-  the audio, not the render-ahead. Right-click the analyzer to
-  switch views.
-- **Channel Scopes.** Per-channel oscilloscopes for trackers up to
-  four channels; the view hides itself for higher channel counts
-  where it would be illegible.
-- **Instrument → Channel split view.** Shows one card per
-  instrument with the channels currently triggering it and an
-  aggregated VU — useful for XM / IT modules where the same
-  instrument fires across several channels.
-- **Channel mute on trackers.** Toggle channels inside the
-  pattern view; ring-buffer is flushed so the mute is audible
-  within one WASAPI buffer instead of a second later.
-- **Pattern navigation with no lag.** "Next Pattern" / "Previous
-  Pattern" now snap both the audio and the UI pattern counter
-  within ~20 ms of the button press (was up to a second).
+  authored duration from a database of 60 000+ tunes instead of the
+  180-second default.
+- **MIDI SoundFont auto-pick.** Drop a `.sf2` next to
+  `FXChainPlayer.exe`, in `{app}/soundfonts/`, in `{app}/data/`, or
+  in `%APPDATA%/FXChainPlayer/soundfonts/` — next launch finds it
+  automatically.
 
 ### Killer feature: Export through your VST3 chain
 
-Every build includes full **batch export** through the VST3
-effect chain to WAV (16-bit PCM / 24-bit PCM / 32-bit float) and
-MP3 (128 / 192 / 320 kbps). Offline, faster-than-real-time,
-sample-accurate. Right-click a track in the playlist →
-*Export to format…* for a single file, or press `Ctrl+E` for the
-batch dialog.
+Every build includes full batch export through the VST3 effect chain
+to WAV (16-bit / 24-bit PCM / 32-bit float) and MP3 (128 / 192 /
+320 kbps). Offline, faster-than-real-time, sample-accurate.
+Right-click a track in the playlist → *Export to format…* for a
+single file, or press `Ctrl+E` for the batch dialog.
 
-- **Bake headphone correction.** Apply Sonarworks / SoundID
-  Reference / Beyerdynamic Headphone Lab / Morphit to a playlist
-  and render it for on-the-go listening — no correction plugin
-  needed on the destination device.
-- **Bake spatial audio.** dearVR MONITOR / Waves Nx / Dolby
-  Atmos Production Suite produce a binauralized stereo file you
-  can listen to with any headphones, any app.
-- **Loudness-normalized listening copies.** Compressor + limiter
-  chain → uniform playback level, works everywhere afterward.
-- **Format conversion with processing in one pass.** FLAC → MP3
-  with EQ + dynamics + dither baked in, no DAW round-trip, no
-  intermediate files.
+- **Bake headphone correction.** Apply Sonarworks / SoundID Reference
+  / Beyerdynamic Headphone Lab / Morphit to a playlist and render it
+  for on-the-go listening — no correction plugin needed on the
+  destination device.
+- **Bake spatial audio.** dearVR MONITOR / Waves Nx / Dolby Atmos
+  Production Suite produce a binauralized stereo file you can listen
+  to with any headphones, any app.
+- **Loudness-normalized listening copies** via compressor + limiter
+  chain.
+- **Format conversion in one pass.** FLAC → MP3 with EQ + dynamics +
+  dither baked in, no DAW round-trip, no intermediate files.
 
-In this release: **SID → MP3 export fixed** (Media Foundation
-was not always initialized, causing silent failures; now
-bootstrapped on demand). Unusual device sample rates
-(88.2 / 96 / 192 kHz) are snapped to 32 / 44.1 / 48 kHz for the
-MP3 encoder via r8brain (260 dB SNR).
+**Two export fixes shipped in v0.35.x:** per-slot VST3 wet/dry is
+respected in offline export (was always 100 % wet because the mix
+buffer was sized to the realtime device block), and SID → MP3 no
+longer silently fails when Media Foundation hasn't been initialised
+yet.
 
-### UI polish
+### Tracker & SID pattern views
 
-- **Interactive graphic EQ.** 8 parametric bands rendered as a
-  GPU-accelerated frequency-response curve. Click and drag bands
-  directly on the curve, scroll-wheel for Q, `Shift` snaps to
-  1/3 octaves and standard dB grid. Stereo-linked and mid/side
-  modes. Pre/post FX chain placement.
-- **Favorites tab** (★) alongside Playlist and Browse. `Ctrl+D`
-  toggles favourite on the current track; the ★ column in the
-  playlist reflects live state.
-- **Drag-out to Explorer / Desktop.** Drag selected playlist rows
-  out of the window to copy the underlying files.
-- **File Info panel reorganised** — AUDIO + TRACKER MODULE /
-  DSD STREAM / SID TUNE sections render first now; the song-info
-  tag card (mostly empty for trackers and SIDs anyway) follows
-  below, where it no longer pushes the technical data out of the
-  visible area.
-- **True file delete** via the Windows Recycle Bin (not just
-  a playlist remove).
-- **Arrow-key navigation** across playlist and file browser.
-- **Status-bar** cleanup — output cluster (Mute / Volume / %) sits
-  next to FX Bypass, before the navigation buttons; L / R peak
-  meters, CPU bar and Volume % are all fixed-width so the row no
-  longer jitters when a digit crosses a boundary.
+- **Live ProTracker-style pattern view** for MOD / XM / S3M / IT and
+  all the historical trackers — highlighted row follows the audio,
+  not the render-ahead. Right-click the analyzer to switch views.
+- **Channel Scopes.** Per-channel oscilloscopes for trackers up to
+  four channels; hidden automatically above that.
+- **Instrument → Channel split view.** One card per instrument with
+  the channels currently triggering it and an aggregated VU — useful
+  for XM / IT modules where the same instrument fires across several
+  channels.
+- **Channel mute.** Click any channel header in the pattern view to
+  mute it; right-click a header to un-mute everything. Ring-buffer is
+  flushed on toggle so the mute is audible within one WASAPI buffer
+  (~21 ms) instead of a second later.
+- **Pattern navigation with no lag.** *Next Pattern* / *Previous
+  Pattern* snap both audio AND the UI pattern counter within ~20 ms.
+- **Pattern view stays populated across gapless transitions.** The
+  tracker provider re-binds on every track change, so MOD→MOD /
+  XM→XM auto-next no longer leaves the view empty.
+- **Right-click works anywhere in the pattern / SID / Scopes view** —
+  used to be a 30×30 corner hitbox, now the whole area accepts
+  right-clicks for the mode menu while left-clicks still reach the
+  view's own interactive elements.
+- **SID Voices:** per-voice mute (1 / 2 / 3), chip-model toggle
+  (6581 / 8580 / auto), filter bypass. Full voice-header is clickable
+  for mute (was a tiny badge). Filter-state row is labelled as a live
+  readout of the SID registers, not a control. Tooltips explain when
+  the chip-model and filter toggles are actually audible (many tunes
+  don't route through the filter at all).
+- **Hi_Fi_Sky and friends start instantly** — the 3 s of silence and
+  two clicks during cRSID's chip-setup phase are gone. Soft-start
+  ramp + EMA-based sustained-signal detector.
+
+### File Info panel
+
+- **AUDIO + TRACKER MODULE / DSD STREAM / SID TUNE sections render
+  first**, above the song-info tag card. For trackers the tag card
+  is often empty anyway — the technical data you came for is now
+  above the fold.
+- **Floating ✕ close button in the top-right corner** (matches the
+  About panel) — always visible, no scrolling to the bottom to close.
+- **No more duplicate sample list for MOD / XM / S3M / IT.** TagLib
+  synthesised the "comment" field from sample names, which then
+  rendered once unformatted above the formatted SAMPLES box and
+  once in the box. Skipped for tracker formats now.
 
 ### Reliability
 
-- **Plugin crash isolation** per `(path, classID)` — a single
-  crashing plugin in a multi-class shell like Waves WaveShell
-  (600+ effects) doesn't take out the rest. Automatic safe mode
-  after repeated failures.
-- **Crash guard for file scanning** — scanning large folders
-  with broken / malformed tracker files no longer blows up the
-  app.
+- **Gapless tracker→tracker crash fixed.** A decoder/UI-thread race
+  around the libopenmpt module lifetime could crash the app after
+  ~20 back-to-back MOD / XM / S3M / IT transitions in a playlist.
+  Destroy and pattern-view read are now mutually exclusive.
+- **Plugin crash isolation per `(path, classID)`** — a single
+  crashing plugin in a multi-class shell like Waves WaveShell (600+
+  effects) doesn't take out the rest. Automatic safe mode after
+  repeated failures.
+- **Crash guard for file scanning** — scanning large folders with
+  broken / malformed files no longer blows up the app.
 - **Playlist auto-recovery** on failed track load — player state
   clears, next track plays, export skips URL streams cleanly.
-- **Session restoration** when the app is relaunched (crash or
-  normal).
+- **Session restoration** on relaunch (crash or normal).
+- **Restart-from-app.** *About → Quick Access → Restart Application*.
+- **Firewall-friendly first-run update prompt.** On the very first
+  launch the app asks yes/no whether to check for updates on startup,
+  before any network request fires — so the firewall prompt appears
+  while the welcome popup is still in focus.
+
+### Small refinements
+
+- **Interactive graphic EQ.** 8 parametric bands as a GPU-accelerated
+  frequency-response curve. Click and drag bands directly on the
+  curve, scroll-wheel for Q, `Shift` snaps to 1/3 octaves and the
+  standard dB grid. Stereo-linked and mid/side modes. Pre/post FX
+  chain placement.
+- **Context-menu highlight readable everywhere.** Nine right-click
+  menus (playlist, analyzer, peak meter, FX slot, transport, file
+  browser, VST browser, empty areas) routed through a shared styled
+  component — soft grey highlight, no more white-on-white text on
+  any Windows theme / DPI combination.
+- **Status bar cleanup.** Output cluster (Mute / Volume / %) sits
+  next to FX Bypass, before the navigation buttons. L / R peak
+  meters, CPU bar and Volume % are all fixed-width so the row
+  doesn't jitter when digits cross a boundary. Info-icon next to
+  the track name hides when nothing is loaded — the cell used to
+  accept clicks that did nothing.
+- **Playlist tabs** (Playlist / Favorites / Browse) always show the
+  separator lines — a previous revision faded them depending on the
+  active tab, which read as "divider here but not there".
+- **Single waveform-expand entry point.** The big orange "Waveform"
+  pill with text label is the only visible expand control now — the
+  small chevron-down inside the waveform itself is gone. `T` and
+  double-click on the waveform still work as hidden shortcuts.
+- **Chevron tooltip** on the playlist header explains that FX and
+  Analyzer dock below the full-width playlist.
+- **Gradient pass.** Subtle top-lit gradients on primary CTAs (Play
+  button, Add to Playlist, Update Now, active tab pills). Peak / CPU
+  meters pick up zone-aware gradients. Play button back to solid blue
+  accent with gradient overlay for depth.
+
+### Architecture note
+
+v0.35.x introduced an "any-visible-region-must-have-content" invariant
+for the main window layout. Toggle combinations that used to leave
+340-px sidebars next to empty black panes or waveforms stuck at 20 px
+now animate into usable states automatically. The full state-space
+analysis lives in `docs/dev/LAYOUT_UX_PLAN_v0.35.9.md` in the source
+tree for developers curious about the design.
 
 ---
 
