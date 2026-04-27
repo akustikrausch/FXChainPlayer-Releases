@@ -3,15 +3,16 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.12/FXChainPlayer-Setup-0.35.12.exe"><img src="https://img.shields.io/badge/Download-v0.35.12-0078D6" alt="Download v0.35.12"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.36.7/FXChainPlayer-Setup-0.36.7.exe"><img src="https://img.shields.io/badge/Download-v0.36.7-0078D6" alt="Download v0.36.7"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
-  <img src="https://img.shields.io/badge/80%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Chiptunes-blue" alt="80+ formats">
+  <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
+  <img src="https://img.shields.io/badge/800%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music%20%C2%B7%20Apple%20Loops-blue" alt="800+ formats">
 </p>
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.35.12/FXChainPlayer-Setup-0.35.12.exe"><strong>⬇ Download FXChainPlayer-Setup-0.35.12.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.36.7/FXChainPlayer-Setup-0.36.7.exe"><strong>⬇ Download FXChainPlayer-Setup-0.36.7.exe</strong></a></p>
 
 ---
 
@@ -28,7 +29,7 @@ More reasons than you'd expect.
 - **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
 - **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
 - **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
-- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details above](#killer-feature-export-through-your-vst3-chain).
+- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#-export-through-your-vst3-chain--killer-feature).
 
 Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
 
@@ -36,7 +37,7 @@ Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypa
 
 ## Plays pretty much everything
 
-FXChainPlayer is built for music listeners who don't want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, and Game Boy chiptunes — it just plays.
+FXChainPlayer is built for music listeners who don't want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, Game Boy chiptunes, Apple Loops or Wii game-music dumps — it just plays. **800+ extensions across 14 categories** with a built-in searchable Format Library panel.
 
 ### Lossless & Hi-Res
 
@@ -46,11 +47,13 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 
 **MP3**, **AAC**, **M4A** / **MP4** audio, **OGG Vorbis**, **WMA**, **MPC** (Musepack SV8), **AC-3**.
 
-### Tracker modules (35+ formats via libopenmpt)
+### Tracker modules (50+ formats via libopenmpt 0.8.6)
 
-**MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **Soundtracker Pro II**, **TCB Tracker**, and many more.
+Runtime-detected via `openmpt_is_extension_supported()` — new formats picked up by future libopenmpt patches just work, no source-code changes needed.
 
-### Console chiptunes (via libgme)
+**MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **Soundtracker Pro II**, **TCB Tracker**, **NoiseTracker**, **Ice Tracker**, **Composer 670**, **SoundFX 1/2**, **Davey Taylor's Tracker**, and many more.
+
+### Console chiptunes (via libgme 0.6.4)
 
 - **GBS** — Nintendo Game Boy
 - **SPC** — Super Nintendo (SPC700)
@@ -62,25 +65,66 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 - **SAP** — Atari 8-bit
 - **GYM** — Sega Genesis / Mega Drive
 
+### Game music & Apple Loops (~700 formats via vgmstream r2083) — new in v0.36
+
+- **Apple `.caf`** — Logic Pro / GarageBand **Apple Loops** library (no other player decodes this correctly)
+- **Nintendo** — BRSTM · BCSTM · BFSTM · BFWAV · DSP-ADPCM family · NUS3AUDIO · Switch Opus
+- **Sony** — VAG · HPS · NUB · ATRAC3 / ATRAC9 (FFmpeg-build) · AT3 / AT9
+- **Microsoft** — XMA · XWMA
+- **CRI** — ADX · HCA · ACB / AWB containers
+- **FMOD** — FSB (Multiple)
+- **Square Enix** — SCD
+- **Wwise** — WEM
+- **Bink** — BIK audio
+- vgmstream `.txtp` text-playlists with looping / mixing / effects
+
+Core build is **ISC-licensed and FFmpeg-free**. An opt-in CMake flag (`-DFXCHAIN_ENABLE_VGMSTREAM_FFMPEG=ON`) adds ATRAC9 / FSB-CELT / ALAC-in-CAF / FSB-Vorbis at the cost of bundled FFmpeg DLLs (LGPL).
+
 ### Retro / specialty
 
 - **SID** — Commodore 64 (cRSID emulator, HVSC Songlengths support — 60 000+ tune durations built-in)
 - **IFF 8SVX** — Amiga samples
 - **MIDI** / **RMI** — SoundFont 2 (SF2) rendering via TinySoundFont, with Windows Media Foundation fallback
 - **CUE sheets** — multi-track audio with proper track split and gapless playback
-- **Packed / crunched Amiga files** — StoneCracker, Imploder, PackIce, CrunchMania unpacked transparently
+- **Packed / crunched Amiga files** — StoneCracker, Imploder, Pack-Ice 1.x / 2.1 / 2.31+, ByteKiller + ANC / JEK clones, JAM Packer, PowerPlayer Music Compressor, CrunchMania, PowerPacker, XPK family, DMS, and ~20 more (via ancient 2.3.0)
 - **ZIP / RAR / LHA / LZX archives** — audio extracted at add-time via libarchive
 
-**80+ file extensions total.** If you throw something at it, chances are it plays.
+**800+ file extensions total.** Open the in-app **Formats Library** panel (*File Info → Open Formats Library*) for the full searchable catalogue with one card per format showing platform, era, decoder library and technical details.
 
 ---
 
 ## Pro features audiophiles and engineers actually use
 
-### 🎛️ 8-band parametric EQ (built-in, pre/post FX chain)
-FabFilter-style interactive graphic control on a GPU-accelerated frequency response curve. Click and drag bands directly on the curve, scroll-wheel for Q, Shift-snap to 1/3 octaves and standard dB values. RBJ biquad filters (peak, shelf, pass, notch). Stereo-linked and mid/side modes. Preset save/load. Toggle with `Q`. Zero latency, lock-free.
+### 🔌 ASIO 2.3 + WASAPI Shared / Exclusive — new in v0.36
+
+**ASIO 2.3** is now live (Steinberg ASIO Licensing Agreement signed April 2026). Sub-10 ms round-trip latency through your VST3 chain on any ASIO interface — RME, MOTU, Universal Audio, RME Babyface, Focusrite Scarlett, Steinberg UR, ASIO4ALL, you name it. Pick **ASIO** in *Settings → Audio → Audio Mode*.
+
+- **Output Pair routing** for multi-output interfaces (RME UFX 30 outs, MOTU 16A, Apollo x16) — route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
+- **Configure Driver button** opens the driver's hardware panel directly (RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
+- **Driver-reported latency readout** — in N / out N frames + total ms — refreshed live whenever the driver fires `kAsioLatenciesChanged`.
+- **Studio-grade output stage** — TPDF dither at canonical ±1 LSB peak (Lipshitz–Vanderkooy 1992) on every integer path, NaN/Inf guards, asymmetric clamps preserving the negative-rail code, full coverage of `ASIOSTInt16/24/32 LSB/MSB` and `Float64MSB`. Mixed-bit-width channel groups (Int32 on analog, Int24 on ADAT, …) route correctly.
+- **SEH-safe driver panel calls** + clean reset / latency-change handling so a misbehaving panel can't take out the host.
+
+**WASAPI** Shared and Exclusive modes remain fully supported for users who don't have an ASIO interface — the player auto-picks the device's native sample rate, no system-wide resampling.
+
+### 🎚️ Turntable Pitch Slider (Technics-style) — new in v0.36
+
+A vertical pitch fader on the right edge of the expanded waveform view AND DJ-mode view. **±16 % range**, **0 % center detent** (snaps to neutral within ±0.3 %), and a **33 ⇄ 45 RPM toggle** below the slider — 45 plays the file at native rate, 33 plays it at 33⅓/45 = 0.7407× speed (literal Technics behaviour, both pitch and tempo drop together — no digital time-stretch artefacts).
+
+The audio thread interpolates the ring buffer with a fractional sample-position increment + per-sample ratio ramp. Linear interpolation, no anti-aliasing filter — that's the authentic vinyl character. Pitch stage is BEFORE the VST3 chain, so plugins receive the pitched signal as if it were arriving from a real turntable. Auto-resets to neutral on every track change.
+
+### 📚 Format Library — every supported format, in-app — new in v0.36
+
+A new collapsible **Format Info** card in *File Info* (origin, era, codec, decoder library) for every track, and a full **Formats Library** modal panel with a per-category sidebar, search across name / extensions / platform / developer / decoder, and click-to-expand cards with the complete catalogue entry.
+
+The redesigned **Settings → File Associations** uses the same source-of-truth — collapsible categories with `enabled/total` badges, search box, "Recommended" preset.
+
+### 🎛️ 3-Band EQ (built-in modal dialog)
+
+Low Shelf / Mid Bell / High Shelf with two draggable crossover-frequency handles on a live FFT spectrum and three Low/Mid/High gain knobs — classic hi-fi sweep from 7:30 through 12 o'clock (top, 0 dB) to 4:30. RBJ-cookbook biquads with 5-ms coefficient ramping (no clicks on knob moves). Soft 0 dB detent on bipolar knobs (snaps within ±0.3 dB). Toggle with `Q`.
 
 ### 📊 Six real-time visualization modes
+
 - **FFT Spectrum** — indigo hue-swept frequency analyzer, 200 log-bins
 - **Spectrogram** — scrolling waterfall
 - **Stereo Phase Scope** — Lissajous / goniometer with amplitude-brightening
@@ -88,31 +132,60 @@ FabFilter-style interactive graphic control on a GPU-accelerated frequency respo
 - **LED HiFi** — 32-band segmented display
 - **Frequency Landscape** — 3D waterfall
 
-Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes.
+Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes. Synthesised formats (SID / MIDI / libgme chiptunes) now show a live scrolling oscilloscope just like URL streams.
 
 ### 🎚️ Studio Compare (A/B)
+
 Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a 64-sample crossfade. Compare masters, codecs, headphones, plugin chains.
 
 ### 🎧 Built-in Bauer-style crossfeed
+
 Smooth your stereo on headphones without a plugin slot. Continuous blend slider, proper gain + delay + lowpass filtering.
 
 ### 📼 Gapless playback
+
 Next track is pre-loaded and swapped in sample-accurately across the decoder families that allow it (FLAC→MP3, MOD→XM, cross-format — all work). Mixed-format playlists play back cleanly end-to-end.
 
 ### 📁 Integrated file browser & smart-scan
+
 Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
 
-### 💎 **Export through your VST3 chain — killer feature**
+### 💎 Export through your VST3 chain — killer feature
 
 Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
 
 Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
 
 ### 🛡️ Plugin crash protection
+
 SEH-wrapped plugin process calls, automatic crash journaling, safe-mode after repeated failures, per-`(path, classID)` blacklist so a single crashing plugin in a multi-class shell (e.g. Waves WaveShell with 600+ effects) doesn't take out the rest. Auto-restart watchdog subprocess.
 
+### ♿ Full keyboard accessibility
+
+Every audio control reachable via Tab + Space / Enter / arrow keys. Output-pair, mode chips, device list all wired as standard radio groups. Settings panel, TransportBar, FileBrowser, FxChain bypass, Playlist tabs all wired — NVDA / Narrator users get a working, labelled keyboard path. Hard CI gate (`qml_a11y_lint`) prevents regressions.
+
 ### ⚡ Performance
+
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGGeometryNode — no QML Canvas anywhere). r8brain-free-src resampler (260 dB SNR, linear-phase). WASAPI shared or exclusive mode. ~50 MB RAM idle. Startup < 2 s.
+
+---
+
+## What's new in v0.36.7
+
+First public update of the v0.36 cycle. Consolidates everything from v0.36.0 → v0.36.7 (eight internal builds) into one public release. Three headline additions, a redesigned audio path, hundreds of small fixes.
+
+- **ASIO 2.3 — sub-10 ms latency through your VST3 chain.** Steinberg-licensed (April 2026), enabled by default. Output Pair routing for multi-output interfaces. Configure Driver button. Driver-reported latency readout. Studio-grade output stage with TPDF dither and asymmetric clamps across every integer path.
+- **Game music + Apple Loops via vgmstream r2083.** ~700 formats — Apple CAF (Logic Pro / GarageBand Apple Loops library), CRI ADX/HCA, Nintendo BRSTM/BCSTM/BFSTM/DSP family, FMOD FSB, Square Enix SCD, Wwise WEM, Xbox XMA, Sony VAG/HPS/NUB. ISC-licensed, no FFmpeg in the default build.
+- **50+ tracker formats — runtime-detected** via libopenmpt 0.8.6 (no hardcoded list). The ancient depacker upgraded to v2.3.0 — Pack-Ice 1.x / 2.1 / 2.31+, ByteKiller + ANC / JEK clones, JAM Packer, PowerPlayer Music Compressor, Vice / Vic2 Huffman.
+- **Format Library — every supported format, in-app.** New collapsible Format Info card in *File Info* and a full Formats Library modal panel reachable from *File Info → Open Formats Library*. Settings → File Associations redesigned with collapsible categories, search, "Recommended" preset.
+- **Turntable Pitch Slider (Technics-style).** ±16 % range, 0 % center detent, 33 ⇄ 45 RPM toggle. Linear-interpolation pitch in the audio thread for the authentic vinyl character. Auto-resets on every track change.
+- **Output Device picker redesign.** Backed by a long-lived COM `IMMNotificationClient` listener — devices come and go, the list updates; Windows changes its default render endpoint, the system-default row tracks it. Green LIVE pill marks the row currently producing sound.
+- **EQ refinements.** Reset actually moves the knobs back to 12 o'clock (was broken after first interaction). Soft 0 dB detent on bipolar knobs.
+- **Test-locked correctness.** Three CTest gates run on every CI push — `test_asio_dither` (55 assertions), `test_audio_backend_types` (21 assertions), `qml_a11y_lint`. The previously-undetected DC-bias bug (≈ -0.5 LSB) would now fail the dither test by 50× the tolerance margin.
+- **Qt 6.8.3 LTS upgrade.** Qt floor bumped from 6.5 to 6.8 (LTS until October 2027).
+- **Many smaller fixes** — vgmstream sample-count bug (every game-music file silently produced 0 frames in v0.36.0), live waveform for synthesised formats, ASIO + MOD playback crash, vgmstream `.iff` regression, vgmstream race fix on mono sources, `.bnk`/`.txtp` rejection messages, output-device-picker click-drop, decoder short-read percentage in toast, plugin chain restoration ordering, UI scale immediate apply, TFMX gating, SmartScan dedup, log rotation.
+
+See the [v0.36.7 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.36.7) for the consolidated detail.
 
 ---
 
@@ -303,31 +376,6 @@ Consolidated release notes for the whole v0.35 cycle up to v0.35.10
   Applied live; persists across restart. Status bar still sits at
   the very bottom.
 
-### Transport & waveform
-
-- **Waveform-expand gives the waveform the whole content area.**
-  The orange "Waveform" pill / `T` key / double-click on the waveform
-  all snapshot the playlist's visibility, hide it, and give the
-  waveform the full content area. Press `P` during expand to bring
-  the playlist back — it reappears with a compact ~30 % share at the
-  bottom; the waveform stays dominant. On collapse, the playlist is
-  smart-restored to its pre-expand visibility if you didn't explicitly
-  turn it back on.
-- **Reliable expand in every layout constellation.** Playlist Mode
-  and several wide-window states could silently fail to expand the
-  waveform — the orange "Close" button and the purple DJ pill would
-  appear but the waveform stayed missing. Root cause was a three-way
-  fight between the expanded transport slot, the main content row and
-  the bottom split host, and a 250 ms animation that shrank the slot
-  to zero before the fill kicked in. Both issues are gone.
-- **Waveform zoom + scrolling.** 1×–16× horizontal time-zoom buttons;
-  when zoomed, a scroll slider and FOLLOW pill appear. FOLLOW keeps
-  the playhead centred automatically. Stutter at 2× / 4× on long
-  MP3 files is fixed (sub-pixel offset was zeroed in capped-zoom
-  mode). Dedicated dB-Zoom slider magnifies quiet passages.
-- **DJ-mode scrolling waveform** (purple DJ pill in the expanded bar)
-  for mixing-style playback; classic overview stays one click away.
-
 ### Format support
 
 - **ZIP / RAR / LHA / LZX archives at add-time.** Drag a `.zip` /
@@ -506,7 +554,7 @@ FXChainPlayer checks GitHub Releases for new versions and offers one-click insta
 
 - **Windows 10** or **Windows 11**, 64-bit
 - ~100 MB disk space
-- An audio output device (WASAPI — any built-in sound, USB DAC, or HDMI audio works)
+- An audio output device (WASAPI — any built-in sound, USB DAC, or HDMI audio works; ASIO 2.3 supported on any compliant interface)
 - Optionally: a VST3 plugin folder with your favorite effects
 
 ---
@@ -531,7 +579,9 @@ Instruments (VSTi) are filtered out automatically — FXChainPlayer is a playbac
 
 FXChainPlayer is proprietary software by **Andreas Wendorf (Akustikrausch)**.
 
-The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, zlib.
+The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, vgmstream (ISC), zlib.
+
+ASIO is a trademark and software of Steinberg Media Technologies GmbH. FXChainPlayer uses the Steinberg ASIO Interface Technology under the Steinberg ASIO Licensing Agreement signed by Akustikrausch (Andreas Wendorf, April 2026). The Steinberg ASIO SDK source code is NOT redistributed with this product.
 
 ---
 
