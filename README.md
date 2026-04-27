@@ -97,7 +97,7 @@ Core build is **ISC-licensed and FFmpeg-free**. An opt-in CMake flag (`-DFXCHAIN
 
 ### 🔌 ASIO 2.3 + WASAPI Shared / Exclusive — new in v0.36
 
-**ASIO 2.3** is now live (Steinberg ASIO Licensing Agreement signed April 2026). Sub-10 ms round-trip latency through your VST3 chain on any ASIO interface — RME, MOTU, Universal Audio, RME Babyface, Focusrite Scarlett, Steinberg UR, ASIO4ALL, you name it. Pick **ASIO** in *Settings → Audio → Audio Mode*.
+**ASIO 2.3** is now supported (Steinberg-licensed). Sub-10 ms round-trip latency through your VST3 chain on any ASIO interface — RME, MOTU, Universal Audio, RME Babyface, Focusrite Scarlett, Steinberg UR, ASIO4ALL, you name it. Pick **ASIO** in *Settings → Audio → Audio Mode*.
 
 - **Output Pair routing** for multi-output interfaces (RME UFX 30 outs, MOTU 16A, Apollo x16) — route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
 - **Configure Driver button** opens the driver's hardware panel directly (RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
@@ -174,7 +174,7 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGG
 
 First public update of the v0.36 cycle. Consolidates everything from v0.36.0 → v0.36.7 (eight internal builds) into one public release. Three headline additions, a redesigned audio path, hundreds of small fixes.
 
-- **ASIO 2.3 — sub-10 ms latency through your VST3 chain.** Steinberg-licensed (April 2026), enabled by default. Output Pair routing for multi-output interfaces. Configure Driver button. Driver-reported latency readout. Studio-grade output stage with TPDF dither and asymmetric clamps across every integer path.
+- **ASIO 2.3 — sub-10 ms latency through your VST3 chain.** Steinberg-licensed, enabled by default. Output Pair routing for multi-output interfaces. Configure Driver button. Driver-reported latency readout. Studio-grade output stage with TPDF dither and asymmetric clamps across every integer path.
 - **Game music + Apple Loops via vgmstream r2083.** ~700 formats — Apple CAF (Logic Pro / GarageBand Apple Loops library), CRI ADX/HCA, Nintendo BRSTM/BCSTM/BFSTM/DSP family, FMOD FSB, Square Enix SCD, Wwise WEM, Xbox XMA, Sony VAG/HPS/NUB. ISC-licensed, no FFmpeg in the default build.
 - **50+ tracker formats — runtime-detected** via libopenmpt 0.8.6 (no hardcoded list). The ancient depacker upgraded to v2.3.0 — Pack-Ice 1.x / 2.1 / 2.31+, ByteKiller + ANC / JEK clones, JAM Packer, PowerPlayer Music Compressor, Vice / Vic2 Huffman.
 - **Format Library — every supported format, in-app.** New collapsible Format Info card in *File Info* and a full Formats Library modal panel reachable from *File Info → Open Formats Library*. Settings → File Associations redesigned with collapsible categories, search, "Recommended" preset.
@@ -581,7 +581,7 @@ FXChainPlayer is proprietary software by **Andreas Wendorf (Akustikrausch)**.
 
 The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, vgmstream (ISC), zlib.
 
-ASIO is a trademark and software of Steinberg Media Technologies GmbH. FXChainPlayer uses the Steinberg ASIO Interface Technology under the Steinberg ASIO Licensing Agreement signed by Akustikrausch (Andreas Wendorf, April 2026). The Steinberg ASIO SDK source code is NOT redistributed with this product.
+ASIO is a trademark and software of Steinberg Media Technologies GmbH. FXChainPlayer uses the Steinberg ASIO Interface Technology under license. The Steinberg ASIO SDK source code is NOT redistributed with this product.
 
 ---
 
