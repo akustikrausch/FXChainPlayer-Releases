@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.36.7/FXChainPlayer-Setup-0.36.7.exe"><img src="https://img.shields.io/badge/Download-v0.36.7-0078D6" alt="Download v0.36.7"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.37.2/FXChainPlayer-Setup-0.37.2.exe"><img src="https://img.shields.io/badge/Download-v0.37.2-0078D6" alt="Download v0.37.2"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
@@ -12,7 +12,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.36.7/FXChainPlayer-Setup-0.36.7.exe"><strong>⬇ Download FXChainPlayer-Setup-0.36.7.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.37.2/FXChainPlayer-Setup-0.37.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.37.2.exe</strong></a></p>
 
 ---
 
@@ -22,14 +22,14 @@ More reasons than you'd expect.
 
 - **🎧 Headphone surround & spatial audio** — Run binauralizers like **dearVR MONITOR**, **Waves Nx**, or **Dolby Atmos Production Suite** to turn stereo into a full spatial soundstage on any pair of headphones. No system-wide wrapper, no virtual audio cable.
 - **🎚️ Headphone calibration & correction** — Use frequency-response plugins like **Sonarworks SoundID Reference**, **Beyerdynamic Headphone Lab**, **Waves Nx Virtual Mix Room**, or **Morphit** to flatten your specific headphone model to a neutral reference.
-- **📻 Internet radio & streaming cleanup** — Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-abusing "loudness war" tracks to tame them while you listen.
+- **📻 Internet radio & streaming cleanup** — Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-compressed "loudness war" tracks to tame them while you listen.
 - **🔌 Plugin auditioning** — Want to hear how that new reverb, saturator, or tape emulation sounds on real music? Drop it in. No DAW boot-up, no empty session, no audio import.
 - **🔊 Loudness normalization & limiting** — Keep playback levels consistent across tracks from wildly different sources (old CDs vs. modern streaming).
 - **🏠 Room correction** — Apply convolution IRs or parametric EQ profiles to compensate for your listening room and speaker setup.
 - **🅰️🅱️ A/B plugin comparison** — Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
 - **♿ Accessibility** — Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
 - **🎛️ Mix referencing** — Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
-- **💎 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#-export-through-your-vst3-chain--killer-feature).
+- **💾 Bake the effect chain into a file** — render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#export-through-your-vst3-chain).
 
 Up to **8 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
 
@@ -65,9 +65,9 @@ Runtime-detected via `openmpt_is_extension_supported()` — new formats picked u
 - **SAP** — Atari 8-bit
 - **GYM** — Sega Genesis / Mega Drive
 
-### Game music & Apple Loops (~700 formats via vgmstream r2083) — new in v0.36
+### Game music & Apple Loops (~700 formats via vgmstream r2083)
 
-- **Apple `.caf`** — Logic Pro / GarageBand **Apple Loops** library (no other player decodes this correctly)
+- **Apple `.caf`** — Logic Pro / GarageBand **Apple Loops** library
 - **Nintendo** — BRSTM · BCSTM · BFSTM · BFWAV · DSP-ADPCM family · NUS3AUDIO · Switch Opus
 - **Sony** — VAG · HPS · NUB · ATRAC3 / ATRAC9 (FFmpeg-build) · AT3 / AT9
 - **Microsoft** — XMA · XWMA
@@ -91,82 +91,147 @@ Core build is **ISC-licensed and FFmpeg-free**. An opt-in CMake flag (`-DFXCHAIN
 
 **800+ file extensions total.** Open the in-app **Formats Library** panel (*File Info → Open Formats Library*) for the full searchable catalogue with one card per format showing platform, era, decoder library and technical details.
 
+### Web radio
+
+The **globe icon** (or `Ctrl+U`) opens a Stream Directory modal with three tabs:
+
+- **Open URL** — paste any direct Icecast / Shoutcast / `.mp3` / `.aac` / `.ogg` URL.
+- **Favorites** — your saved stations, persisted separately from the playlist's Favorites tab.
+- **Directory** — a curated catalogue (Demoscene · Electronic · Indie · Hip-Hop · Classical · Jazz · News). Click a station to play.
+
+Stations expose their full ICY metadata in the *File Info* panel (station name, genre, description, server, sample rate, bitrate). Live "Now Playing" track titles appear in a card on the File Info panel and in the status-bar / SMTC label.
+
 ---
 
-## Pro features audiophiles and engineers actually use
+## Audio engine
 
-### 🔌 ASIO 2.3 + WASAPI Shared / Exclusive — new in v0.36
+### ASIO 2.3 + WASAPI Shared / Exclusive
 
-**ASIO 2.3** is now supported (Steinberg-licensed). Sub-10 ms round-trip latency through your VST3 chain on any ASIO interface — RME, MOTU, Universal Audio, RME Babyface, Focusrite Scarlett, Steinberg UR, ASIO4ALL, you name it. Pick **ASIO** in *Settings → Audio → Audio Mode*.
+**ASIO 2.3** is supported (Steinberg-licensed). Pick **ASIO** in *Settings → Audio → Audio Mode*. Round-trip latency depends on your audio interface and the buffer size the driver supports — see *Settings → Audio → Latency* for the driver's live in/out frame counts and total ms.
 
-- **Output Pair routing** for multi-output interfaces (RME UFX 30 outs, MOTU 16A, Apollo x16) — route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
-- **Configure Driver button** opens the driver's hardware panel directly (RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
+- **Output Pair routing** for multi-output interfaces — route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
+- **Configure Driver button** opens the driver's hardware panel directly (e.g. RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
 - **Driver-reported latency readout** — in N / out N frames + total ms — refreshed live whenever the driver fires `kAsioLatenciesChanged`.
-- **Studio-grade output stage** — TPDF dither at canonical ±1 LSB peak (Lipshitz–Vanderkooy 1992) on every integer path, NaN/Inf guards, asymmetric clamps preserving the negative-rail code, full coverage of `ASIOSTInt16/24/32 LSB/MSB` and `Float64MSB`. Mixed-bit-width channel groups (Int32 on analog, Int24 on ADAT, …) route correctly.
+- **Output stage** — TPDF dither at canonical ±1 LSB peak (Lipshitz–Vanderkooy 1992) on every integer path, NaN/Inf guards, asymmetric clamps preserving the negative-rail code, full coverage of `ASIOSTInt16/24/32 LSB/MSB` and `Float64MSB`. Mixed-bit-width channel groups (e.g. Int32 on analog, Int24 on ADAT) route correctly.
 - **SEH-safe driver panel calls** + clean reset / latency-change handling so a misbehaving panel can't take out the host.
 
-**WASAPI** Shared and Exclusive modes remain fully supported for users who don't have an ASIO interface — the player auto-picks the device's native sample rate, no system-wide resampling.
+**WASAPI** Shared and Exclusive modes remain fully supported. The player picks the device's native sample rate, no system-wide resampling. WASAPI Exclusive bypasses the Windows audio engine for the bit-for-bit path that doesn't need an ASIO driver.
 
-### 🎚️ Turntable Pitch Slider (Technics-style) — new in v0.36
+### Turntable Pitch Slider (Technics-style)
 
 A vertical pitch fader on the right edge of the expanded waveform view AND DJ-mode view. **±16 % range**, **0 % center detent** (snaps to neutral within ±0.3 %), and a **33 ⇄ 45 RPM toggle** below the slider — 45 plays the file at native rate, 33 plays it at 33⅓/45 = 0.7407× speed (literal Technics behaviour, both pitch and tempo drop together — no digital time-stretch artefacts).
 
-The audio thread interpolates the ring buffer with a fractional sample-position increment + per-sample ratio ramp. Linear interpolation, no anti-aliasing filter — that's the authentic vinyl character. Pitch stage is BEFORE the VST3 chain, so plugins receive the pitched signal as if it were arriving from a real turntable. Auto-resets to neutral on every track change.
+Resampling is done with a **48-tap windowed-sinc kernel** (Kaiser window, β=8.6, ~−90 dB stop-band) and a 256-phase look-up table with linear blend between adjacent phases for sub-sample resolution. Two kernels are pre-computed: a full-bandwidth one for speed-down (where alias-folding is not a concern) and a reduced-bandwidth one (cutoff 1/1.16) for speed-up so out-of-band content doesn't fold back into the audible range. The pitch stage is **before** the VST3 chain, so plugins receive the pitched signal as if from a real turntable. **At 0 %, the slider's fast-path is bit-exact pass-through** — the resampler is bypassed entirely. Auto-resets to neutral on every track change.
 
-### 📚 Format Library — every supported format, in-app — new in v0.36
+### 64-bit double-precision signal path
 
-A new collapsible **Format Info** card in *File Info* (origin, era, codec, decoder library) for every track, and a full **Formats Library** modal panel with a per-category sidebar, search across name / extensions / platform / developer / decoder, and click-to-expand cards with the complete catalogue entry.
+Internal audio path is `double` end-to-end. Sample-rate conversion (when needed) uses **r8brain-free-src** (linear-phase, the manufacturer reports 260 dB SNR on the floating-point path).
+
+### Format Library — every supported format, in-app
+
+A collapsible **Format Info** card in *File Info* (origin, era, codec, decoder library) for every track, and a full **Formats Library** modal panel with a per-category sidebar, search across name / extensions / platform / developer / decoder, and click-to-expand cards with the complete catalogue entry.
 
 The redesigned **Settings → File Associations** uses the same source-of-truth — collapsible categories with `enabled/total` badges, search box, "Recommended" preset.
 
-### 🎛️ 3-Band EQ (built-in modal dialog)
+### 3-Band EQ (built-in modal dialog)
 
 Low Shelf / Mid Bell / High Shelf with two draggable crossover-frequency handles on a live FFT spectrum and three Low/Mid/High gain knobs — classic hi-fi sweep from 7:30 through 12 o'clock (top, 0 dB) to 4:30. RBJ-cookbook biquads with 5-ms coefficient ramping (no clicks on knob moves). Soft 0 dB detent on bipolar knobs (snaps within ±0.3 dB). Toggle with `Q`.
 
-### 📊 Six real-time visualization modes
+### Six real-time visualization modes
 
-- **FFT Spectrum** — indigo hue-swept frequency analyzer, 200 log-bins
+- **FFT Spectrum** — log-scale frequency analyzer with Hz axis labels (30 / 100 / 300 / 1k / 3k / 10k) and a 1-px peak-hold trail
 - **Spectrogram** — scrolling waterfall
 - **Stereo Phase Scope** — Lissajous / goniometer with amplitude-brightening
 - **VU Meter** — classic PPM L/R
 - **LED HiFi** — 32-band segmented display
-- **Frequency Landscape** — 3D waterfall
+- **Frequency Landscape** — 3D waterfall with cubic depth fog and amplitude-driven brightness
 
-Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes. Synthesised formats (SID / MIDI / libgme chiptunes) now show a live scrolling oscilloscope just like URL streams.
+Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers, L/R for stereo), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it` playback, and the **SID Voices** view for Commodore 64 tunes. Synthesised formats (SID / MIDI / libgme chiptunes) show a live scrolling oscilloscope just like URL streams.
 
-### 🎚️ Studio Compare (A/B)
+### Studio Compare (A/B)
 
 Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a 64-sample crossfade. Compare masters, codecs, headphones, plugin chains.
 
-### 🎧 Built-in Bauer-style crossfeed
+### Built-in Bauer-style crossfeed
 
 Smooth your stereo on headphones without a plugin slot. Continuous blend slider, proper gain + delay + lowpass filtering.
 
-### 📼 Gapless playback
+### Gapless playback
 
 Next track is pre-loaded and swapped in sample-accurately across the decoder families that allow it (FLAC→MP3, MOD→XM, cross-format — all work). Mixed-format playlists play back cleanly end-to-end.
 
-### 📁 Integrated file browser & smart-scan
+### Integrated file browser & smart-scan
 
 Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
 
-### 💎 Export through your VST3 chain — killer feature
+### Export through your VST3 chain
 
 Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
 
+Output formats:
+
+- **WAV** — 16-bit, 24-bit PCM, 32-bit float
+- **MP3** — 128 / 192 / 320 kbps CBR
+- **FLAC** — 16-bit and 24-bit lossless (libFLAC, compression level 5)
+- **OGG Vorbis** — q3 / q5 / q7 (≈ 112 / 160 / 224 kbps VBR via libvorbis)
+
+Multi-tune containers (NSF / NSFE / SAP, multi-tune SIDs from HVSC, multi-subsong vgmstream archives like `.acb` / `.scd` / `.nub` / `.nus3audio`) can optionally expand into one file per subsong via the **Export all subsongs** checkbox.
+
 Export is included in every build — no separate "Pro" tier, no time-limited trial on the export path.
 
-### 🛡️ Plugin crash protection
+### Plugin crash protection
 
 SEH-wrapped plugin process calls, automatic crash journaling, safe-mode after repeated failures, per-`(path, classID)` blacklist so a single crashing plugin in a multi-class shell (e.g. Waves WaveShell with 600+ effects) doesn't take out the rest. Auto-restart watchdog subprocess.
 
-### ♿ Full keyboard accessibility
+### Full keyboard accessibility
 
-Every audio control reachable via Tab + Space / Enter / arrow keys. Output-pair, mode chips, device list all wired as standard radio groups. Settings panel, TransportBar, FileBrowser, FxChain bypass, Playlist tabs all wired — NVDA / Narrator users get a working, labelled keyboard path. Hard CI gate (`qml_a11y_lint`) prevents regressions.
+Every audio control reachable via Tab + Space / Enter / arrow keys. Output-pair, mode chips, device list all wired as standard radio groups. Settings panel, TransportBar, FileBrowser, FxChain bypass, Playlist tabs all wired. Hard CI gate (`qml_a11y_lint`) prevents regressions.
 
-### ⚡ Performance
+### Performance
 
-Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGGeometryNode — no QML Canvas anywhere). r8brain-free-src resampler (260 dB SNR, linear-phase). WASAPI shared or exclusive mode. ~50 MB RAM idle. Startup < 2 s.
+Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (no QML Canvas anywhere). Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v0.37.2
+
+First public update of the v0.37 cycle. Consolidates everything from v0.37.0 → v0.37.2 (three internal builds) into one public release.
+
+### Web radio — Stream Directory and live metadata
+
+- **Stream Directory modal** behind the globe icon (and `Ctrl+U`). Three tabs: **Open URL**, **Favorites**, **Directory**. The Directory tab carries a curated catalogue split into seven categories: **Demoscene** at the top (Nectarine 128k + 196k OGG + 192k MP3), **Electronic & Ambient** (SomaFM Groove Salad, Drone Zone, Mission Control, DEF CON, Radio Paradise), **Indie · Pop · Rock** (BBC Radio 6, Radio Paradise Mellow Mix, …), **Hip-Hop · R&B · Soul** (BBC 1Xtra, KCRW Eclectic24), **Classical** (Linn Classical, Klassik Radio, BBC R3), **Jazz · Soul** (Linn Jazz, SomaFM Sonic Universe, The Trip), **News & Talk** (Deutschlandfunk + DLF Kultur + DLF Nova, BBC World Service). Star a station to pin it to your Favorites.
+- **Stream metadata in File Info.** URL streams now show a **STREAM** section with station name, genre, description, server software, sample rate, bitrate, content-type and a clickable Homepage link. A **Live / Loading / Offline** status pill reflects the current state.
+- **Live "Now Playing" track titles.** In-stream `StreamTitle` blocks appear both in a NOW PLAYING card at the top of the STREAM section AND in the status-bar / SMTC label. The label reads *"Nectarine — Demoscene Radio — Artist - Track"* instead of just the URL filename.
+- **Failed-stream load** shows a URL-aware error: *"Stream unavailable: host — server offline, URL changed, or no network. Check your connection or try a different station."* — instead of the previous misleading "file corrupt".
+
+### Export — two new output formats and multi-tune handling
+
+- **FLAC** (16 / 24-bit lossless via libFLAC, compression level 5) and **OGG Vorbis** (q3 / q5 / q7 ≈ 112 / 160 / 224 kbps VBR via libvorbis) added to the renderer's output dropdown. Both encoders run through the same plugin chain, the same TPDF dither, and the same brick-wall limiter as the WAV / MP3 paths.
+- **Export all subsongs.** New checkbox in the render dialog. When on, multi-tune containers (NSF / NSFE / SAP / GBS / HES via libgme, multi-tune SIDs from HVSC, multi-subsong vgmstream archives) expand into one file per subsong: `Title - 01.flac`, `Title - 02.flac`, … Single-subsong files are unaffected.
+- **Export-format dropdown** in the render dialog now auto-flips above the button and scrolls when it would otherwise crop offscreen.
+
+### Turntable pitch — windowed-sinc resampler
+
+The pitch slider's resampler was rewritten. The previous build used a linear interpolator; the new build uses a **48-tap Kaiser-windowed sinc** kernel (β=8.6, ~−90 dB stop-band) with a 256-phase look-up table. Two kernels are pre-computed — a full-bandwidth one for speed-down and a reduced-bandwidth one (cutoff 1/1.16) for speed-up to suppress out-of-band aliasing. The 0 % center fast-path remains bit-exact (the resampler is bypassed entirely at neutral), and the LUT init is warmed on the GUI thread at engine construction so the first slider drag does not carry the one-time `sin()` / Bessel cost into the audio callback.
+
+A CTest gate (`test_sinc_resampler`) verifies the null-test at integer positions, DC-bias = 0, and ≥ 80 dB alias suppression on a +16 % pitched test signal in the reduced-bandwidth kernel.
+
+### Spectrum analyzer polish
+
+- **FFT mode** — peak-hold trail rebuilt as a 1-px symmetric line in bright accent indigo, replacing the previous wider gradient. Hz-axis grid (30 / 100 / 300 / 1k / 3k / 10k) plus three horizontal amplitude lines (0.25 / 0.5 / 0.75) so frequencies can actually be read off.
+- **Frequency Landscape** — saturation reduced from 1.0 to 0.62 (was hard on the eyes); brightness is now amplitude-driven (`0.18 + 0.78 × amp`) so quiet bands sit dark and loud peaks pop; the bottom vertex is forced to pure black so the silhouette stays legible against the panel; depth fog is cubic instead of linear (`30 + 200 × t³`), giving better separation between near and far bins.
+- **Channel Scopes** — when playback pauses, the scopes draw a flat baseline instead of freezing on the last live frame. The 60 Hz redraw timer is gated on play state so paused playback does not burn CPU.
+
+### Stability
+
+- **Web radio + File Info no longer hangs the app.** The persistent stream-title poll could re-enter the Qt event loop on certain ICY sources and deadlock the GUI thread. Polling has been replaced by stale-callback guards on the existing ICY-header reply.
+- **Stream Directory: dead URLs swept.** Some directory entries had gone offline (404 or DNS gone) and the player would silently fail to load them. The catalogue is now 25 verified-live streams across the seven categories listed above; failed loads now show the URL-aware error message described above.
+- **Reactive Favorites star.** The star icon in the Directory tab now updates immediately when a station is removed from the Favorites tab.
+- **Web radio click-to-play.** Clicking a station in the Stream Directory modal now starts playback immediately (the previous build would only append the entry to the playlist; pressing Play in the transport bar after that did nothing).
+- **Format-info card.** `.mod` and other tracker formats now show their FORMAT INFO card correctly.
+- **Honest ASIO ↔ WASAPI positioning** in Help / Settings / release notes — ASIO is the SDK Steinberg licenses for low-latency interfaces; WASAPI Exclusive bypasses the Windows audio engine for the bit-for-bit path that doesn't need an ASIO driver.
+
+See the [v0.37.2 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.37.2) for the consolidated detail.
 
 ---
 
@@ -174,16 +239,16 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (QSGG
 
 First public update of the v0.36 cycle. Consolidates everything from v0.36.0 → v0.36.7 (eight internal builds) into one public release. Three headline additions, a redesigned audio path, hundreds of small fixes.
 
-- **ASIO 2.3 — sub-10 ms latency through your VST3 chain.** Steinberg-licensed, enabled by default. Output Pair routing for multi-output interfaces. Configure Driver button. Driver-reported latency readout. Studio-grade output stage with TPDF dither and asymmetric clamps across every integer path.
+- **ASIO 2.3.** Steinberg-licensed, enabled by default. Output Pair routing for multi-output interfaces. Configure Driver button. Driver-reported latency readout. Output stage with TPDF dither and asymmetric clamps across every integer path.
 - **Game music + Apple Loops via vgmstream r2083.** ~700 formats — Apple CAF (Logic Pro / GarageBand Apple Loops library), CRI ADX/HCA, Nintendo BRSTM/BCSTM/BFSTM/DSP family, FMOD FSB, Square Enix SCD, Wwise WEM, Xbox XMA, Sony VAG/HPS/NUB. ISC-licensed, no FFmpeg in the default build.
 - **50+ tracker formats — runtime-detected** via libopenmpt 0.8.6 (no hardcoded list). The ancient depacker upgraded to v2.3.0 — Pack-Ice 1.x / 2.1 / 2.31+, ByteKiller + ANC / JEK clones, JAM Packer, PowerPlayer Music Compressor, Vice / Vic2 Huffman.
 - **Format Library — every supported format, in-app.** New collapsible Format Info card in *File Info* and a full Formats Library modal panel reachable from *File Info → Open Formats Library*. Settings → File Associations redesigned with collapsible categories, search, "Recommended" preset.
-- **Turntable Pitch Slider (Technics-style).** ±16 % range, 0 % center detent, 33 ⇄ 45 RPM toggle. Linear-interpolation pitch in the audio thread for the authentic vinyl character. Auto-resets on every track change.
+- **Turntable Pitch Slider (Technics-style).** ±16 % range, 0 % center detent, 33 ⇄ 45 RPM toggle. (v0.37.0 replaced the linear interpolator with a 48-tap windowed-sinc kernel — see *What's new in v0.37.2* above.)
 - **Output Device picker redesign.** Backed by a long-lived COM `IMMNotificationClient` listener — devices come and go, the list updates; Windows changes its default render endpoint, the system-default row tracks it. Green LIVE pill marks the row currently producing sound.
 - **EQ refinements.** Reset actually moves the knobs back to 12 o'clock (was broken after first interaction). Soft 0 dB detent on bipolar knobs.
 - **Test-locked correctness.** Three CTest gates run on every CI push — `test_asio_dither` (55 assertions), `test_audio_backend_types` (21 assertions), `qml_a11y_lint`. The previously-undetected DC-bias bug (≈ -0.5 LSB) would now fail the dither test by 50× the tolerance margin.
 - **Qt 6.8.3 LTS upgrade.** Qt floor bumped from 6.5 to 6.8 (LTS until October 2027).
-- **Many smaller fixes** — vgmstream sample-count bug (every game-music file silently produced 0 frames in v0.36.0), live waveform for synthesised formats, ASIO + MOD playback crash, vgmstream `.iff` regression, vgmstream race fix on mono sources, `.bnk`/`.txtp` rejection messages, output-device-picker click-drop, decoder short-read percentage in toast, plugin chain restoration ordering, UI scale immediate apply, TFMX gating, SmartScan dedup, log rotation.
+- **Many smaller fixes** — vgmstream sample-count bug, live waveform for synthesised formats, ASIO + MOD playback crash, vgmstream `.iff` regression, vgmstream race fix on mono sources, `.bnk`/`.txtp` rejection messages, output-device-picker click-drop, decoder short-read percentage in toast, plugin chain restoration ordering, UI scale immediate apply, TFMX gating, SmartScan dedup, log rotation.
 
 See the [v0.36.7 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.36.7) for the consolidated detail.
 
@@ -193,33 +258,11 @@ See the [v0.36.7 release notes](https://github.com/akustikrausch/FXChainPlayer-R
 
 Three fixes.
 
-- **Bulk folder drop into the playlist no longer runs the decoder
-  twice per file.** Adding a folder of uncached mixed-format tracks
-  (chiptunes + trackers + MP3s) used to open every file with two
-  full decoder lifecycles back-to-back on the UI thread — once for
-  the inline duration probe, once via the SmartScan scanner, which
-  was meant to be a background worker but was actually synchronous.
-  With twenty-plus files and heavy codecs (libgme, libopenmpt, MF
-  MIDI fallback) that added up to forty-plus open/close cycles per
-  second and on one test machine the heap didn't survive it — the
-  app closed without leaving a crash dump, which is the signature
-  of heap corruption or exhaustion severe enough to kill the dump
-  writer too. A new `ingestInlineProbe` path reuses the first open's
-  audio info and only runs TagLib for year / BPM / key, skipping
-  the second open entirely. One decoder open per file now.
-- **3-Band EQ knobs: 0 dB sits at 12 o'clock on all three knobs.**
-  Classic hi-fi knob sweep from 7:30 through 12 o'clock (top, 0 dB)
-  to 4:30. Previously the neutral position sat at 3 o'clock, which
-  made the knob read as "almost maxed" at a glance.
-- **"Clear Playlist" → "Clear All" in the confirmation dialog
-  actually clears the playlist.** The button was wired through the
-  playlist's filter proxy, and proxies don't expose `clear()` — so
-  the click did nothing. Now routes through a dedicated signal to
-  the source model and stops playback too, matching single-track
-  removal.
+- **Bulk folder drop into the playlist no longer runs the decoder twice per file.** Adding a folder of uncached mixed-format tracks (chiptunes + trackers + MP3s) used to open every file with two full decoder lifecycles back-to-back on the UI thread. With twenty-plus files and heavy codecs (libgme, libopenmpt, MF MIDI fallback) that added up to forty-plus open/close cycles per second. One decoder open per file now.
+- **3-Band EQ knobs: 0 dB sits at 12 o'clock on all three knobs.** Classic hi-fi knob sweep from 7:30 through 12 o'clock (top, 0 dB) to 4:30.
+- **"Clear Playlist" → "Clear All" in the confirmation dialog actually clears the playlist.** The button was wired through the playlist's filter proxy and proxies don't expose `clear()`. Now routes through a dedicated signal to the source model and stops playback too.
 
-Docs, help panel and third-party license list were updated in the
-same pass to match the current 3-Band EQ.
+Docs, help panel and third-party license list were updated in the same pass to match the current 3-Band EQ.
 
 ---
 
@@ -227,64 +270,16 @@ same pass to match the current 3-Band EQ.
 
 Big round of UX polish — fifteen fixes, one feature rewrite.
 
-- **3-Band EQ, rewritten from scratch as a modal dialog.** Low Shelf
-  / Mid Bell / High Shelf with two draggable crossover-frequency
-  handles on a live FFT spectrum, and three Low/Mid/High gain knobs.
-  Opens with `Q` or from the status-bar EQ button — no more competing
-  with FX or Analyzer for sidebar space. Replaces the old 8-band
-  parametric EQ that had known usability issues. RBJ-cookbook biquads
-  with 5-ms coefficient ramping — no clicks on knob moves.
-- **Waveform-expand gets a flexible sub-panel strip below.** When the
-  transport is expanded, press `P`, `E` or `A` to bring Playlist, FX
-  Chain or Analyzer back in as a horizontal bar under the waveform.
-  Any combination, share the strip width evenly. EQ stays out of the
-  strip — its height needs a dialog anyway.
-- **UI-scale change auto-restarts the app** (Qt 6.7 has no runtime
-  scale API) — no more "Restart Now / Later" dialog, just click
-  Apply in Settings and the app relaunches with the new scale.
-- **Playlist column headers no longer vanish at full width.** After
-  the v0.35.9 auto-fill-width change, the Title / Duration / Bitrate /
-  Year / BPM / Key / ★ headers disappeared whenever the playlist
-  auto-filled without explicit `Shift+P`. Every column-alignment
-  binding now gates on `_effectiveFullWidth`, so headers follow the
-  data cells regardless of how the panel ended up wide.
-- **File Info dialog polish.** Auto-refreshes when the playlist
-  advances to the next track (no stale-metadata state). Long ID3
-  Copyright / Encoder / Composer tags cap at 260 px and elide with a
-  tooltip (a specific MP3 with a 200-char genre chain was breaking
-  the card border). The Genre pill in the header row now caps the
-  same way. Duplicate inline ✕ next to the title removed — the
-  floating ✕ in the top-right corner is the single close affordance.
-- **Reset-View persists to settings.** Pressing the status-bar reset
-  button (or `Ctrl+Shift+R`) now writes "Default" into the layout-
-  preset file too, so the next app launch actually starts at Default.
-  Previously the button appeared to "forget" its effect across
-  restarts if you'd picked another preset.
-- **Transport-position-aware waveform chevron.** When the transport
-  bar is docked at the bottom, the orange Waveform/Close pill's
-  chevron points UP on expand (because the waveform grows upwards
-  into the window). Flips automatically based on the setting.
+- **3-Band EQ, rewritten from scratch as a modal dialog.** Low Shelf / Mid Bell / High Shelf with two draggable crossover-frequency handles on a live FFT spectrum, and three Low/Mid/High gain knobs. Opens with `Q` or from the status-bar EQ button. RBJ-cookbook biquads with 5-ms coefficient ramping.
+- **Waveform-expand gets a flexible sub-panel strip below.** When the transport is expanded, press `P`, `E` or `A` to bring Playlist, FX Chain or Analyzer back in as a horizontal bar under the waveform.
+- **UI-scale change auto-restarts the app** (Qt 6.7 has no runtime scale API).
+- **Playlist column headers no longer vanish at full width.**
+- **File Info dialog polish.** Auto-refreshes when the playlist advances. Long ID3 Copyright / Encoder / Composer tags cap at 260 px.
+- **Reset-View persists to settings.** Pressing the status-bar reset button (or `Ctrl+Shift+R`) now writes "Default" into the layout-preset file too.
+- **Transport-position-aware waveform chevron.**
 - **Plugin loading / unloading spinner renders clean status text.**
-  The overlay that shows "Loading plugin..." / "Unloading plugin..."
-  during VST loads was centering text in a live-repositioning Column
-  that dropped glyphs off the baseline on some font fallbacks — card-
-  based fixed layout now, no more garbled characters.
-- **Inter-font-weight fallback hardening.** On systems where Inter is
-  installed without the optional DemiBold (weight 600) variant, small
-  text in the Add Files dialog ("Add N" button, type pills) rendered
-  as garbled glyphs because Qt's fallback substitution failed
-  visually. Switched to Bold (weight 700, reliable across every Inter
-  install). Same change to the file-browser format pill and Play-All
-  button.
-- **Smaller fixes.** Playlist tabs always show separator lines.
-  Status-bar info-icon hides when no file is loaded (click-to-nothing
-  removed). Sidebar drag clamps against window width so the right
-  stack can never be squeezed invisible. Single waveform-expand entry
-  point (the big pill — the small chevron inside the waveform is
-  gone). Gapless MOD→MOD tracker transitions don't blank the pattern
-  view anymore (tracker provider re-binds on gapless swap). Right-
-  click anywhere in the analyzer / pattern view opens the mode menu
-  (was a 30-px corner hitbox).
+- **Inter-font-weight fallback hardening.**
+- **Smaller fixes.** Playlist tabs always show separator lines. Status-bar info-icon hides when no file is loaded. Sidebar drag clamps against window width. Single waveform-expand entry point. Gapless MOD→MOD tracker transitions don't blank the pattern view anymore. Right-click anywhere in the analyzer / pattern view opens the mode menu.
 
 See the [v0.35.11 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.35.11) for the consolidated list.
 
@@ -292,249 +287,61 @@ See the [v0.35.11 release notes](https://github.com/akustikrausch/FXChainPlayer-
 
 ## What's new in v0.35.10
 
-Consolidated release notes for the whole v0.35 cycle up to v0.35.10
-— every improvement listed below is still live in the current build.
+Consolidated release notes for the whole v0.35 cycle up to v0.35.10.
 
 ### Playlist & library
 
-- **Multi-select.** Click to select, `Ctrl+Click` to toggle, `Shift+Click`
-  for a range, `Ctrl+A` selects everything. `Del` removes the whole
-  selection in one pass. Works identically in the compact and the
-  full-width playlist.
-- **Favorites tab (★).** Click the star in any playlist row or
-  browser entry to mark a favourite (or press `Ctrl+D` on the focused
-  row). A Favorites tab appears next to Playlist / Browse as soon as
-  the first one is added. Folder-level favourites cache the directory
-  listing at add-time, so *Play All* on a folder works offline.
-- **Playlist search.** `Ctrl+F` focuses an inline search field above
-  the playlist. Live substring filter across title and path; clear with
-  `Esc` or the ✕ button.
-- **Full-width playlist with split view.** `Shift+P` (or the chevron
-  in the playlist header) expands the playlist to full window width
-  and snapshots the current FX / Analyzer state. Enable either from
-  within full-width and they drop into a bottom half beneath the
-  playlist — one panel takes the full width, both split it 50/50.
-  `Shift+P` again smart-restores the panels you had before, or
-  preserves what you just turned on if you customised the layout.
-- **Auto-fill width when no right-side panel is visible.** Turn off
-  FX, Analyzer and EQ while in sidebar mode and the playlist absorbs
-  the freed space automatically (animated, 200 ms). Turn a panel back
-  on and the playlist shrinks to sidebar width again. No more dark
-  empty gap next to a 340-px sidebar.
-- **Extended columns (Year / BPM / Key).** Three new sortable columns
-  appear on windows ≥ 1400 px wide. Values come from ID3 / Vorbis tags
-  first (Year, BPM, INITIALKEY), with filename-regex fallback scored
-  by confidence — so `128 - 3A - Energy 52 - Café del Mar.mp3` parses
-  correctly even with multiple BPM-shaped numbers in the name.
-- **Sort by track index (folder grouping).** Click the `#` header in
-  the extended view or right-click → *Sort by Track Index*. Files from
-  the same source folder stay together; inside each folder they order
-  by numeric prefix independent of separator (`01-` / `01 ` / `01.` /
-  `01_` / `(01)`) and zero-padding.
-- **★ sort column.** Click the star header in either the playlist or
-  the file browser to float favourites to the top.
-- **Drag-out to Explorer / Desktop.** Drag selected rows to any folder
-  on your machine (or the desktop) to copy the underlying files.
-  Multi-selection comes along if the dragged row is part of one;
-  streams and CUE sub-tracks skip the drag.
-- **Delete File… (Recycle Bin).** New context-menu entry in playlist
-  and browser; confirms, then sends the file to the Windows Recycle
-  Bin and refreshes playlist / favourites / scan cache in one cascade.
-  The existing *Remove from Playlist* stays for pure list management.
-- **Arrow-key navigation** across playlist and file browser —
-  `↑` / `↓` / `Home` / `End` / `PgUp` / `PgDn` / `Enter`. The global
-  Up = Volume-Up / Down = Volume-Down yields to the list while the
-  list is focused.
-- **Detail-text brightness slider.** *Settings → Interface* lets you
-  scale the duration / bitrate / size / date text 60–130 % of the
-  theme tertiary grey. Baseline grey bumped from 39 % to 50 %
-  brightness too.
-- **Sortable file browser.** Name / Format / Size / Date as clickable
-  headers; directories always stay on top. Sort preference persists
-  across restart. Sidebar drag respects the window width so the right
-  stack can't be squeezed invisible on narrow monitors.
+- **Multi-select.** Click to select, `Ctrl+Click` to toggle, `Shift+Click` for a range, `Ctrl+A` selects everything. `Del` removes the whole selection.
+- **Favorites tab (★).** Click the star in any playlist row or browser entry to mark a favourite.
+- **Playlist search.** `Ctrl+F` focuses an inline search field.
+- **Full-width playlist with split view.** `Shift+P` (or the chevron in the playlist header) expands the playlist to full window width.
+- **Auto-fill width when no right-side panel is visible.**
+- **Extended columns (Year / BPM / Key)** appear on windows ≥ 1400 px wide.
+- **Sort by track index (folder grouping).**
+- **★ sort column.** Click the star header to float favourites to the top.
+- **Drag-out to Explorer / Desktop.**
+- **Delete File… (Recycle Bin).** Sends the file to the Windows Recycle Bin.
+- **Arrow-key navigation** across playlist and file browser.
+- **Detail-text brightness slider.**
+- **Sortable file browser** (Name / Format / Size / Date).
 
 ### Layout & recovery
 
-- **Named layout presets** in *Settings → Display*:
-  - **Default** — sidebar playlist, FX chain, analyzer. The balanced view.
-  - **DJ Mode** — full-width playlist, expanded transport docked at
-    the bottom, no other panels. Pure deck focus.
-  - **Studio Mode** — sidebar playlist with FX chain, parametric EQ,
-    analyzer. Everything reachable.
-  - **Playlist Mode** — full-width playlist on top, analyzer beneath
-    on full width. Library browsing with a visual companion.
-  Save your own tweaks as *Custom*; *Reset to Factory Default* snaps
-  the running UI live instead of just clearing the file. A small amber
-  dot signals when the current view drifts from the saved preset.
-- **Reset-View button in the status bar** (`rotate-ccw` icon, next to
-  Settings) plus `Ctrl+Shift+R` shortcut. One click returns to the
-  Default layout regardless of what state you were in — useful when a
-  chain of toggles left panels hidden, the transport stuck expanded,
-  or the playlist in a constellation that's hard to back out of.
-- **Transport Bar position (Top / Bottom).** *Settings → Interface*.
-  Applied live; persists across restart. Status bar still sits at
-  the very bottom.
+- **Named layout presets** in *Settings → Display*: Default, DJ Mode, Studio Mode, Playlist Mode. Save your own tweaks as *Custom*.
+- **Reset-View button in the status bar** plus `Ctrl+Shift+R` shortcut.
+- **Transport Bar position (Top / Bottom).**
 
 ### Format support
 
-- **ZIP / RAR / LHA / LZX archives at add-time.** Drag a `.zip` /
-  `.rar` / `.lha` / `.lzh` / `.lzx` onto the playlist and FXChainPlayer
-  unpacks every audio entry to a per-archive cache and drops them in.
-  Subsequent adds hit the cache instead of re-unpacking. Entries
-  older than 30 days are swept on startup. Via **libarchive 3.7.7**.
-- **Amiga retro-packers** (StoneCracker SC/S3xx/S4xx, Imploder,
-  PackIce, CrunchMania and ~20 more). Gepackte Tracker-Dateien werden
-  beim Hinzufügen automatisch entpackt — via **ancient 2.1.x**.
-  PowerPacker (PP20), XPK and MMCMP are handled inside libopenmpt
-  and have worked since v0.33.
-- **More tracker formats.** 30+ retro tracker formats via libopenmpt
-  0.8.6 — DigiBooster, DigiTrakker, Imago Orpheus, Graoumf, Liquid
-  Tracker, Octalyser, PolyTracker, UltraTracker, X-Tracker,
-  Soundtracker Pro II, TCB Tracker, and more.
-- **SID song lengths (HVSC).** Drop the HVSC `Songlengths.txt` in
-  the right spot (see *Settings → Library*) and SIDs play their
-  authored duration from a database of 60 000+ tunes instead of the
-  180-second default.
-- **MIDI SoundFont auto-pick.** Drop a `.sf2` next to
-  `FXChainPlayer.exe`, in `{app}/soundfonts/`, in `{app}/data/`, or
-  in `%APPDATA%/FXChainPlayer/soundfonts/` — next launch finds it
-  automatically.
-
-### Killer feature: Export through your VST3 chain
-
-Every build includes full batch export through the VST3 effect chain
-to WAV (16-bit / 24-bit PCM / 32-bit float) and MP3 (128 / 192 /
-320 kbps). Offline, faster-than-real-time, sample-accurate.
-Right-click a track in the playlist → *Export to format…* for a
-single file, or press `Ctrl+E` for the batch dialog.
-
-- **Bake headphone correction.** Apply Sonarworks / SoundID Reference
-  / Beyerdynamic Headphone Lab / Morphit to a playlist and render it
-  for on-the-go listening — no correction plugin needed on the
-  destination device.
-- **Bake spatial audio.** dearVR MONITOR / Waves Nx / Dolby Atmos
-  Production Suite produce a binauralized stereo file you can listen
-  to with any headphones, any app.
-- **Loudness-normalized listening copies** via compressor + limiter
-  chain.
-- **Format conversion in one pass.** FLAC → MP3 with EQ + dynamics +
-  dither baked in, no DAW round-trip, no intermediate files.
-
-**Two export fixes shipped in v0.35.x:** per-slot VST3 wet/dry is
-respected in offline export (was always 100 % wet because the mix
-buffer was sized to the realtime device block), and SID → MP3 no
-longer silently fails when Media Foundation hasn't been initialised
-yet.
+- **ZIP / RAR / LHA / LZX archives at add-time** via libarchive.
+- **Amiga retro-packers** (StoneCracker, Imploder, PackIce, CrunchMania and ~20 more).
+- **30+ retro tracker formats** via libopenmpt 0.8.6.
+- **SID song lengths (HVSC).**
+- **MIDI SoundFont auto-pick.**
 
 ### Tracker & SID pattern views
 
-- **Live ProTracker-style pattern view** for MOD / XM / S3M / IT and
-  all the historical trackers — highlighted row follows the audio,
-  not the render-ahead. Right-click the analyzer to switch views.
-- **Channel Scopes.** Per-channel oscilloscopes for trackers up to
-  four channels; hidden automatically above that.
-- **Instrument → Channel split view.** One card per instrument with
-  the channels currently triggering it and an aggregated VU — useful
-  for XM / IT modules where the same instrument fires across several
-  channels.
-- **Channel mute.** Click any channel header in the pattern view to
-  mute it; right-click a header to un-mute everything. Ring-buffer is
-  flushed on toggle so the mute is audible within one WASAPI buffer
-  (~21 ms) instead of a second later.
-- **Pattern navigation with no lag.** *Next Pattern* / *Previous
-  Pattern* snap both audio AND the UI pattern counter within ~20 ms.
-- **Pattern view stays populated across gapless transitions.** The
-  tracker provider re-binds on every track change, so MOD→MOD /
-  XM→XM auto-next no longer leaves the view empty.
-- **Right-click works anywhere in the pattern / SID / Scopes view** —
-  used to be a 30×30 corner hitbox, now the whole area accepts
-  right-clicks for the mode menu while left-clicks still reach the
-  view's own interactive elements.
-- **SID Voices:** per-voice mute (1 / 2 / 3), chip-model toggle
-  (6581 / 8580 / auto), filter bypass. Full voice-header is clickable
-  for mute (was a tiny badge). Filter-state row is labelled as a live
-  readout of the SID registers, not a control. Tooltips explain when
-  the chip-model and filter toggles are actually audible (many tunes
-  don't route through the filter at all).
-- **Hi_Fi_Sky and friends start instantly** — the 3 s of silence and
-  two clicks during cRSID's chip-setup phase are gone. Soft-start
-  ramp + EMA-based sustained-signal detector.
+- **Live ProTracker-style pattern view** for MOD / XM / S3M / IT.
+- **Channel Scopes.** Per-channel oscilloscopes for trackers up to four channels.
+- **Instrument → Channel split view.**
+- **Channel mute.** Click any channel header in the pattern view to mute it.
+- **Pattern navigation with no lag** (~20 ms).
+- **SID Voices:** per-voice mute, chip-model toggle (6581 / 8580 / auto), filter bypass.
 
 ### File Info panel
 
-- **AUDIO + TRACKER MODULE / DSD STREAM / SID TUNE sections render
-  first**, above the song-info tag card. For trackers the tag card
-  is often empty anyway — the technical data you came for is now
-  above the fold.
-- **Floating ✕ close button in the top-right corner** (matches the
-  About panel) — always visible, no scrolling to the bottom to close.
-- **No more duplicate sample list for MOD / XM / S3M / IT.** TagLib
-  synthesised the "comment" field from sample names, which then
-  rendered once unformatted above the formatted SAMPLES box and
-  once in the box. Skipped for tracker formats now.
+- **AUDIO + TRACKER MODULE / DSD STREAM / SID TUNE sections render first**, above the song-info tag card.
+- **Floating ✕ close button in the top-right corner.**
 
 ### Reliability
 
-- **Gapless tracker→tracker crash fixed.** A decoder/UI-thread race
-  around the libopenmpt module lifetime could crash the app after
-  ~20 back-to-back MOD / XM / S3M / IT transitions in a playlist.
-  Destroy and pattern-view read are now mutually exclusive.
-- **Plugin crash isolation per `(path, classID)`** — a single
-  crashing plugin in a multi-class shell like Waves WaveShell (600+
-  effects) doesn't take out the rest. Automatic safe mode after
-  repeated failures.
-- **Crash guard for file scanning** — scanning large folders with
-  broken / malformed files no longer blows up the app.
-- **Playlist auto-recovery** on failed track load — player state
-  clears, next track plays, export skips URL streams cleanly.
+- **Gapless tracker→tracker crash fixed.**
+- **Plugin crash isolation per `(path, classID)`** — a single crashing plugin in a multi-class shell like Waves WaveShell (600+ effects) doesn't take out the rest. Automatic safe mode after repeated failures.
+- **Crash guard for file scanning.**
+- **Playlist auto-recovery** on failed track load.
 - **Session restoration** on relaunch (crash or normal).
 - **Restart-from-app.** *About → Quick Access → Restart Application*.
-- **Firewall-friendly first-run update prompt.** On the very first
-  launch the app asks yes/no whether to check for updates on startup,
-  before any network request fires — so the firewall prompt appears
-  while the welcome popup is still in focus.
-
-### Small refinements
-
-- **Interactive graphic EQ.** 8 parametric bands as a GPU-accelerated
-  frequency-response curve. Click and drag bands directly on the
-  curve, scroll-wheel for Q, `Shift` snaps to 1/3 octaves and the
-  standard dB grid. Stereo-linked and mid/side modes. Pre/post FX
-  chain placement.
-- **Context-menu highlight readable everywhere.** Nine right-click
-  menus (playlist, analyzer, peak meter, FX slot, transport, file
-  browser, VST browser, empty areas) routed through a shared styled
-  component — soft grey highlight, no more white-on-white text on
-  any Windows theme / DPI combination.
-- **Status bar cleanup.** Output cluster (Mute / Volume / %) sits
-  next to FX Bypass, before the navigation buttons. L / R peak
-  meters, CPU bar and Volume % are all fixed-width so the row
-  doesn't jitter when digits cross a boundary. Info-icon next to
-  the track name hides when nothing is loaded — the cell used to
-  accept clicks that did nothing.
-- **Playlist tabs** (Playlist / Favorites / Browse) always show the
-  separator lines — a previous revision faded them depending on the
-  active tab, which read as "divider here but not there".
-- **Single waveform-expand entry point.** The big orange "Waveform"
-  pill with text label is the only visible expand control now — the
-  small chevron-down inside the waveform itself is gone. `T` and
-  double-click on the waveform still work as hidden shortcuts.
-- **Chevron tooltip** on the playlist header explains that FX and
-  Analyzer dock below the full-width playlist.
-- **Gradient pass.** Subtle top-lit gradients on primary CTAs (Play
-  button, Add to Playlist, Update Now, active tab pills). Peak / CPU
-  meters pick up zone-aware gradients. Play button back to solid blue
-  accent with gradient overlay for depth.
-
-### Architecture note
-
-v0.35.x introduced an "any-visible-region-must-have-content" invariant
-for the main window layout. Toggle combinations that used to leave
-340-px sidebars next to empty black panes or waveforms stuck at 20 px
-now animate into usable states automatically. The full state-space
-analysis lives in `docs/dev/LAYOUT_UX_PLAN_v0.35.9.md` in the source
-tree for developers curious about the design.
+- **Firewall-friendly first-run update prompt.**
 
 ---
 
@@ -579,7 +386,7 @@ Instruments (VSTi) are filtered out automatically — FXChainPlayer is a playbac
 
 FXChainPlayer is proprietary software by **Andreas Wendorf (Akustikrausch)**.
 
-The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, vgmstream (ISC), zlib.
+The binaries use and statically/dynamically link the following open-source components (with full LGPL / BSD / MIT attribution in the About dialog inside the app): Qt 6, VST3 SDK, dr_libs, stb_vorbis, libopenmpt, libgme (Game Music Emu), cRSID, TinySoundFont, WavPack, Monkey's Audio SDK, libmpcdec, libtta++, r8brain-free-src, TagLib, SQLite, pugixml, MurmurHash3, nlohmann/json, spdlog, libarchive, ancient, vgmstream (ISC), libFLAC, libvorbis, libogg, zlib.
 
 ASIO is a trademark and software of Steinberg Media Technologies GmbH. FXChainPlayer uses the Steinberg ASIO Interface Technology under license. The Steinberg ASIO SDK source code is NOT redistributed with this product.
 
