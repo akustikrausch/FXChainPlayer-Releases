@@ -6,6 +6,7 @@
   <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.37.2/FXChainPlayer-Setup-0.37.2.exe"><img src="https://img.shields.io/badge/Download-v0.37.2-0078D6" alt="Download v0.37.2"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-supported-brightgreen" alt="VST3">
+  <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/800%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music%20%C2%B7%20Apple%20Loops-blue" alt="800+ formats">
 </p>
@@ -113,17 +114,17 @@ Stations expose their full ICY metadata in the *File Info* panel (station name, 
 
 ## Audio engine
 
-### ASIO 2.3 + WASAPI Shared / Exclusive
+### WASAPI Shared / Exclusive + ASIO 2.3
 
-**ASIO 2.3** is supported (Steinberg-licensed). Pick **ASIO** in *Settings → Audio → Audio Mode*. Round-trip latency depends on your audio interface and the buffer size the driver supports — see *Settings → Audio → Latency* for the driver's live in/out frame counts and total ms.
+**WASAPI** Shared and Exclusive modes are the default Audio Mode. The player picks the device's native sample rate — no system-wide resampling. **WASAPI Exclusive** bypasses the Windows audio engine for the bit-for-bit path; works on any USB DAC, built-in sound, or HDMI output, no ASIO driver required.
+
+**ASIO 2.3** is also supported (Steinberg-licensed) for users with a compliant audio interface. Pick **ASIO** in *Settings → Audio → Audio Mode*. Round-trip latency depends on your audio interface and the buffer size the driver supports — see *Settings → Audio → Latency* for the driver's live in/out frame counts and total ms.
 
 - **Output Pair routing** for multi-output interfaces — route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
 - **Configure Driver button** opens the driver's hardware panel directly (e.g. RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
 - **Driver-reported latency readout** — in N / out N frames + total ms — refreshed live whenever the driver fires `kAsioLatenciesChanged`.
 - **Output stage** — TPDF dither at canonical ±1 LSB peak (Lipshitz–Vanderkooy 1992) on every integer path, NaN/Inf guards, asymmetric clamps preserving the negative-rail code, full coverage of `ASIOSTInt16/24/32 LSB/MSB` and `Float64MSB`. Mixed-bit-width channel groups (e.g. Int32 on analog, Int24 on ADAT) route correctly.
 - **SEH-safe driver panel calls** + clean reset / latency-change handling so a misbehaving panel can't take out the host.
-
-**WASAPI** Shared and Exclusive modes remain fully supported. The player picks the device's native sample rate, no system-wide resampling. WASAPI Exclusive bypasses the Windows audio engine for the bit-for-bit path that doesn't need an ASIO driver.
 
 ### Turntable Pitch Slider (Technics-style)
 
@@ -245,7 +246,7 @@ A CTest gate (`test_sinc_resampler`) verifies the null-test at integer positions
 - **Reactive Favorites star.** The star icon in the Directory tab now updates immediately when a station is removed from the Favorites tab.
 - **Web radio click-to-play.** Clicking a station in the Stream Directory modal now starts playback immediately (the previous build would only append the entry to the playlist; pressing Play in the transport bar after that did nothing).
 - **Format-info card.** `.mod` and other tracker formats now show their FORMAT INFO card correctly.
-- **Honest ASIO ↔ WASAPI positioning** in Help / Settings / release notes — ASIO is the SDK Steinberg licenses for low-latency interfaces; WASAPI Exclusive bypasses the Windows audio engine for the bit-for-bit path that doesn't need an ASIO driver.
+- **Honest WASAPI ↔ ASIO positioning** in Help / Settings / release notes — WASAPI Exclusive is the default and bypasses the Windows audio engine for the bit-for-bit path; ASIO is the additional SDK Steinberg licenses for users with a compliant audio interface.
 
 See the [v0.37.2 release notes](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.37.2) for the consolidated detail.
 
