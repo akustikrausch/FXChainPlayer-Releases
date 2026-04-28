@@ -14,6 +14,10 @@
 
 <p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.37.2/FXChainPlayer-Setup-0.37.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.37.2.exe</strong></a></p>
 
+<p align="center">
+  <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view — expanded waveform with VST3 FX Chain (Enrage, beyerdynamic Headphone Lab) and the LED HiFi spectrum analyzer">
+</p>
+
 ---
 
 ## Why VST3 in an audio player?
@@ -91,6 +95,10 @@ Core build is **ISC-licensed and FFmpeg-free**. An opt-in CMake flag (`-DFXCHAIN
 
 **800+ file extensions total.** Open the in-app **Formats Library** panel (*File Info → Open Formats Library*) for the full searchable catalogue with one card per format showing platform, era, decoder library and technical details.
 
+<p align="center">
+  <img src="screenshots/game-music-tracker-pattern.png" alt="Game-music + tracker formats — playlist with XMA / CAF / NUS3AUDIO / VAG / ADX / BNK / BRSTM / ACB / AT3 / HCA / FSB / M15 entries, FX Chain with Arturia plugins, and the live ProTracker-style pattern view tracking SoundFX 2.0 / MultiMedia Sound playback">
+</p>
+
 ### Web radio
 
 The **globe icon** (or `Ctrl+U`) opens a Stream Directory modal with three tabs:
@@ -122,6 +130,10 @@ Stations expose their full ICY metadata in the *File Info* panel (station name, 
 A vertical pitch fader on the right edge of the expanded waveform view AND DJ-mode view. **±16 % range**, **0 % center detent** (snaps to neutral within ±0.3 %), and a **33 ⇄ 45 RPM toggle** below the slider — 45 plays the file at native rate, 33 plays it at 33⅓/45 = 0.7407× speed (literal Technics behaviour, both pitch and tempo drop together — no digital time-stretch artefacts).
 
 Resampling is done with a **48-tap windowed-sinc kernel** (Kaiser window, β=8.6, ~−90 dB stop-band) and a 256-phase look-up table with linear blend between adjacent phases for sub-sample resolution. Two kernels are pre-computed: a full-bandwidth one for speed-down (where alias-folding is not a concern) and a reduced-bandwidth one (cutoff 1/1.16) for speed-up so out-of-band content doesn't fold back into the audible range. The pitch stage is **before** the VST3 chain, so plugins receive the pitched signal as if from a real turntable. **At 0 %, the slider's fast-path is bit-exact pass-through** — the resampler is bypassed entirely. Auto-resets to neutral on every track change.
+
+<p align="center">
+  <img src="screenshots/dj-pitch-channel-scopes.png" alt="DJ-mode view — full-window expanded waveform with the Technics-style pitch slider on the right (33 / 45 RPM toggle, 0 % center detent), and per-channel oscilloscope strips below for tracker formats">
+</p>
 
 ### 64-bit double-precision signal path
 
