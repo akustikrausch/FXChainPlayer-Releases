@@ -176,6 +176,10 @@ Next track is pre-loaded and swapped in sample-accurately across the decoder fam
 
 Point it at your music library. Background SQLite cache for VBR durations, bitrates, cover art. Instant playlist building across folders. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab for quick pinning.
 
+<p align="center">
+  <img src="screenshots/file-browser-frequency-analyzer.jpg" alt="Integrated file browser — Browse tab with a folder of .mod tracker files (DesertDream, DEUSEXMACHINA, Enigma, Episode, Factory, FULLMOON1, …), Format / Size / Date / ★ columns, breadcrumb path, Play All / + Add All buttons. The Frequency Analyzer panel below shows the FFT spectrum mode with the v0.37.2 Hz-axis grid (30 / 100 / 300 / 1k / 3k / 10k) and a 1-px peak-hold trail.">
+</p>
+
 ### Export through your VST3 chain
 
 Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
