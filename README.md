@@ -48,7 +48,7 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 
 ### Lossless & Hi-Res
 
-**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512 — including DST-compressed `.dff` via vendored FFmpeg-DST decoder).
+**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512 — including DST-compressed `.dff`).
 
 ### Lossy
 
@@ -72,19 +72,19 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 
 ### Atari ST native (`.sndh` / `.ym3-6`)
 
-Native YM2149 chip emulator + own SNDH-driver-execution under a vendored Musashi 68k emulator. Unlocks the entire ~25 000-file sndh.atari.org archive without UADE.
+Native YM2149 chip emulation + on-the-fly SNDH-driver execution via a built-in 68k emulator. Unlocks the entire ~25 000-file sndh.atari.org archive — no external UADE installation required.
 
 ### PSF1 family (PlayStation OST)
 
-PSF1 audio playback via own clean-room MIPS R3000A + PS1 SPU-1 emulator. PSF2/SSF/QSF/DSF/USF/GSF/2SF/SNSF infrastructure shipped (default-OFF, scaffold-quality — corpus polish in v0.47+).
+PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator. PSF2 / SSF / QSF / DSF / USF / GSF / 2SF / SNSF infrastructure shipped (default-OFF, scaffold-quality — corpus polish in v0.47+).
 
-### Amiga clean-room composer-named players (12 formats, NP-derived BSD-3)
+### Amiga composer-named players (12 formats)
 
 **Hippel COSO** (`.hip` `.coso`), **Hippel-7V**, **Ben Daglish** (Last Ninja / Trap / Deflektor / Speedball), **David Whittaker** (Speedball / Lazy Jones / Glider Rider), **Fred Editor** (Frank Bros), **Ron Klaren / SoundFX-RK**, **Symphonie Pro 32-voice**, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **Mark II**, **Audio Sculpture**, **Digital Mugician 7-voice** (Pete Cooke). Plus **AMOS Music Bank** (every AMOS BASIC game 1990-95), **DeltaMusic 1+2**, **Art Of Noise**, **JamCracker**, **SoundFX v1+v2** (Saint Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sidmon 1+2** (Tim Wright / Jeroen Tel), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **MaxTrax** (LucasArts Indy/Monkey-Island), **TFMX** (Hülsbeck — Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers — Chaos Engine / Cannon Fodder / Speedball 2 / Gods).
 
 ### Demoscene + retro synths
 
-**AHX / HVL** (Hively Tracker), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **`.s3m`** stuck-orchestral-hit fixes, **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (own clean-room 6502+POKEY), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — own YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — own YM2612 OPN2 + dual register banks).
+**AHX / HVL** (Hively Tracker), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **`.s3m`** stuck-orchestral-hit fixes, **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit, built-in 6502+POKEY emulator), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — built-in YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — built-in YM2612 OPN2).
 
 ### MIDI / SoundFont
 
@@ -92,9 +92,9 @@ PSF1 audio playback via own clean-room MIPS R3000A + PS1 SPU-1 emulator. PSF2/SS
 
 ### TFMX / RJP / TFE / PMD / FMP
 
-**TFMX** — full Hülsbeck macro-engine clean-room (4-voice MDAT/SMPL pairs).
+**TFMX** — full Hülsbeck macro-engine support (4-voice MDAT/SMPL pairs).
 **RJP** — Bitmap Brothers RDAT/RSMP pairs (RJP0SMOD full audio; RJP1 detected, audio queued).
-**TFE** (TFM Music Maker) — dual YM2203 OPN-FM via vendored ymfm BSD-3 + clean-room parser.
+**TFE** (TFM Music Maker) — dual YM2203 OPN-FM playback.
 **PMD / FMP** — PC-98 (98fmplayer BSD-2 — Touhou-pre-Windows / Falcom / Compile).
 **MSX** `.kss` (libkss ISC).
 **SMS / PC-Engine / RGBDS Game Boy** `.sgc` / `.nsd` / `.gbr` (libnezplug Unlicense-OR-MIT-0).
@@ -142,7 +142,7 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 - **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together via 48-tap sinc resampler). Gauge icon = Stretch (Signalsmith phase-vocoder, pitch stays constant while tempo varies).
 - **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
 - **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
-- **Camelot wheel + harmonic-mix helper.** Per-deck Camelot key chip auto-derived from libkeyfinder's Krumhansl-Schmuckler analysis or ID3v2 TKEY tag. Cross-deck compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord) colour-coded for at-a-glance harmonic-mix assistance. The only clean-room MIT Camelot implementation in any DJ tool.
+- **Camelot wheel + harmonic-mix helper.** Per-deck Camelot key chip auto-derived from libkeyfinder's Krumhansl-Schmuckler analysis or ID3v2 TKEY tag. Cross-deck compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord) colour-coded for at-a-glance harmonic-mix assistance. The only MIT-licensed Camelot implementation in any DJ tool.
 - **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
 - **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The libopenmpt module-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker / 50+ tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
 - **MIDI controller support.** Hardware-detected mappings for Pioneer DDJ-FLX series, KORG nanoKONTROL2, Akai LPD8, Behringer X-Touch Mini, Mackie-Control, General MIDI. Ableton-style Learn Mode (`Ctrl+Shift+M`) for any other controller. Pitch / EQ / hot-cues / scratch jog-wheel / play / cue / sync / filter all mappable.
@@ -299,11 +299,11 @@ Full ODE-integrator platter physics for click-and-drag waveform scratching. Forw
 
 ### 📈 Format support — ~800 → 1500+ extensions
 
-**Console emulators added (8):** Atari ST native (`.sndh` / `.ym3-6` via own YM2149 + Musashi 68k), PSF1 audio (own MIPS R3000A + SPU-1), TFE TFM Music Maker (dual YM2203 OPN-FM via vendored ymfm), MDX Sharp X68000 (own YM2151 OPM + MSM6258 ADPCM), Euphony FM-TOWNS (own YM2612 OPN2), MSX `.kss` (libkss), SMS / PC-Engine / RGBDS Game Boy (libnezplug), AHX / HVL Hively Tracker.
+**Console emulators added (8):** Atari ST native (`.sndh` / `.ym3-6`), PSF1 audio (PlayStation OST), TFE TFM Music Maker (dual YM2203 OPN-FM), MDX Sharp X68000, Euphony FM-TOWNS, MSX `.kss`, SMS / PC-Engine / RGBDS Game Boy, AHX / HVL Hively Tracker.
 
-**Amiga clean-room composer-named players (12 + 6 base):** Hippel COSO/7V, Ben Daglish (Last Ninja / Speedball), David Whittaker, Fred Editor, Ron Klaren, Symphonie 32-voice, Quartet Microdeal, SoundFactory, Mark II, Audio Sculpture, Digital Mugician 7-voice, plus AMOS Music Bank, DeltaMusic, Art Of Noise, JamCracker, SoundFX, BP SoundMon, Sidmon, Sonic Arranger PWM, MaxTrax LucasArts, **TFMX Hülsbeck** (Turrican / Apidya / Monkey Island Amiga), **RJP Bitmap Brothers** (Chaos Engine / Cannon Fodder).
+**Amiga composer-named players (12 + 6 base):** Hippel COSO/7V, Ben Daglish (Last Ninja / Speedball), David Whittaker, Fred Editor, Ron Klaren, Symphonie 32-voice, Quartet Microdeal, SoundFactory, Mark II, Audio Sculpture, Digital Mugician 7-voice, plus AMOS Music Bank, DeltaMusic, Art Of Noise, JamCracker, SoundFX, BP SoundMon, Sidmon, Sonic Arranger PWM, MaxTrax LucasArts, **TFMX Hülsbeck** (Turrican / Apidya / Monkey Island Amiga), **RJP Bitmap Brothers** (Chaos Engine / Cannon Fodder).
 
-**Demoscene + retro:** TIATracker (Atari 2600), Organya (Cave Story), GoatTracker (C64), SAP (Atari 8-bit own clean-room 6502+POKEY), ZxTracker (Vortex Tracker II), MED Advanced (OctaMED MMD0/1/2/3), FutureComposer, Farbrausch V2 (`.v2m` — `.kkrieger` / `.fr-08`), Furnace `.fur` / `.dmf`, IFF SMUS Amiga MIDI-style score.
+**Demoscene + retro:** TIATracker (Atari 2600), Organya (Cave Story), GoatTracker (C64), SAP (Atari 8-bit), ZxTracker (Vortex Tracker II), MED Advanced (OctaMED MMD0/1/2/3), FutureComposer, Farbrausch V2 (`.v2m` — `.kkrieger` / `.fr-08`), Furnace `.fur` / `.dmf`, IFF SMUS Amiga MIDI-style score.
 
 **DOS Adlib (LGPL-2.1 AdPlug):** ~50 DOS / Sound Blaster / Adlib / OPL2/3 formats — `.imf` / `.hsc` / `.rad` / `.d00` / `.dro` / `.rix` / `.rol` / `.mus`.
 
@@ -311,7 +311,7 @@ Full ODE-integrator platter physics for click-and-drag waveform scratching. Forw
 
 **Apple CAF (since v0.38.0):** Dedicated decoder replacing the v0.37.x vgmstream-routed path. Covers PCM 8/16/24/32-bit BE/LE int/float, IMA4, AAC + ALAC via WMF MFTs, FLAC via dr_flac. Surfaces Logic-Pro Apple-Loops BPM tags from `mark[tmpo]+strg` chunks.
 
-**DST-compressed `.dff` (since v0.44.0):** Vendored FFmpeg's `libavcodec/dstdec.c` (LGPL-2.1+). Patent expired 2024. Direct Stream Transfer DSD finally plays natively.
+**DST-compressed `.dff` (since v0.44.0):** Direct Stream Transfer DSD now plays natively (the patent expired in 2024). Previously this would have required external conversion to raw DSD via foobar2000 + sacd_extract.
 
 **Tracker fallback hardening:** libxmp 4.7.0 added as 9-extension fallback for libopenmpt edge cases (Funktracker `.fnk`, Liquid Tracker `.liq`, Magnetic Fields Packer `.mfp`, AMOS Banks `.abk`, Soundtracker 2.6 `.st26`, Ice Tracker `.ice`, Davey Taylor's `.fmt` variant, AMS, GTK).
 
@@ -323,7 +323,7 @@ RtMidi-6.0 polling, hardware-detected mappings (Pioneer DDJ-FLX, KORG nanoKONTRO
 
 ### 🎵 BPM consensus + Camelot key (since v0.38.2 / v0.43.7)
 
-Multi-source BPM aggregator (8 sources, octave-fold corroboration), offline Krumhansl-Schmuckler key detection (background scan, persisted in SQLite), Camelot wheel chip per track + per deck, cross-deck harmonic-mix compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord). The only clean-room MIT Camelot implementation in any DJ tool.
+Multi-source BPM aggregator (8 sources, octave-fold corroboration), offline Krumhansl-Schmuckler key detection (background scan, persisted in SQLite), Camelot wheel chip per track + per deck, cross-deck harmonic-mix compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord). The only MIT-licensed Camelot implementation in any DJ tool.
 
 ### 📊 GPU shader visualisers (since v0.39.0)
 
@@ -361,14 +361,14 @@ The internal release cycle was 9 versions deep between the public v0.37.2 (2026-
 - **v0.38.2** — Vinyl-scratch on the waveform (Newtonian-physics rewrite). Pitch ⇄ Stretch toggle (Signalsmith phase-vocoder). VST3 unload-crash fix. AppData single-root consolidation. **BPM consensus engine + offline beat-detector.** CUE `REM BPM/KEY` support.
 - **v0.38.3** — Cover-art cache (CRC32-keyed, 1024-entry LRU).
 - **v0.39.0** — **DJ MODE.** Dual-deck console, crossfader (4 curves), sync engine (Mixxx-style phase-lock), 8 hot cues per deck, auto-loop chips, beat-jump, 3-band EQ per deck, Pioneer-DJM-style filter, dual audio output (single / dual WASAPI / ASIO channel-pair), Bluetooth-cue warning, BPM auto-sweep on DJ entry, tracker DJing. Three new GPU shader visualisers (Pulse Thread, Chroma Drift, Studio LED). Unified subsong navigation (SID + libgme + TFMX + RJP + multi-subsong vgmstream). UI-scale restart asymmetry root-fix. Bulk-add crash root-fix.
-- **v0.40.0** — **rePlayer-Parität** — 800 → 1500+ extensions. AdPlug LGPL-2.1 (DOS Adlib MUS/IMF/HSC/RAD/D00/DRO/RIX/ROL + ~50). Hively/AHX BSD-3. libxmp 4.7.0 MIT (tracker fallback hardening). 98fmplayer BSD-2 (PC-98 PMD/FMP). Farbrausch V2 PD (`.v2m`). libnezplug Unlicense (SMS/PC-Engine/RGBDS GameBoy). libkss ISC (MSX). libayumi MIT (AY chip). psflib MIT (PSF/PSF2/SSF/QSF/DSF metadata). 7 clean-room ports: JamCracker, SoundFX 1+2, BP SoundMon 2+3, Sidmon 1+2, Sonic Arranger, MaxTrax. **Atari ST native** (`.sndh` / `.ym` family) with own YM2149 + Musashi 68k.
-- **v0.41.0** — 9 NEW clean-room formats: TIATracker, Organya, GoatTracker, SAP (own 6502 + POKEY), ZxTracker, MED Advanced, FutureComposer, MDX (X68000 — own YM2151), Euphony (FM-TOWNS — own YM2612). 4 v0.40 finalisations (BP SoundMon synth chains, Sonic Arranger PWM, Atari ST $FF8800/$FF8802 latch trap, RJP1SMOD). **PSF1 audio playback** (own MIPS R3000A + PS1 SPU-1).
-- **v0.42.0** — PS1 SPU Reverb finalised. REX SDK shipped. 3 NP-derived Amiga formats (AMOS Music Bank, DeltaMusic 1+2, Art Of Noise). **8 console-emulator scaffolds** (PSF2 R5900+SPU2 / SSF SH-2+SCSP / DSF Dreamcast SH-4+AICA / USF N64 R4300i / GSF GBA ARM7TDMI / QSF Capcom Z80+QSound / 2SF NDS / SNSF SNES wdc65816+S-DSP). NostalgicPlayer recon (4 missing formats identified for v0.43+).
-- **v0.43.0** — **12 NP-derived clean-room Amiga composer-named players** fully wired (Hippel COSO/7V, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Symphonie Pro 32-voice, Quartet Microdeal, SoundFactory, Mark II, Audio Sculpture, Digital Mugician 7-voice). Furnace Tier-B chip wiring. IFF SMUS sample playback. IPatternSource interface. DJ-Mode subsong UI strip. FileInfoProvider full coverage. 7-of-8 console-emulator scaffolds wired into dispatch.
+- **v0.40.0** — **800 → 1500+ extensions.** Adds DOS Adlib (MUS/IMF/HSC/RAD/D00/DRO/RIX/ROL + ~50 more), Hively/AHX, tracker fallback hardening for 9 libxmp-only edge cases, PC-98 PMD/FMP, Farbrausch V2 (`.v2m`), SMS/PC-Engine/RGBDS GameBoy, MSX `.kss`, AY chip files, PSF metadata. Plus 7 newly-supported Amiga formats: JamCracker, SoundFX 1+2, BP SoundMon 2+3, Sidmon 1+2, Sonic Arranger, MaxTrax. **Atari ST native** (`.sndh` / `.ym` family) — entire ~25 000-file sndh.atari.org archive plays without UADE.
+- **v0.41.0** — 9 NEW formats: TIATracker (Atari 2600), Organya (Cave Story), GoatTracker (C64), SAP (Atari 8-bit), ZxTracker (Vortex Tracker II), MED Advanced, FutureComposer, MDX (Sharp X68000), Euphony (FM-TOWNS). 4 v0.40 finalisations (BP SoundMon synth chains, Sonic Arranger PWM, Atari ST timer fixes, RJP1SMOD). **PSF1 audio playback** (PlayStation OST archive).
+- **v0.42.0** — PS1 SPU Reverb finalised. REX SDK shipped (Reason Studios sliced-loop sample-pack format). 3 new Amiga formats (AMOS Music Bank, DeltaMusic 1+2, Art Of Noise). **8 console-emulator scaffolds** (PSF2 PS2 / SSF Saturn / DSF Dreamcast / USF N64 / GSF GBA / QSF Capcom CPS / 2SF Nintendo DS / SNSF SNES) — infrastructure shipped for v0.43+ wiring.
+- **v0.43.0** — **12 Amiga composer-named players** fully wired (Hippel COSO/7V, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Symphonie Pro 32-voice, Quartet Microdeal, SoundFactory, Mark II, Audio Sculpture, Digital Mugician 7-voice). Furnace Tier-B chip wiring. IFF SMUS sample playback. Pattern view now works for libxmp formats too. DJ-Mode subsong UI strip. FileInfoProvider full coverage. 7-of-8 console-emulator scaffolds wired into dispatch.
 - **v0.43.1 → v0.43.7** — DJ Mode polish across 7 build-fixes including: Pioneer-DJM-style HP/LP filter + Camelot wheel + harmonic-mix helper, scratch upgrades, MIDI completeness (50+ DJ trigger targets), key detection (Krumhansl-Schmuckler), Slip mode, Quantize-seek, Smart cueing, Saved (named) loops, Brake / vinyl-stop, Echo + Gater FX (tempo-locked beat-rate chips). Hot-cue persistence root-fix. BPM-fallback for beat-jump + autoloop on synth/chiptune formats. Mid-track playback recovery (5×20 ms retry budget). DJ deck-reload race shrink. Stream URL routing fixes. Format Registry centralisation. Concurrency hardening (taglib + libopenmpt + iff8svx Meyers-singleton mutexes). Generic IPatternSource for libxmp Pattern view. Format-Audit pass (10 format-class fixes incl. TTA SEH crash, IFF/8SVX VHDR off-by-four).
-- **v0.44.0** — **DST decoder integration** (FFmpeg-LGPL `libavcodec/dstdec.c` thin extraction; patent expired 2024). **TFE chiptune playback** (TFM Music Maker — dual YM2203 OPN-FM via vendored ymfm BSD-3). UX responsiveness fixes (Add-All button compact mode, peak meter freeze on pause). Pulse-Thread analyzer dynamic particles + audio reactivity. Chroma-Drift "silence = flatline" fix. Studio-LED clean look. WSL 9P file-lock recovery infra.
+- **v0.44.0** — **DST decoder integration** (DST-compressed `.dff` plays natively; patent expired 2024). **TFE chiptune playback** (TFM Music Maker — dual YM2203 OPN-FM). UX responsiveness fixes (Add-All button compact mode, peak meter reset on pause). Pulse-Thread analyzer dynamic particles + audio reactivity. Chroma-Drift "silence = flatline" fix. Studio-LED clean look.
 - **v0.45.0 → v0.45.3** — **Per-Channel VST chain feature** (export-path complete v0.45.0 → real-time playback v0.45.0 Phase H.2 → per-channel chain UX wiring v0.45.3 hotfix #15). 8 → 16 VST3 slot expansion. Filename-coupled auto-presets (CRC32). Pulse-Thread default analyzer. Per-Channel VST Chain panel rebuild + bridge expansion. DJ Mode tons of bug fixes across hotfixes #1-#17 (DJ-Mode audio dropout, DJ Mode hot-cue + LIVE STATS rendering, scratch-while-pitched, DJ controls when not loaded, web-radio improvements). Multi-band BPM detector + late-bind wiring. On-play BPM auto-detect.
-- **v0.46.0** — **Shared-libs migration** — vgmstream static→DLL + FFmpeg-gated codecs ON by default. Per-Channel VST Chains panel full rebuild (auto-open + slot-grid overlap + missing controls all fixed). Batch Export panel 5-defect rebuild ("0 active" counter + multi-selection + format-dropdown overflow + per-track subsong picker + 4-mode FX selector). DJ-Mode IFF/8SVX pitch UAF closure. **DJ-Mode IFF SMUS tempo divisor 64 → 128** (every SMUS file was playing at 2× intended speed). DJ-Mode scratch ergonomics (engage on press, palm-the-platter semantics). Code signing expansion (`exe` → `dll,exe` filter). Massive playback recovery (10 distinct format-playback failures from real-world session log). Layout-overhaul with MasterStatusBar. v0.46.0 QA Rundumschlag (8-parallel-sub-agent forensic audit + 25 coordinated fixes).
+- **v0.46.0** — **Game-music codec expansion** — adds ATRAC3 / ATRAC9 / XMA / xWMA / FSB-Vorbis / FSB-CELT / Switch Opus on by default. Per-Channel VST Chains panel full rebuild (auto-open + slot-grid overlap + missing controls all fixed). Batch Export panel 5-defect rebuild ("0 active" counter + multi-selection + format-dropdown overflow + per-track subsong picker + 4-mode FX selector). DJ-Mode IFF/8SVX pitch crash closed. **IFF SMUS tempo fix** (every SMUS file was playing at 2× intended speed). DJ-Mode scratch ergonomics (engage on press, palm-the-platter semantics). Code signing expansion (every shipped DLL now signed alongside the installer). Massive playback recovery for 10 distinct format-playback failures from real-world session logs. Layout overhaul with master status bar. Comprehensive QA pass with 25 coordinated fixes.
 - **v0.46.1** — 8-fix coordinated push: Musashi dispatcher (ODR-collision closed before commit), TFMX envelope speed=0 fix, Sonic Arranger PWM lock, Furnace macro-engine infrastructure, **DSF AICA mix() audio path** (DSF/Dreamcast finally audible), **Visual-playhead audio-visual sync** (subtracts backend queued frames), **Vinyl-spin-while-paused gimmick**, DJ-Mode 4K layout redistribution.
 - **v0.46.2** — DJ HP filter (Cytomic-SVF formula corrected). Reverse-scratch first-25-samples-silence eliminated (cursor offset). DJ MODE pill "beta" honesty marker. PerChannelChainPanel ON-button binding refresh. v0.46.1 #18.8 DJ-Mode 4K layout reverted to v0.46.0 baseline (per user preference).
 
