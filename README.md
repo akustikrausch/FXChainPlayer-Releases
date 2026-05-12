@@ -142,7 +142,7 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 - **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together via 48-tap sinc resampler). Gauge icon = Stretch (Signalsmith phase-vocoder, pitch stays constant while tempo varies).
 - **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
 - **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
-- **Camelot wheel + harmonic-mix helper.** Per-deck Camelot key chip auto-derived from libkeyfinder's Krumhansl-Schmuckler analysis or ID3v2 TKEY tag. Cross-deck compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord) colour-coded for at-a-glance harmonic-mix assistance. The only MIT-licensed Camelot implementation in any DJ tool.
+- **Camelot wheel + harmonic-mix hint (experimental).** Per-deck Camelot key chip derived from a Krumhansl-Schmuckler analysis pass or the file's existing key tag (ID3v2 TKEY etc.), with a colour-coded cross-deck compatibility hint (Match / Relative / Adjacent / EnergyLift / Discord). Treat the suggestions as a starting point — real-world key detection is imperfect across genres and the harmonic-mix logic itself is still being validated against listener feedback. Trust your ears.
 - **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
 - **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The libopenmpt module-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker / 50+ tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
 - **MIDI controller support.** Hardware-detected mappings for Pioneer DDJ-FLX series, KORG nanoKONTROL2, Akai LPD8, Behringer X-Touch Mini, Mackie-Control, General MIDI. Ableton-style Learn Mode (`Ctrl+Shift+M`) for any other controller. Pitch / EQ / hot-cues / scratch jog-wheel / play / cue / sync / filter all mappable.
@@ -287,7 +287,7 @@ This is the **first public release in nine internal release cycles** since v0.37
 
 ### 🎧 DJ Mode — entirely new (since v0.39.0, polished through v0.46.2)
 
-The biggest single addition since v0.37.2. Press `D` to switch to a dual-deck DJ console with crossfader, hot cues, loops, sync engine, Pioneer-DJM-style filter, Echo + Gater FX, vinyl scratch on the waveform, dual audio output (separate Cue device or ASIO channel-pair), Camelot wheel + harmonic-mix verdict, and full MIDI controller support. Tracker DJing across `.mod` / `.xm` / `.it` / SID + MP3 on the same crossfader is unique to FXChainPlayer.
+The biggest single addition since v0.37.2. Press `D` to switch to a dual-deck DJ console with crossfader, hot cues, loops, sync engine, Pioneer-DJM-style filter, Echo + Gater FX, vinyl scratch on the waveform, dual audio output (separate Cue device or ASIO channel-pair), an experimental Camelot wheel + harmonic-mix hint, and full MIDI controller support. Tracker DJing across `.mod` / `.xm` / `.it` / SID + MP3 on the same crossfader is unique to FXChainPlayer.
 
 ### 🎚️ Per-Channel VST Chains (since v0.45.0)
 
@@ -323,8 +323,7 @@ RtMidi-6.0 polling, hardware-detected mappings (Pioneer DDJ-FLX, KORG nanoKONTRO
 
 ### 🎵 BPM consensus + Camelot key (since v0.38.2 / v0.43.7)
 
-Multi-source BPM aggregator (8 sources, octave-fold corroboration), offline Krumhansl-Schmuckler key detection (background scan, persisted in SQLite), Camelot wheel chip per track + per deck, cross-deck harmonic-mix compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord). The only MIT-licensed Camelot implementation in any DJ tool.
-
+Multi-source BPM aggregator (8 sources, octave-fold corroboration), offline Krumhansl-Schmuckler key detection (background scan, persisted in SQLite), Camelot wheel chip per track + per deck, cross-deck harmonic-mix compatibility hint (Match / Relative / Adjacent / EnergyLift / Discord) — experimental, treat as a starting point.
 ### 📊 GPU shader visualisers (since v0.39.0)
 
 Three new GPU visualisers — **Pulse Thread** (now the default, multi-octave audio-warped spine with audio-reactive starfield), **Chroma Drift** (6 ribbons at parallax depths riding FBM flow fields), **Studio LED** (smooth HSV-interpolated gradient with per-LED diffuser/die SDF). All three use `QSGTextureProvider` with proper lifecycle (60-Hz heartbeat, `itemChange(ItemSceneChange)` rebuild on DPI shift, no UAF on window-teardown).
