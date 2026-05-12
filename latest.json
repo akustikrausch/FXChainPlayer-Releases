@@ -1,11 +1,11 @@
 {
-  "version": "0.37.2",
-  "date": "2026-04-28",
+  "version": "0.46.2",
+  "date": "2026-05-11",
   "installer": {
-    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.37.2/FXChainPlayer-Setup-0.37.2.exe",
-    "size": 22987616,
-    "sha256": "2dc832274d30e380bedd701473a79875b1c4e588875da4e3a0b7cdd00daa4c24"
+    "url": "https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.46.2/FXChainPlayer-Setup-0.46.2.exe",
+    "size": 23984488,
+    "sha256": "e9eb4ad87146796b6e27dce57e0f2a8e856e41205df8b33cb36cd58acf23f267"
   },
-  "changelog": "See release notes: https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.37.2",
+  "changelog": "See release notes: https://github.com/akustikrausch/FXChainPlayer-Releases/releases/tag/v0.46.2",
   "minVersion": "0.20.0"
 }
