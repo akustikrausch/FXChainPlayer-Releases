@@ -42,27 +42,6 @@ Up to **16 VST3 plugins in a serial chain** (was 8 pre-v0.45.0). Drag-and-drop r
 
 ---
 
-## DJ Mode — beta
-
-Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck DJ console** built into the player. Drop tracks on Deck A and Deck B, mix with a real crossfader, and use everything you'd expect from a DJ rig.
-
-- **Two decks side by side**, each with: per-deck waveform (overview + 10-second close-up), title / artist / BPM / Key / Camelot, 8 hot cues (numbered, persisted in SQLite, set / clear / colour-coded), Loop In/Out + Reloop, auto-loop chips (1/8 1/4 1/2 1 2 4 8 beats), beat-jump (`<<` `<` `>` `>>`), 3-band EQ (LO / MID / HI knobs, ±12 dB), gain knob, Play / Cue / Sync, SLIP / QUANT / BRAKE, and a **Pioneer-DJM-style filter knob** (sweep LP from 20 kHz down to 70 Hz on the left half, sweep HP from 20 Hz up to 17 kHz on the right half, magnetic dead-zone at the centre).
-- **Crossfader** — four industry-standard curves (Linear / Smooth / Sharp / Hamster), 5 ms per-sample smoothing (no zipper noise), right-click snaps to centre.
-- **Sync engine — Mixxx-style phase-lock.** Single-click SYNC = match BPM AND beat phase to master. Right-click SYNC = make THIS deck master. Octave-fold so 175 BPM follower against 87 BPM leader stays at perceived-equal speed (ratio folds to ~1.005).
-- **Vinyl scratch on the waveform.** Click + drag the close-up OR overview waveform like a Pioneer-CDJ jog wheel. Newtonian-physics platter integrator with viscous + Coulomb friction. Forward + reverse. Release lets the slipmat catch the platter back to slider rate over τ ≈ 400 ms. Works in single-track mode AND DJ mode with the same physics.
-- **Vinyl-spin while paused.** Even when audio is paused or stopped, dragging the waveform spins the platter in the dragged direction. Friction decays the platter back to 0. Like spinning a turntable when the motor is off.
-- **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together via 48-tap sinc resampler). Gauge icon = Stretch (Signalsmith phase-vocoder, pitch stays constant while tempo varies).
-- **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
-- **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
-- **Camelot wheel + harmonic-mix helper.** Per-deck Camelot key chip auto-derived from libkeyfinder's Krumhansl-Schmuckler analysis or ID3v2 TKEY tag. Cross-deck compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord) colour-coded for at-a-glance harmonic-mix assistance. The only clean-room MIT Camelot implementation in any DJ tool.
-- **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
-- **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The libopenmpt module-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker / 50+ tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
-- **MIDI controller support.** Hardware-detected mappings for Pioneer DDJ-FLX series, KORG nanoKONTROL2, Akai LPD8, Behringer X-Touch Mini, Mackie-Control, General MIDI. Ableton-style Learn Mode (`Ctrl+Shift+M`) for any other controller. Pitch / EQ / hot-cues / scratch jog-wheel / play / cue / sync / filter all mappable.
-
-> **Beta status.** DJ Mode is feature-complete and stable for production use, but a few rough edges are still being polished — per-channel VST chain audio routing has a small async cache-build delay before plugins become audible (~5-30 sec depending on track length), and a few scratch-ergonomics edge cases are still being refined. The DJ MODE pill in the header carries a small "beta" marker as a signal to calibrate expectations vs the rock-solid single-track player.
-
----
-
 ## Plays pretty much everything
 
 FXChainPlayer is built for music listeners who don't want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, Game Boy chiptunes, Apple Loops or Wii game-music dumps — it just plays. **1500+ extensions across 17 categories** with a built-in searchable Format Library panel.
@@ -148,6 +127,27 @@ PSF1 audio playback via own clean-room MIPS R3000A + PS1 SPU-1 emulator. PSF2/SS
 
 **Furnace `.fur` / `.dmf`** multi-chip tracker (Tier-A AY/YM2149 via real chip emulator; ~30 other chip families via band-limited soft-fallback synthesis).
 **IFF SMUS** Amiga MIDI-style score with INS1 + 8SVX sample resolution.
+
+---
+
+## DJ Mode — beta
+
+Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck DJ console** built into the player. Drop tracks on Deck A and Deck B, mix with a real crossfader, and use everything you'd expect from a DJ rig.
+
+- **Two decks side by side**, each with: per-deck waveform (overview + 10-second close-up), title / artist / BPM / Key / Camelot, 8 hot cues (numbered, persisted in SQLite, set / clear / colour-coded), Loop In/Out + Reloop, auto-loop chips (1/8 1/4 1/2 1 2 4 8 beats), beat-jump (`<<` `<` `>` `>>`), 3-band EQ (LO / MID / HI knobs, ±12 dB), gain knob, Play / Cue / Sync, SLIP / QUANT / BRAKE, and a **Pioneer-DJM-style filter knob** (sweep LP from 20 kHz down to 70 Hz on the left half, sweep HP from 20 Hz up to 17 kHz on the right half, magnetic dead-zone at the centre).
+- **Crossfader** — four industry-standard curves (Linear / Smooth / Sharp / Hamster), 5 ms per-sample smoothing (no zipper noise), right-click snaps to centre.
+- **Sync engine — Mixxx-style phase-lock.** Single-click SYNC = match BPM AND beat phase to master. Right-click SYNC = make THIS deck master. Octave-fold so 175 BPM follower against 87 BPM leader stays at perceived-equal speed (ratio folds to ~1.005).
+- **Vinyl scratch on the waveform.** Click + drag the close-up OR overview waveform like a Pioneer-CDJ jog wheel. Newtonian-physics platter integrator with viscous + Coulomb friction. Forward + reverse. Release lets the slipmat catch the platter back to slider rate over τ ≈ 400 ms. Works in single-track mode AND DJ mode with the same physics.
+- **Vinyl-spin while paused.** Even when audio is paused or stopped, dragging the waveform spins the platter in the dragged direction. Friction decays the platter back to 0. Like spinning a turntable when the motor is off.
+- **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together via 48-tap sinc resampler). Gauge icon = Stretch (Signalsmith phase-vocoder, pitch stays constant while tempo varies).
+- **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
+- **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
+- **Camelot wheel + harmonic-mix helper.** Per-deck Camelot key chip auto-derived from libkeyfinder's Krumhansl-Schmuckler analysis or ID3v2 TKEY tag. Cross-deck compatibility verdict (Match / Relative / Adjacent / EnergyLift / Discord) colour-coded for at-a-glance harmonic-mix assistance. The only clean-room MIT Camelot implementation in any DJ tool.
+- **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
+- **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The libopenmpt module-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker / 50+ tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
+- **MIDI controller support.** Hardware-detected mappings for Pioneer DDJ-FLX series, KORG nanoKONTROL2, Akai LPD8, Behringer X-Touch Mini, Mackie-Control, General MIDI. Ableton-style Learn Mode (`Ctrl+Shift+M`) for any other controller. Pitch / EQ / hot-cues / scratch jog-wheel / play / cue / sync / filter all mappable.
+
+> **Beta status.** DJ Mode is feature-complete and stable for production use, but a few rough edges are still being polished — per-channel VST chain audio routing has a small async cache-build delay before plugins become audible (~5-30 sec depending on track length), and a few scratch-ergonomics edge cases are still being refined. The DJ MODE pill in the header carries a small "beta" marker as a signal to calibrate expectations vs the rock-solid single-track player.
 
 ---
 
