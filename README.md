@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.46.2/FXChainPlayer-Setup-0.46.2.exe"><img src="https://img.shields.io/badge/Download-v0.46.2-0078D6" alt="Download v0.46.2"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.47.6/FXChainPlayer-Setup-0.47.6.exe"><img src="https://img.shields.io/badge/Download-v0.47.6-0078D6" alt="Download v0.47.6"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -14,7 +14,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.46.2/FXChainPlayer-Setup-0.46.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.46.2.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.47.6/FXChainPlayer-Setup-0.47.6.exe"><strong>⬇ Download FXChainPlayer-Setup-0.47.6.exe</strong></a></p>
 
 <p align="center">
   <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view — expanded waveform with VST3 FX Chain (Enrage, beyerdynamic Headphone Lab) and the LED HiFi spectrum analyzer">
@@ -58,7 +58,7 @@ FXChainPlayer is built for music listeners who don't want format juggling. Drop 
 
 **MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **NoiseTracker**, **Ice Tracker**, **Composer 670** + 667, **SoundFX 1/2**, **Davey Taylor's Tracker**, **DSMI/Asylum AMF**, plus libxmp fallbacks for Funktracker (`.fnk`), Liquid Tracker (`.liq`), Magnetic Fields Packer (`.mfp`), AMOS Banks (`.abk`), Soundtracker 2.6 (`.st26`), Ice Tracker (`.ice`) and many more.
 
-### Console chiptunes (via libgme 0.6.4)
+### Console chiptunes (via libgme 0.6.5)
 
 - **GBS** — Nintendo Game Boy
 - **SPC** — Super Nintendo (SPC700)
@@ -285,9 +285,9 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout (no Q
 
 ---
 
-## What's new in v0.46.2
+## What's new in v0.47.6
 
-This is the **first public release in nine internal release cycles** since v0.37.2 (2026-04-28). It consolidates everything from v0.38.0 → v0.46.2 — a substantial body of new work across DJ Mode, format support, vinyl-scratch physics, per-channel VST chains, MIDI controllers, key detection, GPU visualisers, and a complete code-signing infrastructure. Highlights below grouped by theme rather than by release.
+First public release since **v0.46.2** (12 May 2026). The v0.47 cycle is a focused polish + stability pass over the v0.46.x DJ Mode + per-channel VST chain feature set — closing the long-standing DJ pitch-down crash, fixing reverse-scratch cold-start silence, auto-scaling deck fonts on 4K / 2K screens, and adding a self-healing UI scale safety net so a too-large scale never traps the user in an unusable window. **Headline fixes since v0.46.2** are at the top of this README; the older v0.39.0 → v0.46.2 work that introduced DJ Mode + per-channel chains + tracker DJing + game-music coverage stays in the Changelog at the bottom of this README.
 
 ### 🎧 DJ Mode — entirely new (since v0.39.0, polished through v0.46.2)
 
@@ -374,6 +374,7 @@ The internal release cycle was 9 versions deep between the public v0.37.2 (2026-
 - **v0.46.0** — **Game-music codec expansion** — adds ATRAC3 / ATRAC9 / XMA / xWMA / FSB-Vorbis / FSB-CELT / Switch Opus on by default. Per-Channel VST Chains panel full rebuild (auto-open + slot-grid overlap + missing controls all fixed). Batch Export panel 5-defect rebuild ("0 active" counter + multi-selection + format-dropdown overflow + per-track subsong picker + 4-mode FX selector). DJ-Mode IFF/8SVX pitch crash closed. **IFF SMUS tempo fix** (every SMUS file was playing at 2× intended speed). DJ-Mode scratch ergonomics (engage on press, palm-the-platter semantics). Code signing expansion (every shipped DLL now signed alongside the installer). Massive playback recovery for 10 distinct format-playback failures from real-world session logs. Layout overhaul with master status bar. Comprehensive QA pass with 25 coordinated fixes.
 - **v0.46.1** — 8-fix coordinated push: Musashi dispatcher (ODR-collision closed before commit), TFMX envelope speed=0 fix, Sonic Arranger PWM lock, Furnace macro-engine infrastructure, **DSF AICA mix() audio path** (DSF/Dreamcast finally audible), **Visual-playhead audio-visual sync** (subtracts backend queued frames), **Vinyl-spin-while-paused gimmick**, DJ-Mode 4K layout redistribution.
 - **v0.46.2** — DJ HP filter (Cytomic-SVF formula corrected). Reverse-scratch first-25-samples-silence eliminated (cursor offset). DJ MODE pill "beta" honesty marker. PerChannelChainPanel ON-button binding refresh. v0.46.1 #18.8 DJ-Mode 4K layout reverted to v0.46.0 baseline (per user preference).
+- **v0.47.6** — DJ Mode reliability + 4K/2K readability + UI-scale safety net. **DJ pitch-down crash closed** (Signalsmith stretcher's internal output buffer was sized for the input-chunk frame count, not the worst-case 2x-output frame count at ±50 % pitch — closed after a 7-tag CI iteration). **Reverse-scratch cold-start fix** (audio-thread pre-roll seeds scratch history before the first reverse read). **DJ Mode font auto-scale** on wide windows (1.0x at the design canonical size → 1.5x cap on 4K and large 2K; layout untouched at design size). **UI-scale safety net** auto-recovers from too-large scale on the next launch with an amber banner explaining what happened; two new Start-Menu recovery shortcuts (*Reset UI Scale* / *Safe Mode*); Settings → Display picker refreshes live on monitor change. **DJ MIDI controller hot-plug** off-GUI-thread WinMM probe (no more UI freeze on USB connect/disconnect) + WASAPI device-lost recovery DJ-Mode-aware (restores both decks' playing state). **`Ctrl+,` opens Settings** (universal Preferences keystroke). **F1 Help got searchable navigation** — 8-category chip strip + native autosuggest search field finds any of the 25 sections instantly. **Audio-device-apply errors surface as a red banner** instead of silently reverting. **Settings → Audio is idempotent** (no audible gap on no-op apply). Lib bumps: **libgme 0.6.5** (undocumented NES CPU opcodes + cleaner YM2413 FM tone + HES ADPCM), **SQLite 3.53.1** (WAL-reset reliability fix — directly relevant to the SmartScan + Waveform caches), **libarchive 3.8.7** (drag-drop ZIP/RAR/LHA CAB security patches).
 
 ---
 
