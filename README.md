@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.49.0/FXChainPlayer-Setup-0.49.0.exe"><img src="https://img.shields.io/badge/Download-v0.49.0-0078D6" alt="Download v0.49.0"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><img src="https://img.shields.io/badge/Download-v0.55.2-0078D6" alt="Download v0.55.2"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -14,7 +14,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.49.0/FXChainPlayer-Setup-0.49.0.exe"><strong>⬇ Download FXChainPlayer-Setup-0.49.0.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.55.2.exe</strong></a></p>
 
 <p align="center">
   <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view — expanded waveform with VST3 FX Chain and the LED HiFi spectrum analyzer">
@@ -283,22 +283,44 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
-## What's new in v0.49.0
+## What's new in v0.55.2
 
-The focus of this release is new functionality for C64 SID music, far wider DJ-controller support, and per-channel effects.
+A bug-fix release focused on DJ Mode robustness, EQ correctness, waveform coverage, and a critical NVIDIA driver crash. Seven distinct user-reported issues addressed end-to-end.
+
+### DJ Mode
+
+- **Two SIDs mixable on the DJ decks (regression fix).** Loading a second C64 SID tune onto Deck B while Deck A already held a SID failed with "C64 emulator may be busy". The waveform analyser is now routed to the pre-rendered WAV so the second SID loads cleanly.
+- **Waveforms now appear for ALL chiptune formats on the DJ decks** — SID, GameBoy `.gbs`, NES `.nsf`/`.nsfe`, SNES `.spc`, Sega `.gym`/`.vgm`/`.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga / Sharp X68000 / FM-TOWNS player.
+- **Status-bar L/R peak meters now show levels during DJ Mode** (previously frozen at 0).
+- **NVIDIA driver crash on DJ-Mode exit closed.** A `nvwgf2umx.dll` access-violation ~2 s after disengaging DJ Mode is gone — small QML render-frame grace period lets the GPU command buffer flush cleanly.
+
+### Audio
+
+- **The 3-Band EQ now affects the audio output regardless of the FX chain wet/dry slider.** Previously, lowering the global FX chain mix (or activating Dry Mode) also silently cancelled the EQ effect. EQ is now a system-level corrective (like volume / pan), unaffected by chain bypass or chain mix. The EQ dialog's own bypass toggle still works as expected.
+
+### Player
+
+- **Waveforms for chiptune formats in normal player mode too.** Same scope as DJ Mode — every chip-emulator format produces a waveform overview now, except `.sndh`/`.ym` Atari ST files (skipped to prevent an emulator-mutex deadlock).
+- **Compact-waveform seek no longer dies after toggling Scroll mode.** Clicking the expanded-waveform "Scroll" button used to leave the top transport-bar waveform unclickable once you collapsed the expanded view. Both surfaces stay clickable now.
+
+---
+
+## What was new in v0.49.0
+
+The focus of that release was new functionality for C64 SID music, far wider DJ-controller support, and per-channel effects.
 
 ### C64 SID tunes
 
-- **Per-voice VST effects for SID tunes.** A Commodore-64 SID tune is built from three independent chip voices. You can now load a separate VST3 effect chain onto each voice and hear the result live — put a reverb on the lead, a filter sweep on the bassline, leave the third voice clean. Each voice is processed on its own.
+- **Per-voice VST effects for SID tunes.** A Commodore-64 SID tune is built from three independent chip voices. You can load a separate VST3 effect chain onto each voice and hear the result live — put a reverb on the lead, a filter sweep on the bassline, leave the third voice clean.
 - **SID tunes on the DJ decks.** Load a `.sid` file straight onto a DJ deck and mix it like any other track.
 
 ### Per-channel VST effects
 
-- **Live per-channel effects for tracker modules.** Apply a separate VST3 effect chain to each individual channel of a MOD / XM / IT tracker module — and now hear it during normal playback, not only when exporting.
+- **Live per-channel effects for tracker modules.** Apply a separate VST3 effect chain to each individual channel of a MOD / XM / IT tracker module and hear it during normal playback, not only when exporting.
 
 ### DJ controllers & MIDI
 
-- **61 built-in DJ controller profiles.** Plug in a supported controller and it works straight away — including the full Pioneer DDJ family (DDJ-400, FLX4, FLX6, FLX10, REV1, DDJ-1000, DDJ-800, SB2, SB3, SX, 200), Native Instruments Traktor Kontrol S4 and Z1, and a wide range of Numark, Denon, Hercules, Rane, Roland, Vestax and Reloop models.
+- **61 built-in DJ controller profiles.** Plug in a supported controller and it works straight away — full Pioneer DDJ family (DDJ-400, FLX4, FLX6, FLX10, REV1, DDJ-1000, DDJ-800, SB2, SB3, SX, 200), Native Instruments Traktor Kontrol S4 + Z1, plus a wide range of Numark, Denon, Hercules, Rane, Roland, Vestax and Reloop models.
 - **Any USB MIDI controller works out of the box.** Even with no built-in profile, transport and mixer controls respond immediately. Anything the player can't guess is one click away in MIDI Learn Mode.
 - **Searchable controller picker.** Type the first letters of your controller's name to jump straight to its profile.
 
@@ -310,10 +332,6 @@ The focus of this release is new functionality for C64 SID music, far wider DJ-c
 ### Display
 
 - **Plugin editors follow your monitors.** Drag the app between a 4K and an HD screen with a VST3 plugin editor open and the plugin re-renders crisply at the new monitor's resolution.
-
-Plus a large, wide-ranging reliability and stability pass across the whole player.
-
----
 
 ## Highlights since v0.37.2
 
