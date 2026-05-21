@@ -16,6 +16,15 @@
 
 <p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.55.2.exe</strong></a></p>
 
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=a2XQ1KDnYSk">
+    <img src="https://img.youtube.com/vi/a2XQ1KDnYSk/maxresdefault.jpg" alt="▶ Watch the FXChainPlayer demo on YouTube" width="720">
+  </a>
+</p>
+
+<p align="center"><a href="https://www.youtube.com/watch?v=a2XQ1KDnYSk"><strong>▶ Watch the demo on YouTube</strong></a></p>
+
 <p align="center">
   <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view — expanded waveform with VST3 FX Chain and the LED HiFi spectrum analyzer">
 </p>
