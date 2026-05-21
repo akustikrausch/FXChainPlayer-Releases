@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.47.6/FXChainPlayer-Setup-0.47.6.exe"><img src="https://img.shields.io/badge/Download-v0.47.6-0078D6" alt="Download v0.47.6"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.49.0/FXChainPlayer-Setup-0.49.0.exe"><img src="https://img.shields.io/badge/Download-v0.49.0-0078D6" alt="Download v0.49.0"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -14,7 +14,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.47.6/FXChainPlayer-Setup-0.47.6.exe"><strong>⬇ Download FXChainPlayer-Setup-0.47.6.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.49.0/FXChainPlayer-Setup-0.49.0.exe"><strong>⬇ Download FXChainPlayer-Setup-0.49.0.exe</strong></a></p>
 
 <p align="center">
   <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view — expanded waveform with VST3 FX Chain and the LED HiFi spectrum analyzer">
@@ -283,21 +283,8 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
-## What's new in v0.47.6
+## What's new in v0.49.0
 
-A focused polish + stability pass over the DJ Mode and per-channel VST chain feature set.
-
-- **DJ pitch-down crash closed.** Aggressive pitch-slider use (especially at ±50 %) no longer destabilises the deck.
-- **Reverse-scratch cold-start fix.** Reverse-scratch on a freshly-loaded deck is now audible from the first sample — no more brief silence before the audio comes through.
-- **DJ Mode font auto-scale on wide windows.** Deck readability on 4K and large 2K screens is much better; the layout is untouched at design size, fonts scale up to 1.5× on wider windows.
-- **UI scale safety net.** If a stored UI scale would leave the window unable to fit on screen at next launch, the app auto-recovers to a fitting scale and shows an amber banner explaining what happened. Two new Start-Menu recovery shortcuts (*Reset UI Scale* and *Safe Mode*) handle the corner cases. The Settings → Display scale picker also refreshes live when monitors are added or removed.
-- **DJ MIDI controller hot-plug** no longer freezes the UI when a controller is connected or disconnected.
-- **WASAPI device-lost recovery is DJ-Mode-aware** — both decks resume their playing state after the device recovers.
-- **`Ctrl+,` opens Settings** (the universal Preferences keystroke).
-- **Searchable F1 Help** — 8-category chip strip + autosuggest search field finds any section instantly.
-- **Audio-device-apply errors** now surface as a clear red banner instead of silently reverting.
-- **Idempotent audio settings** — re-applying the same audio config no longer causes an audible gap.
-- Library updates: libgme 0.6.5 (cleaner NES + YM2413 emulation, HES ADPCM), SQLite 3.53.1 (cache reliability), libarchive 3.8.7 (drag-drop archive security patches).
 
 ---
 
