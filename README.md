@@ -285,25 +285,35 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ## What's new in v0.55.2
 
-A bug-fix release focused on DJ Mode robustness, EQ correctness, waveform coverage, and a critical NVIDIA driver crash. Seven distinct user-reported issues addressed end-to-end.
+Everything new since the last public release (v0.49.0) — a bundled bring-forward of six internal milestones (v0.50 → v0.55.2) focused on unlocking new format families, expanding what's visualised, and refining the DJ workflow.
+
+### New game-music format support
+
+Nine major game-music codec families are now playable out of the box.
+
+- **Sony ATRAC3, ATRAC3plus, ATRAC9** — PSP / PS3 / PS4 / Vita game soundtracks (`.at3`, `.at9`, `.aa3`).
+- **Microsoft XMA1 and XMA2** — Xbox 360 and Xbox One game soundtracks (`.xma`, `.xma2`).
+- **Microsoft xWMA** — XAudio2 streaming WMA-Pro.
+- **FMOD FSB with Vorbis and CELT payloads** — used by roughly 1000+ game titles via FMOD audio middleware (`.fsb`, `.fsb5`).
+- **Nintendo Switch NUS3-Opus** — Super Smash Bros. Ultimate, Splatoon 2 / 3, Super Mario Odyssey, Animal Crossing: New Horizons and many other Switch titles (`.nus3audio`).
+- **Older Bink Audio (Speex variant).**
+- **Ericsson G.719** — used by some reference video-conferencing recordings.
+
+The bundled FFmpeg quartet is dynamically linked under LGPL-2.1+; the exact FFmpeg n5.1.2 source we use is bundled alongside the installer in the GitHub Release.
 
 ### DJ Mode
 
-- **Two SIDs mixable on the DJ decks (regression fix).** Loading a second C64 SID tune onto Deck B while Deck A already held a SID failed with "C64 emulator may be busy". The waveform analyser is now routed to the pre-rendered WAV so the second SID loads cleanly.
-- **Waveforms now appear for ALL chiptune formats on the DJ decks** — SID, GameBoy `.gbs`, NES `.nsf`/`.nsfe`, SNES `.spc`, Sega `.gym`/`.vgm`/`.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga / Sharp X68000 / FM-TOWNS player.
-- **Status-bar L/R peak meters now show levels during DJ Mode** (previously frozen at 0).
-- **NVIDIA driver crash on DJ-Mode exit closed.** A `nvwgf2umx.dll` access-violation ~2 s after disengaging DJ Mode is gone — small QML render-frame grace period lets the GPU command buffer flush cleanly.
+- **Mix two C64 SID tunes at once.** Load one SID onto Deck A and another onto Deck B and crossfade them like any other tracks. Mix demoscene C64 classics alongside modern dance productions on the same crossfader — no other DJ tool can do this.
+- **Waveform overviews for all chiptune formats on the DJ decks.** Every chip-emulator format now produces a full waveform visualisation under each deck — SID, GameBoy `.gbs`, NES `.nsf` / `.nsfe`, SNES `.spc`, Sega `.gym` / `.vgm` / `.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga, Sharp X68000 and FM-TOWNS player.
 
-### Audio
+### Normal player mode
 
-- **The 3-Band EQ now affects the audio output regardless of the FX chain wet/dry slider.** Previously, lowering the global FX chain mix (or activating Dry Mode) also silently cancelled the EQ effect. EQ is now a system-level corrective (like volume / pan), unaffected by chain bypass or chain mix. The EQ dialog's own bypass toggle still works as expected.
+- **Waveform overviews for chiptune formats here too.** Same coverage as the DJ decks — chip-emulator tracks now get a real waveform overview in the standard player transport bar.
 
-### Player
+### Visualisation
 
-- **Waveforms for chiptune formats in normal player mode too.** Same scope as DJ Mode — every chip-emulator format produces a waveform overview now, except `.sndh`/`.ym` Atari ST files (skipped to prevent an emulator-mutex deadlock).
-- **Compact-waveform seek no longer dies after toggling Scroll mode.** Clicking the expanded-waveform "Scroll" button used to leave the top transport-bar waveform unclickable once you collapsed the expanded view. Both surfaces stay clickable now.
+- **RGB Split Wave analyzer — refined.** Cleaner central chromatic-split spline, larger amplitude on loud passages, calmer background. Designed to read at a glance without peripheral effects competing for attention.
 
----
 
 ## What was new in v0.49.0
 
