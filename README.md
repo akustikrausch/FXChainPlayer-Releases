@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/DJ%20Mode-dual--deck%20%C2%B7%20vinyl%20scratch%20%C2%B7%20sync-ff5555" alt="DJ Mode">
-  <img src="https://img.shields.io/badge/1500%2B%20formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music%20%C2%B7%20Apple%20Loops-blue" alt="1500+ formats">
+  <img src="https://img.shields.io/badge/Formats-FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music%20%C2%B7%20Apple%20Loops-blue" alt="Format coverage: FLAC, DSD, MOD, SID, Game Music, Apple Loops">
 </p>
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
@@ -53,7 +53,7 @@ Up to **16 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot byp
 
 ## Plays pretty much everything
 
-FXChainPlayer is built for music listeners who do not want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, Game Boy chiptunes, Apple Loops or Wii game-music dumps — it just plays. **1500+ extensions across 17 categories** with a built-in searchable Format Library panel.
+FXChainPlayer is built for music listeners who do not want format juggling. Drop a folder with mixed FLAC, MP3, tracker files, C64 SIDs, Game Boy chiptunes, Apple Loops or Wii game-music dumps — it just plays. Searchable Format Library panel built in.
 
 ### Lossless & Hi-Res
 
@@ -63,7 +63,7 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 
 **MP3**, **AAC**, **M4A** / **MP4** audio, **OGG Vorbis**, **WMA**, **MPC** (Musepack SV8), **AC-3**.
 
-### Tracker modules (50+ formats)
+### Tracker modules
 
 **MOD** (ProTracker), **XM** (FastTracker 2), **S3M** (ScreamTracker 3), **IT** (Impulse Tracker), **MPTM** (OpenMPT), **Digibooster Pro**, **Imago Orpheus**, **Graoumf Tracker**, **Liquid Tracker**, **Octalyser**, **PolyTracker**, **UltraTracker**, **Digitrakker**, **OctaMED**, **Farandole Composer**, **Epic MegaGames MASI**, **MadTracker 2**, **Galaxy Sound System**, **X-Tracker**, **NoiseTracker**, **Ice Tracker**, **Composer 670** + 667, **SoundFX 1/2**, **Davey Taylor's Tracker**, **DSMI/Asylum AMF**, plus fallbacks for Funktracker (`.fnk`), Liquid Tracker (`.liq`), Magnetic Fields Packer (`.mfp`), AMOS Banks (`.abk`), Soundtracker 2.6 (`.st26`), Ice Tracker (`.ice`) and many more.
 
@@ -155,7 +155,7 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 - **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
 - **Camelot wheel + harmonic-mix hint (experimental).** Per-deck Camelot key chip derived from a background key-detection pass or the file's existing key tag, with a colour-coded cross-deck compatibility hint (Match / Relative / Adjacent / EnergyLift / Discord). Treat the suggestions as a starting point — real-world key detection is imperfect across genres. Trust your ears.
 - **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
-- **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The tracker-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker / 50+ tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
+- **Tracker DJing — unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The tracker-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker and other tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
 - **MIDI controller support.** Hardware-detected mappings for Pioneer DDJ-FLX series, KORG nanoKONTROL2, Akai LPD8, Behringer X-Touch Mini, Mackie-Control, General MIDI. Ableton-style Learn Mode (`Ctrl+Shift+M`) for any other controller. Pitch / EQ / hot-cues / scratch jog-wheel / play / cue / sync / filter all mappable.
 
 > **Beta status.** DJ Mode is feature-complete and stable for production use. A few rough edges are still being polished — per-channel VST chain audio routing has a small delay before plugins become audible (~5–30 sec depending on track length), and some scratch-ergonomics edge cases are still being refined. The DJ MODE pill in the header carries a small "beta" marker so you can calibrate expectations vs the rock-solid single-track player.
@@ -358,7 +358,7 @@ A condensed summary of the bigger user-facing additions across the v0.38 → v0.
 
 - **DJ Mode** (v0.39) — Dual-deck console, crossfader, sync engine, hot cues, loops, beat-jump, per-deck 3-band EQ, dual audio output, MIDI controller support, **tracker DJing** unique to FXChainPlayer.
 - **Per-Channel VST Chains** (v0.45) — Each separable channel of trackers, SIDs, NSFs and other multi-channel formats carries its own dedicated VST3 chain up to 16 plugins. Real-time playback and export-path integration. VST3 chain limit lifted from 8 to 16 slots.
-- **Format coverage** — Expanded from ~800 to **1500+ extensions**: Atari ST native (`.sndh`), PSF1 PlayStation OST, TFE TFM Music Maker, MDX Sharp X68000, Euphony FM-TOWNS, MSX `.kss`, 12 Amiga composer-named players (Hippel / Daglish / Whittaker / Symphonie / TFMX / RJP / many more), demoscene + retro synths (TIATracker / Organya / GoatTracker / SAP / ZxTracker / FutureComposer / Farbrausch V2), DOS Adlib (~50 formats), broader game-music coverage (ATRAC9 / XMA / FSB-Vorbis / Switch Opus), Apple CAF dedicated decoder, DST-compressed `.dff` DSD.
+- **Format coverage** — Major expansion across the catalogue: Atari ST native (`.sndh`), PSF1 PlayStation OST, TFE TFM Music Maker, MDX Sharp X68000, Euphony FM-TOWNS, MSX `.kss`, 12 Amiga composer-named players (Hippel / Daglish / Whittaker / Symphonie / TFMX / RJP / many more), demoscene + retro synths (TIATracker / Organya / GoatTracker / SAP / ZxTracker / FutureComposer / Farbrausch V2), DOS Adlib, broader game-music coverage (ATRAC9 / XMA / FSB-Vorbis / Switch Opus), Apple CAF dedicated decoder, DST-compressed `.dff` DSD.
 - **Vinyl Scratch — Newtonian physics** (v0.38) — Full platter physics for click-and-drag waveform scratching, forward + reverse, with Technics SL-1200 inertia and slipmat-friction restore. Works in single-track AND DJ mode. Even works while paused.
 - **GPU shader visualisers** (v0.39) — Pulse Thread (new default), Chroma Drift, Studio LED.
 - **BPM consensus + Camelot key detection** (v0.38 / v0.43) — Multi-source BPM aggregation with confidence tiers, offline key detection, Camelot wheel chips per track AND per deck, cross-deck harmonic-mix hint (experimental — treat as a starting point).
