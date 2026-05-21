@@ -285,6 +285,33 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ## What's new in v0.49.0
 
+The focus of this release is new functionality for C64 SID music, far wider DJ-controller support, and per-channel effects.
+
+### C64 SID tunes
+
+- **Per-voice VST effects for SID tunes.** A Commodore-64 SID tune is built from three independent chip voices. You can now load a separate VST3 effect chain onto each voice and hear the result live — put a reverb on the lead, a filter sweep on the bassline, leave the third voice clean. Each voice is processed on its own.
+- **SID tunes on the DJ decks.** Load a `.sid` file straight onto a DJ deck and mix it like any other track.
+
+### Per-channel VST effects
+
+- **Live per-channel effects for tracker modules.** Apply a separate VST3 effect chain to each individual channel of a MOD / XM / IT tracker module — and now hear it during normal playback, not only when exporting.
+
+### DJ controllers & MIDI
+
+- **61 built-in DJ controller profiles.** Plug in a supported controller and it works straight away — including the full Pioneer DDJ family (DDJ-400, FLX4, FLX6, FLX10, REV1, DDJ-1000, DDJ-800, SB2, SB3, SX, 200), Native Instruments Traktor Kontrol S4 and Z1, and a wide range of Numark, Denon, Hercules, Rane, Roland, Vestax and Reloop models.
+- **Any USB MIDI controller works out of the box.** Even with no built-in profile, transport and mixer controls respond immediately. Anything the player can't guess is one click away in MIDI Learn Mode.
+- **Searchable controller picker.** Type the first letters of your controller's name to jump straight to its profile.
+
+### Playlist & export
+
+- **Drag-and-drop M3U playlists.** Drop an `.m3u` or `.m3u8` file onto the playlist to load it.
+- **Jump straight to your exports.** When a batch export finishes, "Open folder" and "Show file" buttons take you directly to the rendered files.
+
+### Display
+
+- **Plugin editors follow your monitors.** Drag the app between a 4K and an HD screen with a VST3 plugin editor open and the plugin re-renders crisply at the new monitor's resolution.
+
+Plus a large, wide-ranging reliability and stability pass across the whole player.
 
 ---
 
