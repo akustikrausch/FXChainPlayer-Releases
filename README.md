@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><img src="https://img.shields.io/badge/Download-v0.55.2-0078D6" alt="Download v0.55.2"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.59.9/FXChainPlayer-Setup-0.59.9.exe"><img src="https://img.shields.io/badge/Download-v0.59.9-0078D6" alt="Download v0.59.9"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -14,7 +14,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.55.2.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.59.9/FXChainPlayer-Setup-0.59.9.exe"><strong>⬇ Download FXChainPlayer-Setup-0.59.9.exe</strong></a></p>
 
 
 <p align="center">
@@ -292,13 +292,64 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
-## What's new in v0.55.2
+## What's new in v0.59.9
 
-Everything new since the last public release (v0.49.0) — a bundled bring-forward of six internal milestones (v0.50 → v0.55.2) focused on unlocking new format families, expanding what's visualised, and refining the DJ workflow.
+Headline features since the last public release: a way to write your own visualisation shaders, in-app tag editing, synced lyrics, listening-history tracking, the kind of social-presence integrations modern players ship with, and a smarter way to manage your own internet-radio stations. Everything that touches the network is default-OFF and opt-in — privacy first.
 
-### New game-music format support
+### 🎨 Live Shader Editor
 
-Nine major game-music codec families are now playable out of the box.
+Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview. Press **Ctrl+Enter** (or the ▶ button) and your shader recompiles and hot-swaps in 50–200 ms — no app restart, no external tooling.
+
+- **Three overlay states:** hidden (just the visualisation), peek (semi-transparent code over the effect), edit (opaque editor with a TextArea that takes focus).
+- **Audio inputs as a texture:** `iChannel0` carries a 512×2 texture — FFT at `y = 0.25`, raw waveform at `y = 0.75`. Sample with `texture(iChannel0, vec2(x, 0.25)).x` for spectrum, `vec2(x, 0.75)` for wave.
+- **Built-in uniforms:** `iTime` (seconds since shader load), `iResolution` (pixel dims), `qt_TexCoord0` (0..1 UV), `qt_Opacity`.
+- **Shadertoy-friendly:** paste any `void mainImage(out vec4 O, in vec2 I)` shader and the editor auto-wraps it with the right Qt RHI scaffolding (`#version 440`, `iTime` / `iResolution` / `iChannel0` shims, Y-flip to match Shadertoy's bottom-left origin convention).
+- **Template library:** built-in examples ship as `.glsl` resources; your own templates save to `%APPDATA%\Akustikrausch\FXChainPlayer\shader_templates\` as portable plain text — copy them between machines, share, version-control. Built-ins are write-protected; user templates managed by a Lucide-icon toolbar (save / load / delete / reset).
+- **One compile, every backend:** Qt's `QShaderBaker` produces a single QSB containing SPIR-V + HLSL + MSL + GLSL ES 320, so the same shader runs on every Qt RHI backend (D3D11 / D3D12 / Vulkan / Metal / OpenGL). Compiled QSBs land atomically via `QSaveFile` rename — no torn-write window if you crash mid-compile.
+- **Calm-on-silence convention:** the default `audio_trace.glsl` template gates motion magnitude on smoothed amplitude — when there's no audio the visualisation freezes (only a slow heartbeat drift remains). Your own shaders are encouraged to follow the same pattern so the screen doesn't look broken in a quiet section.
+- **Inline error reporting:** GLSL compile errors surface in a red footer with the offending line numbers; click a line to scroll the editor to it. Shadertoy-style red highlight on the failing line. Line gutter on the left for quick navigation.
+
+### 🏷️ Tag Editor — fix metadata without leaving the player
+
+Right-click any playlist row → **Edit Tags…**. Modal dialog with eight fields (Title, Artist, Album, Album Artist, Year, Track #, Genre, Comment). Saves back to the file in the right frame format for the container — works across MP3 (ID3v2), FLAC + OGG + Opus (Vorbis comments), M4A (iTunes atoms), APE, WavPack, Musepack, True Audio. Playlist row updates within milliseconds, no library re-scan needed. Empty fields leave existing tags alone — the "I only want to change Year" workflow people actually use.
+
+### 📝 Synced lyrics — Ctrl+L
+
+Press **Ctrl+L** (or open the **Lyrics** panel from the StatusBar) to see scrolling karaoke-style lyrics for the currently playing track. Three sources, in priority order: (1) a `.lrc` sidecar file next to the audio, (2) embedded ID3v2 SYLT synchronized-lyrics frames, (3) embedded plain unsynchronized lyrics. Auto-scrolls the active line into centre view, fades adjacent lines. Supports LRC's standard meta-tags (`[ti:]`, `[ar:]`, `[al:]`, `[by:]`, `[length:]`, `[offset:]` for global time-shift) and multi-timestamp lines for repeating choruses. Source badge in the panel header tells you which kind of lyrics you're reading.
+
+### 💬 Discord Rich Presence
+
+Show your currently-playing track on your Discord profile. Settings → Integrations → toggle on. **Default OFF.** Optional: hide the elapsed timer while paused (so the status doesn't broadcast "stepped away"). Connects via Discord's named-pipe IPC against your local Discord desktop client — your tracks never go to Discord's servers via us; only Discord itself sees the data via your own client. Auto-reconnects if Discord launches after the player.
+
+### 🎵 Last.fm scrobbling
+
+Connect your Last.fm account from Settings → Integrations → **Connect**. Browser opens, you authorise, the player picks up the session key. From there, every track that plays past the **50%-or-4-minutes** industry-standard threshold scrobbles automatically. The Now Playing badge updates the moment a track starts. Offline scrobbles are queued locally (up to 200) and flushed when you reconnect. **Default OFF.** Disconnect button to revoke. Per-track scrobble rules respect the Spotify / Apple Music / Audacious / foobar2000 convention.
+
+### ⭐ Play count + 5-star ratings
+
+Per-track listening history: play counter (increments at the same 50%/4-min threshold as Last.fm), last-played timestamp, first-played timestamp. Plus a 5-star rating widget — click stars to rate, click the current rating to clear. Playlist columns for Plays and Rating (toggleable in Settings → Integrations). **Data lives entirely on your machine** in the local SQLite cache next to your library scan — nothing leaves. Reset-all-stats button in Settings if you want a clean slate.
+
+### 📺 CUE sheet splitting
+
+FLAC + CUE album files automatically split into one playlist row per track. Per-track Title, Performer, BPM, Key, and start/end markers picked up from the sheet. The big "single 60-minute FLAC plus a `.cue`" archive format your audiophile friends use just works. UTF-8 BOM tolerated; foobar2000 + EAC-exported sheets parse cleanly. Seek and skip between sub-tracks like any other playlist row.
+
+### 📡 Custom radio stream channel
+
+The built-in stream-station directory (Demoscene, Classical, Electronic & Ambient, Jazz, BBC, Deutschlandfunk, …) ships locked — we curate, we update with each release, you get new stations automatically. To add your own stations: Settings → Streams → **Edit JSON**. Opens `stream_directory_custom.json` with a one-line example you can copy and edit. Save, click **Reload**, and your stations appear as the **Custom** channel at the bottom of the directory. Schema is a plain JSON array of station objects — five fields per entry, two of them required (name + url).
+
+### 🎛️ Settings reorganised
+
+Settings tabs are now sorted by frequency-of-use: Audio · Playback · Display (everyday) → Library (where your music lives) → Shortcuts · MIDI (input controls) → DJ · Integrations (optional feature subsystems) → Advanced (reset / danger zone, last). "Advanced" no longer sits in the middle of the tab list tempting accidental clicks.
+
+### 🎚️ Visualisation polish
+
+- **RGB Split Wave** redesigned as a true 3-channel chromatic-split waveform with calmer background and louder amplitude response on peaks.
+- **Pulse Thread** is the new default analyzer for non-tracker formats (tracker formats still auto-pick Pattern View, SID files still auto-pick SID Voices).
+- **Audio Trace** (the default Live Shader template) — clean blue-tinted Lissajous-style curve with rounded corners and calm-on-silence gating so it doesn't strobe during quiet passages.
+
+## What was new in v0.55.2
+
+Nine major game-music codec families became playable out of the box.
 
 - **Sony ATRAC3, ATRAC3plus, ATRAC9** — PSP / PS3 / PS4 / Vita game soundtracks (`.at3`, `.at9`, `.aa3`).
 - **Microsoft XMA1 and XMA2** — Xbox 360 and Xbox One game soundtracks (`.xma`, `.xma2`).
@@ -310,18 +361,7 @@ Nine major game-music codec families are now playable out of the box.
 
 The bundled FFmpeg quartet is dynamically linked under LGPL-2.1+; the exact FFmpeg n5.1.2 source we use is bundled alongside the installer in the GitHub Release.
 
-### DJ Mode
-
-- **Mix two C64 SID tunes at once.** Load one SID onto Deck A and another onto Deck B and crossfade them like any other tracks. Mix demoscene C64 classics alongside modern dance productions on the same crossfader — no other DJ tool can do this.
-- **Waveform overviews for all chiptune formats on the DJ decks.** Every chip-emulator format now produces a full waveform visualisation under each deck — SID, GameBoy `.gbs`, NES `.nsf` / `.nsfe`, SNES `.spc`, Sega `.gym` / `.vgm` / `.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga, Sharp X68000 and FM-TOWNS player.
-
-### Normal player mode
-
-- **Waveform overviews for chiptune formats here too.** Same coverage as the DJ decks — chip-emulator tracks now get a real waveform overview in the standard player transport bar.
-
-### Visualisation
-
-- **RGB Split Wave analyzer — refined.** Cleaner central chromatic-split spline, larger amplitude on loud passages, calmer background. Designed to read at a glance without peripheral effects competing for attention.
+Plus DJ Mode highlights: **mix two C64 SID tunes at once** (load one onto Deck A, another onto Deck B, crossfade), and **waveform overviews for every chiptune format** in both DJ decks and the standard player transport bar — SID, GameBoy `.gbs`, NES `.nsf` / `.nsfe`, SNES `.spc`, Sega `.gym` / `.vgm` / `.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga, Sharp X68000 and FM-TOWNS player.
 
 
 ## What was new in v0.49.0
