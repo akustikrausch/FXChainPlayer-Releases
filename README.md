@@ -306,7 +306,7 @@ Write your own audio-reactive visualisation directly inside the player. A GLSL f
 - **Template library:** built-in examples ship as `.glsl` resources; your own templates save to `%APPDATA%\Akustikrausch\FXChainPlayer\shader_templates\` as portable plain text — copy them between machines, share, version-control. Built-ins are write-protected; user templates managed by a Lucide-icon toolbar (save / load / delete / reset).
 - **One compile, every backend:** Qt's `QShaderBaker` produces a single QSB containing SPIR-V + HLSL + MSL + GLSL ES 320, so the same shader runs on every Qt RHI backend (D3D11 / D3D12 / Vulkan / Metal / OpenGL). Compiled QSBs land atomically via `QSaveFile` rename — no torn-write window if you crash mid-compile.
 - **Calm-on-silence convention:** the default `audio_trace.glsl` template gates motion magnitude on smoothed amplitude — when there's no audio the visualisation freezes (only a slow heartbeat drift remains). Your own shaders are encouraged to follow the same pattern so the screen doesn't look broken in a quiet section.
-- **Inline error reporting:** GLSL compile errors surface in a red footer with the offending line numbers; click a line to scroll the editor to it. Shadertoy-style red highlight on the failing line. Line gutter on the left for quick navigation.
+- **Inline error reporting:** GLSL compile errors surface in a red footer with the offending line numbers; click a line to scroll the editor to it. Red highlight on the failing line. Line gutter on the left for quick navigation.
 
 ### 🏷️ Tag Editor — fix metadata without leaving the player
 
