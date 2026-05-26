@@ -300,6 +300,8 @@ Headline features since the last public release: a way to write your own visuali
 
 Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview. Press **Ctrl+Enter** (or the ▶ button) and your shader recompiles and hot-swaps in 50–200 ms — no app restart, no external tooling.
 
+![Live Shader Editor in action — GLSL fragment shader sitting next to a live audio-reactive preview, with two VST3 plug-ins in the chain and a MOD playing back](screenshots/liveshader.jpg)
+
 - **Three overlay states:** hidden (just the visualisation), peek (semi-transparent code over the effect), edit (opaque editor with a TextArea that takes focus).
 - **Audio inputs as a texture:** `iChannel0` carries a 512×2 texture — FFT at `y = 0.25`, raw waveform at `y = 0.75`. Sample with `texture(iChannel0, vec2(x, 0.25)).x` for spectrum, `vec2(x, 0.75)` for wave.
 - **Built-in uniforms:** `iTime` (seconds since shader load), `iResolution` (pixel dims), `qt_TexCoord0` (0..1 UV), `qt_Opacity`.
