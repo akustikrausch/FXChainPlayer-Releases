@@ -1,6 +1,6 @@
 <h1 align="center">FXChainPlayer</h1>
 
-<p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
+<p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
   <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.61.6/FXChainPlayer-Setup-0.61.6.exe"><img src="https://img.shields.io/badge/Download-v0.61.6-0078D6" alt="Download v0.61.6"></a>
@@ -79,9 +79,9 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 - **SAP** — Atari 8-bit
 - **GYM** — Sega Genesis / Mega Drive
 
-### Atari ST native (`.sndh` / `.ym3-6`)
+### Atari ST native (`.sndh` / `.snd`)
 
-Native YM2149 chip emulation with full 68k support (Timer-C, DigiDrum, STE DMA samples) — Atari ST and STE chiptunes (**SNDH** / **SND** / **YM**) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
+Native YM2149 chip emulation with full 68k support (Timer-C, DigiDrum, STE DMA samples) — Atari ST and STE chiptunes (**SNDH** / **SND**) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
 
 And then they do what no chiptune add-on does: run a 1985 Atari demo tune **through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.** A piece of demoscene history, baked through modern studio effects into a file that plays anywhere.
 
@@ -315,7 +315,7 @@ Everything new since v0.55.2 — focused on real new capabilities: Atari chiptun
 
 ### Atari ST music — played right, and now inside your effect chain
 
-Atari ST / STE chiptunes (**SNDH** / **SND** / **YM**) play start-to-finish, cleanly and accurately, **out of the box — no plugins, no setup.** These aren't ordinary audio files; they're tiny programs that drive the Atari's sound chip, and most Windows players can't touch them without a separate add-on. Here they just play. And then they do what no chiptune add-on does: **run a 1985 demo tune through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.**
+Atari ST / STE chiptunes (**SNDH** / **SND**) play start-to-finish, cleanly and accurately, **out of the box — no plugins, no setup.** These aren't ordinary audio files; they're tiny programs that drive the Atari's sound chip, and most Windows players can't touch them without a separate add-on. Here they just play. And then they do what no chiptune add-on does: **run a 1985 demo tune through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.**
 
 ### Your VST3 effects — now on the DJ decks
 
