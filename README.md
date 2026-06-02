@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player with a full VST3 effect chain built into the playback engine — and a complete dual-deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><img src="https://img.shields.io/badge/Download-v0.55.2-0078D6" alt="Download v0.55.2"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.61.6/FXChainPlayer-Setup-0.61.6.exe"><img src="https://img.shields.io/badge/Download-v0.61.6-0078D6" alt="Download v0.61.6"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -14,7 +14,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.55.2/FXChainPlayer-Setup-0.55.2.exe"><strong>⬇ Download FXChainPlayer-Setup-0.55.2.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.61.6/FXChainPlayer-Setup-0.61.6.exe"><strong>⬇ Download FXChainPlayer-Setup-0.61.6.exe</strong></a></p>
 
 
 <p align="center">
@@ -81,7 +81,9 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 
 ### Atari ST native (`.sndh` / `.ym3-6`)
 
-Native YM2149 chip emulation with built-in 68k support. Plays the entire ~25,000-file sndh.atari.org archive — no external tools required.
+Native YM2149 chip emulation with full 68k support (Timer-C, DigiDrum, STE DMA samples) — Atari ST and STE chiptunes (**SNDH** / **SND** / **YM**) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
+
+And then they do what no chiptune add-on does: run a 1985 Atari demo tune **through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.** A piece of demoscene history, baked through modern studio effects into a file that plays anywhere.
 
 ### PSF1 family (PlayStation OST)
 
@@ -152,6 +154,7 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 - **Vinyl-spin while paused.** Even when audio is paused or stopped, dragging the waveform spins the platter in the dragged direction. Friction decays the platter back to 0. Like spinning a turntable when the motor is off.
 - **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together). Gauge icon = Stretch (phase-vocoder, pitch stays constant while tempo varies).
 - **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
+- **Your own VST3 effects on the decks.** DJ Mode taps the same per-channel VST3 chains as the main player — drop your favourite filters, delays, reverbs or saturators straight onto a deck and make them part of your mix, not just the master out. The exact plugins you already use everywhere else in FXChainPlayer, now in the booth.
 - **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
 - **Camelot wheel + harmonic-mix hint (experimental).** Per-deck Camelot key chip derived from a background key-detection pass or the file's existing key tag, with a colour-coded cross-deck compatibility hint (Match / Relative / Adjacent / EnergyLift / Discord). Treat the suggestions as a starting point — real-world key detection is imperfect across genres. Trust your ears.
 - **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints — works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
@@ -286,9 +289,57 @@ Every release is signed via Azure Trusted Signing — both the installer AND eve
 
 Every audio control reachable via Tab + Space / Enter / arrow keys. Output-pair, mode chips, device list all wired as standard radio groups. Settings panel, transport bar, file browser, FX-chain bypass, and playlist tabs all wired for keyboard navigation.
 
+### Synced lyrics
+
+Open the lyrics panel with **`Ctrl+L`** and the currently-playing track's lyrics scroll in time with the music — active line bold + centred, surrounding lines faded out, smooth auto-scroll on every line change.
+
+![Synced lyrics panel — K-pop track with auto-scrolling Korean lyrics, active line highlighted, sidecar .lrc source](screenshots/synced-lyrics-panel.jpg)
+
+Three sources, tried in priority order:
+
+- **Sidecar `.lrc`** next to the audio file (community-distributed synced lyrics from lrclib.net etc.)
+- **Embedded `SYLT`** — ID3v2 synchronized-lyrics frame
+- **Embedded `USLT`** — ID3v2 unsynchronized-lyrics frame; the player still re-parses the payload for LRC-format timestamps because many taggers store synced lyrics in the USLT slot
+
+A small badge at the top of the panel tells you which source was used. UTF-8 throughout — Asian scripts, Cyrillic, RTL text all render correctly. When a track has no lyrics from any source, the *Lyrics* entry in the status bar hides itself so the bar stays compact.
+
 ### Performance
 
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v0.61.6
+
+Everything new since v0.55.2 — focused on real new capabilities: Atari chiptunes that run through your effect chain, VST3 plugins in the DJ booth, a DJ console that fits any screen, and sharper tempo detection.
+
+### Atari ST music — played right, and now inside your effect chain
+
+Atari ST / STE chiptunes (**SNDH** / **SND** / **YM**) play start-to-finish, cleanly and accurately, **out of the box — no plugins, no setup.** These aren't ordinary audio files; they're tiny programs that drive the Atari's sound chip, and most Windows players can't touch them without a separate add-on. Here they just play. And then they do what no chiptune add-on does: **run a 1985 demo tune through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.**
+
+### Your VST3 effects — now on the DJ decks
+
+DJ Mode now lets you run **VST3 effect chains on the decks**, not just on the main player. Drop your favourite filters, delays, reverbs or saturators straight into your mix — the same plugins you already use everywhere else in FXChainPlayer, now part of your DJ set.
+
+### A DJ console built for any screen
+
+The two-deck console **scales from a 1080p laptop to a native 4K monitor** — knobs, hot-cue pads, loop and beat-jump buttons, faders, the mixer column and every label grow with the space you give them, and DJ Mode **opens fullscreen automatically** so nothing feels cramped. The key / harmonic-mixing chips, the beat-phase indicator and the BPM read-outs stay crisp and readable, and a loading indicator now shows when a track is being prepared.
+
+### Mix two Commodore 64 SID tunes at once
+
+Load and blend **two C64 SID tunes (`.sid` / `.psid` / `.rsid`) across both decks** — mix the Commodore 64 the way you'd mix records.
+
+### Tempo you can trust
+
+Every track is now analysed by **two independent beat detectors**. When they agree, the tempo badge locks in at full confidence; when a track is genuinely tricky, it tells you honestly instead of guessing — so the BPM you see is one you can actually mix to.
+
+### Even more of the retro & demoscene catalogue
+
+More vintage music plays natively, no conversion needed — including **NEC PC-98** game tunes, **classic DOS AdLib** game music, **high-resolution DSD** (including DST-compressed `.dff`), and a long tail of tracker and chiptune formats. The Nectarine demoscene web-radio stream even shows its own logo now.
+
+### Smoother and lighter
+
+The whole experience is steadier and easier on your machine — visualisers and analyzers go quiet when the window is minimised, big libraries import smoothly in one drop, and the player runs lighter when it's just playing in the background.
 
 ---
 
