@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/DJ%20Mode-dual--deck%20%C2%B7%20vinyl%20scratch%20%C2%B7%20sync-ff5555" alt="DJ Mode">
   <img src="https://img.shields.io/badge/Formats-MP3%20%C2%B7%20FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music-blue" alt="Format coverage: MP3, FLAC, DSD, MOD, SID, Game Music">
-  <img src="https://img.shields.io/badge/Amiga%20PreTracker%20%C2%B7%20Atari%20YM-68000%20%2B%20Paula%20%2F%20YM2149%20emulation-9b59b6" alt="Amiga PreTracker and Atari YM via 68000 + Paula / YM2149 emulation">
+  <img src="https://img.shields.io/badge/Amiga%20%C2%B7%20Atari-68000%20%2B%20Paula%20%2F%20YM2149%20emulation-9b59b6" alt="Amiga and Atari via 68000 + Paula / YM2149 emulation">
 </p>
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
