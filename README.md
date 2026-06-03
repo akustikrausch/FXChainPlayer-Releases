@@ -3,18 +3,19 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.61.6/FXChainPlayer-Setup-0.61.6.exe"><img src="https://img.shields.io/badge/Download-v0.61.6-0078D6" alt="Download v0.61.6"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.62.4/FXChainPlayer-Setup-0.62.4.exe"><img src="https://img.shields.io/badge/Download-v0.62.4-0078D6" alt="Download v0.62.4"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/DJ%20Mode-dual--deck%20%C2%B7%20vinyl%20scratch%20%C2%B7%20sync-ff5555" alt="DJ Mode">
   <img src="https://img.shields.io/badge/Formats-MP3%20%C2%B7%20FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music-blue" alt="Format coverage: MP3, FLAC, DSD, MOD, SID, Game Music">
+  <img src="https://img.shields.io/badge/Amiga%20PreTracker%20%C2%B7%20Atari%20YM-68000%20%2B%20Paula%20%2F%20YM2149%20emulation-9b59b6" alt="Amiga PreTracker and Atari YM via 68000 + Paula / YM2149 emulation">
 </p>
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.61.6/FXChainPlayer-Setup-0.61.6.exe"><strong>⬇ Download FXChainPlayer-Setup-0.61.6.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.62.4/FXChainPlayer-Setup-0.62.4.exe"><strong>⬇ Download FXChainPlayer-Setup-0.62.4.exe</strong></a></p>
 
 
 <p align="center">
@@ -79,11 +80,15 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 - **SAP** — Atari 8-bit
 - **GYM** — Sega Genesis / Mega Drive
 
-### Atari ST native (`.sndh` / `.snd`)
+### Atari ST & YM2149 chiptunes (`.sndh` / `.snd` / `.ym`)
 
-Native YM2149 chip emulation with full 68k support (Timer-C, DigiDrum, STE DMA samples) — Atari ST and STE chiptunes (**SNDH** / **SND**) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
+Native **YM2149** sound-chip emulation with full **Motorola 68000** support (Timer-C, DigiDrum, STE DMA samples) — Atari ST and STE chiptunes (**SNDH** / **SND**) and standalone **YM** register-dump tunes (**`.ym`**, including the LHA- and ICE-packed files that fill the YM and modland archives) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
 
 And then they do what no chiptune add-on does: run a 1985 Atari demo tune **through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.** A piece of demoscene history, baked through modern studio effects into a file that plays anywhere.
+
+### Amiga PreTracker (`.prt`) — demoscene tracker, played natively
+
+**PreTracker** (**`.prt`**) — the modern Amiga demoscene tracker by Pink / Abyss, heard in productions such as *Coda* and *Preschool* — plays **start to finish, out of the box, with no plugins.** A `.prt` isn't a sample file; it's an Amiga program, so FXChainPlayer **emulates the Motorola 68000 CPU and the Amiga's Paula sound chip** to reproduce it exactly the way it sounds on real Amiga hardware. Almost no player on Windows can open a `.prt` at all — here it just plays, and like every other format it runs **through your VST3 chain and exports to WAV / MP3 / FLAC.**
 
 ### PSF1 family (PlayStation OST)
 
@@ -306,6 +311,24 @@ A small badge at the top of the panel tells you which source was used. UTF-8 thr
 ### Performance
 
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v0.62.4
+
+The Amiga demoscene's modern tracker and the Atari's YM chiptunes now play **natively** — reproduced by emulating the **Motorola 68000 CPU** together with the **Amiga Paula** and **Atari YM2149** sound chips, so they sound exactly as they did on the original hardware, then run through your VST3 chain like anything else.
+
+### Amiga PreTracker (`.prt`) plays — on Windows, with no plugins
+
+**PreTracker** (`.prt`), the modern Amiga demoscene tracker (Pink / Abyss, heard in *Coda* and *Preschool*), now plays start to finish in FXChainPlayer. These are tiny Amiga programs, not audio files — FXChainPlayer emulates the **68000 CPU and the Paula sound chip** to play them note-for-note as on a real Amiga. Almost nothing on Windows can open a `.prt`; here you just drop the folder and listen — through your effect chain, and out to WAV / MP3 / FLAC.
+
+### Atari YM chiptunes (`.ym`) play
+
+Standalone **YM** tunes (`.ym` — direct YM2149 / AY register dumps, including the LHA- and ICE-packed files that fill the YM and modland archives) now play natively alongside the SNDH / SND Atari catalogue — same **68000 + YM2149** engine, same out-of-the-box, no-plugin experience.
+
+### Audition any one-shot, however short
+
+Building a drum kit? The shortest one-shots — single kicks, snares, hats, stabs of a second or less — now play in full straight from the library, whatever your output device's sample rate.
 
 ---
 
