@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.62.4/FXChainPlayer-Setup-0.62.4.exe"><img src="https://img.shields.io/badge/Download-v0.62.4-0078D6" alt="Download v0.62.4"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.3/FXChainPlayer-Setup-0.65.3.exe"><img src="https://img.shields.io/badge/Download-v0.65.3-0078D6" alt="Download v0.65.3"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -15,7 +15,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.62.4/FXChainPlayer-Setup-0.62.4.exe"><strong>⬇ Download FXChainPlayer-Setup-0.62.4.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.3/FXChainPlayer-Setup-0.65.3.exe"><strong>⬇ Download FXChainPlayer-Setup-0.65.3.exe</strong></a></p>
 
 
 <p align="center">
@@ -86,9 +86,13 @@ Native **YM2149** sound-chip emulation with full **Motorola 68000** support (Tim
 
 And then they do what no chiptune add-on does: run a 1985 Atari demo tune **through your VST3 reverb, EQ or mastering chain in real time — and export it to WAV / MP3 / FLAC.** A piece of demoscene history, baked through modern studio effects into a file that plays anywhere.
 
-### Amiga PreTracker (`.prt`) — demoscene tracker, played natively
+### Amiga PreTracker (`.prt`) — full support, including 1.5
 
-**PreTracker** (**`.prt`**) — the modern Amiga demoscene tracker by Pink / Abyss, heard in productions such as *Coda* and *Preschool* — plays **start to finish, out of the box, with no plugins.** A `.prt` isn't a sample file; it's an Amiga program, so FXChainPlayer **emulates the Motorola 68000 CPU and the Amiga's Paula sound chip** to reproduce it exactly the way it sounds on real Amiga hardware. Almost no player on Windows can open a `.prt` at all — here it just plays, and like every other format it runs **through your VST3 chain and exports to WAV / MP3 / FLAC.**
+**PreTracker** (**`.prt`**) — the modern Amiga demoscene tracker by Pink / Abyss, heard in productions such as *Coda* and *Preschool* — plays **start to finish, out of the box, with no plugins**, and every song sounds exactly the way its author wrote it. That now includes the latest **PreTracker 1.5** productions from the current demoscene. Almost no player on Windows can open a `.prt` at all — here it just plays, and like every other format it runs **through your VST3 chain and exports to WAV / MP3 / FLAC.** (PreTracker 2.0 productions distributed as Amiga executables play too — see below.)
+
+### Amiga executable music
+
+A huge amount of Amiga **demoscene and game music ships as a raw Amiga program**, not a song file — and FXChainPlayer plays these executables **directly**. This includes the many that carry **no file extension at all** (the way the Amiga filesystem stores them): just drop them in and they play. It covers native exe-tunes and **AmigaKlang** productions, plus the path by which **PreTracker 2.0** productions play, and File Info identifies them on sight.
 
 ### PSF1 family (PlayStation OST)
 
@@ -100,7 +104,7 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
 ### Demoscene + retro synths
 
-**AHX / HVL** (Hively Tracker), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — YM2612 OPN2).
+**MusicLine Editor** (`.ml`), **AHX / HVL** (Hively Tracker), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — YM2612 OPN2).
 
 ### MIDI / SoundFont
 
@@ -251,6 +255,12 @@ Low Shelf / Mid Bell / High Shelf with two draggable crossover-frequency handles
 
 Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers up to 4 channels), a live **ProTracker-style Pattern View** for `.mod` / `.xm` / `.s3m` / `.it`, and the **SID Voices** view for Commodore 64 tunes.
 
+### 🎨 Live Shader Editor
+
+Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview — press **Ctrl+Enter** and your shader recompiles and hot-swaps in a fraction of a second, no app restart. Audio reaches the shader as a texture (FFT spectrum + raw waveform), alongside built-in `iTime` / `iResolution` uniforms. Ships with a template library, and your own templates save as portable plain-text `.glsl` files you can share or keep under version control. One compile runs on every graphics backend (D3D11 / D3D12 / Vulkan / Metal / OpenGL).
+
+![Live Shader Editor in action — GLSL fragment shader sitting next to a live audio-reactive preview, with two VST3 plug-ins in the chain and a MOD playing back](screenshots/liveshader.jpg)
+
 ### Studio Compare (A/B)
 
 Dual-decoder synchronized A/B playback — load two files and switch between them sample-accurately with a short crossfade. Compare masters, codecs, headphones, plugin chains.
@@ -314,6 +324,46 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
+## What's new in v0.65.3
+
+Everything new since v0.62.4 — a big expansion of the Amiga and demoscene catalogue, plus a sharper DJ booth, smarter tempo detection and a full metadata editor.
+
+### 🎶 Full PreTracker support — including PreTracker 1.5
+
+Every **PreTracker** (`.prt`) song now plays exactly the way its author intended — including the modern **PreTracker 1.5** productions coming out of the current Amiga demoscene. The whole PreTracker catalogue, old and new, plays in tune and on time.
+
+### 💾 Native Amiga executable music — a whole catalogue unlocked
+
+A massive amount of Amiga **demoscene and game music ships as a raw Amiga program** rather than a song file. FXChainPlayer plays them **directly** — including the many that carry **no file extension at all** (the way the Amiga filesystem stores them). Just drop them in. This also covers **AmigaKlang** productions and is the path by which **PreTracker 2.0** productions play. A piece of Amiga history that most players simply can't open now sits in your playlist like any other track.
+
+### 🎹 MusicLine, TFMX and RJP — fully supported
+
+- **MusicLine Editor** (`.ml`) — full synth playback: envelopes, arpeggio, sample loops, the lot.
+- **TFMX** (Chris Hülsbeck — *Turrican*, *Apidya*, *Monkey Island* Amiga) — accurate, full playback.
+- **RJP** (Bitmap Brothers — *Chaos Engine*, *Cannon Fodder*, *Speedball 2*, *Gods*) — plays.
+- **AHX / Hively** and **AY** (ZX Spectrum / Amstrad CPC) chiptunes.
+
+### 📼 Even more of the catalogue
+
+Packed and crunched **ProTracker variants** (the ProWizard family — The Player, Promizer, NoisePacker, ProRunner and ~40 more), Amiga **LZX archives** (`.lzx`, Aminet), more game-music containers, and broader drag-and-drop so library-playable files are never turned away at the door.
+
+### 🎛️ A sharper DJ booth
+
+- **Pro beat-grid** on the deck waveform — beat ticks top and bottom, red markers on every downbeat, so beat-matching by eye is instant.
+- **Scratch that moves the waveform** — the display tracks the platter: backward when you pull back, frozen on a vinyl-stop, snapping back to the groove when you let go (DJ decks **and** the normal player).
+- **Fixed-size, readable console** on a 1080p screen — controls keep a legible size; tighter space steps whole rows aside instead of shrinking everything.
+- **Mix two synth/tracker tunes at once** — SID, PreTracker, MusicLine and TFMX all load onto the decks.
+
+### 🎯 Tempo you can trust
+
+A **third independent beat detector** now cross-checks every track against the other two. When all three agree, the tempo badge locks in solid — and the whole "another tool says 140, this says 70/280" class of octave mistakes is dramatically reduced. Your library re-analyses itself automatically.
+
+### 🏷️ A full metadata editor
+
+The in-app tag editor grew into a complete metadata editor: Album Artist, Composer, Lyricist, Conductor, Arranger, Label, Copyright, URL, Compilation, track and disc as *n/m*, a **0–5 star rating**, and **embedded cover art** you can preview, change or remove. Plus a sortable **Genre column** in the expanded playlist and a **manual BPM** field.
+
+---
+
 ## What's new in v0.62.4
 
 The Amiga demoscene's modern tracker and the Atari's YM chiptunes now play **natively** — reproduced by emulating the **Motorola 68000 CPU** together with the **Amiga Paula** and **Atari YM2149** sound chips, so they sound exactly as they did on the original hardware, then run through your VST3 chain like anything else.
@@ -373,8 +423,6 @@ Headline features since the last public release: a way to write your own visuali
 ### 🎨 Live Shader Editor
 
 Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview. Press **Ctrl+Enter** (or the ▶ button) and your shader recompiles and hot-swaps in 50–200 ms — no app restart, no external tooling.
-
-![Live Shader Editor in action — GLSL fragment shader sitting next to a live audio-reactive preview, with two VST3 plug-ins in the chain and a MOD playing back](screenshots/liveshader.jpg)
 
 - **Three overlay states:** hidden (just the visualisation), peek (semi-transparent code over the effect), edit (opaque editor with a TextArea that takes focus).
 - **Audio inputs as a texture:** `iChannel0` carries a 512×2 texture — FFT at `y = 0.25`, raw waveform at `y = 0.75`. Sample with `texture(iChannel0, vec2(x, 0.25)).x` for spectrum, `vec2(x, 0.75)` for wave.
