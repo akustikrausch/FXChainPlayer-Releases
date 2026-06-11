@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.3/FXChainPlayer-Setup-0.65.3.exe"><img src="https://img.shields.io/badge/Download-v0.65.3-0078D6" alt="Download v0.65.3"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.4/FXChainPlayer-Setup-0.65.4.exe"><img src="https://img.shields.io/badge/Download-v0.65.4-0078D6" alt="Download v0.65.4"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -15,7 +15,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.3/FXChainPlayer-Setup-0.65.3.exe"><strong>⬇ Download FXChainPlayer-Setup-0.65.3.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.4/FXChainPlayer-Setup-0.65.4.exe"><strong>⬇ Download FXChainPlayer-Setup-0.65.4.exe</strong></a></p>
 
 
 <p align="center">
@@ -324,7 +324,7 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
-## What's new in v0.65.3
+## What's new in v0.65.4
 
 Everything new since v0.62.4 — a big expansion of the Amiga and demoscene catalogue, plus a sharper DJ booth, smarter tempo detection and a full metadata editor.
 
@@ -336,9 +336,9 @@ Every **PreTracker** (`.prt`) song now plays exactly the way its author intended
 
 A massive amount of Amiga **demoscene and game music ships as a raw Amiga program** rather than a song file. FXChainPlayer plays them **directly** — including the many that carry **no file extension at all** (the way the Amiga filesystem stores them). Just drop them in. This also covers **AmigaKlang** productions and is the path by which **PreTracker 2.0** productions play. A piece of Amiga history that most players simply can't open now sits in your playlist like any other track.
 
-### 🎹 MusicLine, TFMX and RJP — fully supported
+### 🎹 MusicLine Editor, TFMX and RJP — fully supported
 
-- **MusicLine Editor** (`.ml`) — full synth playback: envelopes, arpeggio, sample loops, the lot.
+- **MusicLine Editor** (`.ml`) — full synth playback: envelopes, arpeggio, sample loops, **multi-tune songbooks with every subsong selectable** from the transport bar, and the full **8-channel** productions alongside 4-, 5- and 7-channel tunes. The **entire demo catalogue published on musicline.org plays** — verified song by song.
 - **TFMX** (Chris Hülsbeck — *Turrican*, *Apidya*, *Monkey Island* Amiga) — accurate, full playback.
 - **RJP** (Bitmap Brothers — *Chaos Engine*, *Cannon Fodder*, *Speedball 2*, *Gods*) — plays.
 - **AHX / Hively** and **AY** (ZX Spectrum / Amstrad CPC) chiptunes.
@@ -352,7 +352,7 @@ Packed and crunched **ProTracker variants** (the ProWizard family — The Player
 - **Pro beat-grid** on the deck waveform — beat ticks top and bottom, red markers on every downbeat, so beat-matching by eye is instant.
 - **Scratch that moves the waveform** — the display tracks the platter: backward when you pull back, frozen on a vinyl-stop, snapping back to the groove when you let go (DJ decks **and** the normal player).
 - **Fixed-size, readable console** on a 1080p screen — controls keep a legible size; tighter space steps whole rows aside instead of shrinking everything.
-- **Mix two synth/tracker tunes at once** — SID, PreTracker, MusicLine and TFMX all load onto the decks.
+- **Mix two synth/tracker tunes at once** — SID, PreTracker, MusicLine Editor and TFMX all load onto the decks.
 
 ### 🎯 Tempo you can trust
 
