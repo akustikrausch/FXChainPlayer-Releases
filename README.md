@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.4/FXChainPlayer-Setup-0.65.4.exe"><img src="https://img.shields.io/badge/Download-v0.65.4-0078D6" alt="Download v0.65.4"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.0.0/FXChainPlayer-Setup-1.0.0.exe"><img src="https://img.shields.io/badge/Download-v1.0.0-0078D6" alt="Download v1.0.0"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -15,7 +15,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v0.65.4/FXChainPlayer-Setup-0.65.4.exe"><strong>⬇ Download FXChainPlayer-Setup-0.65.4.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.0.0/FXChainPlayer-Setup-1.0.0.exe"><strong>⬇ Download FXChainPlayer-Setup-1.0.0.exe</strong></a></p>
 
 
 <p align="center">
@@ -321,6 +321,42 @@ A small badge at the top of the panel tells you which source was used. UTF-8 thr
 ### Performance
 
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v1.0.0
+
+FXChainPlayer reaches **1.0**. Everything new since v0.65.4 — headlined by streaming your processed audio to almost any device on your network, and a real DJ headphone cue on a second output.
+
+### 📡 Stream and cast everywhere
+
+Send the player's **full output — through your VST3 effect chain** — to almost anything on your network:
+
+- **AirPlay 2** to a modern **Apple TV 4K**, a **HomePod**, or a **MacBook / iMac**. Pair once (the on-screen PIN on an Apple TV), then stream encrypted, lossless audio with seamless track changes; the device's own volume controls the player.
+- **Chromecast / Google Cast** speakers and displays, auto-discovered on your network.
+- **DLNA / UPnP** renderers — AV receivers, smart TVs, network speakers. Pick a device and the music follows, effects and all.
+
+### 🎧 A real DJ headphone cue
+
+Master mix to the speakers, **cue/PFL to your headphones on a second device** — a USB headphone DAC, a second interface, or a spare pair of outputs. Pre-listen and beat-match the next track while the room hears the master mix uninterrupted. Pick your main and cue devices in DJ settings; ASIO interfaces can route the cue to a channel pair (3/4, 5/6, 7/8).
+
+### 💿 Play and rip Audio CDs
+
+Drop in a Red-Book CD to play it, or rip it into your library — track names, album info and cover art filled in automatically from MusicBrainz.
+
+### 📤 More export formats, a smarter dialog, and stems
+
+- **AAC, AIFF, WavPack, Opus and Apple Lossless (ALAC)** join WAV, MP3, FLAC and OGG. ALAC renders to a lossless `.m4a` that plays in Apple Music, iTunes and QuickTime — and re-imports here bit-for-bit.
+- A **redesigned export dialog** with format families and a **filename-template engine**, so batch renders land with exactly the names you want.
+- **Per-voice stem export** — one WAV per voice across SID, trackers, TFMX, RJP, MusicLine, AY and more, with silent voices skipped automatically and a live preview.
+
+### 🌊 Pro waveforms and a cohesive look
+
+Loudness-coloured waveforms with a deep peak hull, a bright RMS core and a clear playhead — on the scrubber, the analyzer and both DJ decks, sharp at every zoom. The whole interface now draws from one shared style scale, with a single indigo accent used the same way everywhere.
+
+### 🎮 More formats
+
+**ZX-Spectrum AY trackers** (ProTracker 2, Sound Tracker, Sound Tracker Pro, Vortex) and **Atari-2600 `.tia`** tunes play, with a live ProTracker-style pattern view for the ZX family. **XSPF playlists** load and save alongside `.m3u`.
 
 ---
 
