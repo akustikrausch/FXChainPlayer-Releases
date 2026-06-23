@@ -3,7 +3,7 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.0.0/FXChainPlayer-Setup-1.0.0.exe"><img src="https://img.shields.io/badge/Download-v1.0.0-0078D6" alt="Download v1.0.0"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.1.0/FXChainPlayer-Setup-1.1.0.exe"><img src="https://img.shields.io/badge/Download-v1.1.0-0078D6" alt="Download v1.1.0"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -15,7 +15,7 @@
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.0.0/FXChainPlayer-Setup-1.0.0.exe"><strong>⬇ Download FXChainPlayer-Setup-1.0.0.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.1.0/FXChainPlayer-Setup-1.1.0.exe"><strong>⬇ Download FXChainPlayer-Setup-1.1.0.exe</strong></a></p>
 
 
 <p align="center">
@@ -104,7 +104,7 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
 ### Demoscene + retro synths
 
-**MusicLine Editor** (`.ml`), **AHX / HVL** (Hively Tracker), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — YM2612 OPN2).
+**MusicLine Editor** (`.ml`), **AHX / HVL / THX** (Hively Tracker, plus the Abyss THX precursor), **`.v2m`** (Farbrausch V2 — `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000 — YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS — YM2612 OPN2).
 
 ### MIDI / SoundFont
 
@@ -321,6 +321,28 @@ A small badge at the top of the panel tells you which source was used. UTF-8 thr
 ### Performance
 
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v1.1.0
+
+Building on 1.0, this release lets you shape the playlist exactly how you like it, view scene release art the way it was meant to look, and brings more music to life.
+
+### 🎚️ A playlist you can shape
+
+Configure what every column shows. Reorder, show or hide, resize and rename columns, or apply a ready preset (Default, Minimal, DJ, Technical). Text columns use a flexible title format syntax with fields like artist, album, year, BPM, key, genre and bitrate, with a live preview as you type. Click a header to sort, drag its right edge to resize, and on narrow windows the least important columns tuck into a "+N" chip.
+
+### 📄 Scene NFO viewer
+
+Right click a track from a scene release folder and read the group's `.nfo` art with crisp CP437 and ANSI rendering, SAUCE metadata, zoom and copy.
+
+### 🎵 More music plays
+
+Standalone **Opus** `.opus` files play natively now, the Amiga **Abyss THX** `.thx` synth format joins AHX and HVL, and **OctaMED** songs saved with the `.mmd0` to `.mmd3` extensions are recognized alongside `.med`.
+
+### 📥 Drop files anywhere
+
+Drag and drop audio files, folders or archives onto any part of the window. The Append, Group and Replace zones light up to guide you.
 
 ---
 
