@@ -3,19 +3,20 @@
 <p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.1.0/FXChainPlayer-Setup-1.1.0.exe"><img src="https://img.shields.io/badge/Download-v1.1.0-0078D6" alt="Download v1.1.0"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.2.17/FXChainPlayer-Setup-1.2.17.exe"><img src="https://img.shields.io/badge/Download-v1.2.17-0078D6" alt="Download v1.2.17"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/DJ%20Mode-dual--deck%20%C2%B7%20vinyl%20scratch%20%C2%B7%20sync-ff5555" alt="DJ Mode">
+  <img src="https://img.shields.io/badge/Loudness-EBU%20R128%20%C2%B7%20LUFS%20%C2%B7%20True--Peak-2ea043" alt="EBU R128 loudness metering">
   <img src="https://img.shields.io/badge/Formats-MP3%20%C2%B7%20FLAC%20%C2%B7%20DSD%20%C2%B7%20MOD%20%C2%B7%20SID%20%C2%B7%20Game%20Music-blue" alt="Format coverage: MP3, FLAC, DSD, MOD, SID, Game Music">
   <img src="https://img.shields.io/badge/Amiga%20%C2%B7%20Atari-68000%20%2B%20Paula%20%2F%20YM2149%20emulation-9b59b6" alt="Amiga and Atari via 68000 + Paula / YM2149 emulation">
 </p>
 
 <p align="center"><em>Load your favorite plugins — EQs, compressors, reverbs, spatial processors, headphone correction — directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.1.0/FXChainPlayer-Setup-1.1.0.exe"><strong>⬇ Download FXChainPlayer-Setup-1.1.0.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.2.17/FXChainPlayer-Setup-1.2.17.exe"><strong>⬇ Download FXChainPlayer-Setup-1.2.17.exe</strong></a></p>
 
 
 <p align="center">
@@ -225,7 +226,11 @@ Internal audio path is `double` end-to-end. Sample-rate conversion (when needed)
 
 A multi-source BPM aggregator ranks candidates from up to eight signals (manual tap-to-confirm, embedded MIDI/CAF tempo, tracker-engine static tempo, ID3v2/Vorbis/APEv2/MP4 tag, CUE `REM BPM`, offline beat-detector, filename regex) with octave-fold corroboration and a contradiction cap. The badge tier reflects confidence — high confidence shows the value directly, lower confidence dims to `~XXX`, and uncertain results stay hidden so you never see a guess shown as if verified. Click the BPM pill to verify by tap-along.
 
-**Key detection** runs in the background scan thread for every file. Results are persisted so they do not need to be recomputed. Every analysed file gets a Camelot wheel chip in the deck header AND in the playlist's Key column.
+**Key detection** runs in the background scan thread for every file. It is tuning-compensated and segment-voted, so an off-A440 rip or a track that modulates still resolves cleanly, in line with professional DJ software. Results are persisted so they do not need to be recomputed. Every analysed file gets a Camelot wheel chip in the deck header AND in the playlist's Key column.
+
+### Studio loudness & quality metering
+
+A live **EBU R128 / ITU-R BS.1770** loudness meter, one click from the status bar: Momentary and Short-term bars, the **Integrated LUFS** headline with streaming (−14) and broadcast (−23) targets, **loudness range (LRA)**, and a **True-Peak** readout that flags anything above −1 dBTP. It measures only while open, so it costs nothing when closed. In *File Info*, **Analyze** gives a per-track quality report: the **DR** dynamic-range value plus a spectrum check that warns when a file looks like a lossy transcode dressed up as lossless. Standards-verified against the EBU Tech 3341/3342 test vectors.
 
 ### MIDI controller input
 
@@ -275,7 +280,7 @@ Next track is pre-loaded and swapped in sample-accurately across formats that al
 
 ### Integrated file browser & smart-scan
 
-Point it at your music library. Background cache for VBR durations, bitrates, cover art, **BPM, Key, Camelot**. Instant playlist building. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab.
+Point it at your music library — a local folder **or a NAS / network share** by UNC path (`\\server\share`) or a mapped drive, pinned in the browser with its own server icon. Background cache for VBR durations, bitrates, cover art, **BPM, Key, Camelot**, and (when a track has no embedded art) a `cover.jpg` / `folder.jpg` / `front.*` from the album folder. Scanning runs in the background so even a huge share never freezes the player, and an offline share no longer hangs startup. Instant playlist building. Breadcrumb navigation, library roots, "Play / Add All" context actions, Favorites tab.
 
 ### Export through your VST3 chain
 
@@ -289,6 +294,8 @@ Output formats:
 - **OGG Vorbis** — q3 / q5 / q7 (≈ 112 / 160 / 224 kbps VBR)
 
 Multi-tune containers (NSF / NSFE / SAP, multi-tune SIDs from HVSC, multi-subsong game-OST archives) can optionally expand into one file per subsong via the **Export all subsongs** checkbox. **Multi-selection** support — Shift-click a range, Ctrl-click individual rows, then export only the selected subset. **Per-row subsong picker** for choosing exactly which tune from a multi-tune file. **4-mode FX-chain selector** — Master / Per-channel / Both (cascade) / None.
+
+**Turn a C64 SID into an editable tracker project.** Pick the *Tracker* format family and rip a Commodore-64 SID tune into a **GoatTracker 2** `.sng`, a **SID-Wizard** `.swm`, a **MIDI** transcription, or per-instrument files. The MIDI transcription is musical, not a note-per-frame dump: notes come from the real gate edges, vibrato and slides become pitch-bend, arpeggios fold back into chords, noise hits go to drums, and the true tempo is detected. FXChainPlayer also plays GoatTracker `.sng` tunes directly and recognises SID-Wizard `.swm`.
 
 Export is included in every build — no separate "Pro" tier.
 
@@ -321,6 +328,40 @@ A small badge at the top of the panel tells you which source was used. UTF-8 thr
 ### Performance
 
 Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle RAM ~50 MB, cold startup under 2 s on typical hardware.
+
+---
+
+## What's new in v1.2
+
+A big update on top of 1.1: studio-grade loudness and quality metering, a way to turn C64 SID tunes into editable tracker projects, MIDI mapping for any controller, DJ headphone cueing on a second device, NAS libraries, and five new languages.
+
+### 🎚️ Studio loudness & quality metering
+
+A live **EBU R128 / ITU-R BS.1770** meter — Momentary / Short-term / Integrated **LUFS**, loudness range, and a **True-Peak** readout with a −1 dBTP over-flag — one click from the status bar. In *File Info*, **Analyze** reports a track's **DR** dynamic range and warns when a file looks like a lossy transcode in disguise. **Key and BPM detection are more accurate** too — tuning-compensated, segment-voted key detection and a refined beat grid, in line with pro DJ software.
+
+### 🎹 Turn a C64 SID into music you can edit
+
+Rip a Commodore-64 SID into an editable project: a **GoatTracker 2** `.sng`, a **SID-Wizard** `.swm`, a musical **MIDI** transcription, or per-instrument files. FXChainPlayer now plays GoatTracker `.sng` directly and recognises SID-Wizard `.swm`. A new opt-in **SID chip inspector** shows the C64 sound chip live — register table, per-voice activity, voice-routing timeline, a patch card on hover, and a patch library that spots the same sound across different tunes.
+
+### 🎛️ Map any MIDI controller
+
+**MIDI Learn** that actually learns: switch it on (`Ctrl+Shift+M`), pick an action from a searchable list, move a knob or pad — bound. Save your setup as a **named profile** and recall it in one click; a recognised controller offers a matching profile automatically, and your mappings survive a restart. Jog wheels, endless encoders, control inversion and **soft-takeover** are all supported, and the panel shows the incoming MIDI message live while you learn.
+
+### 🎧 DJ headphone cueing on a second device
+
+Send the master to your speakers and the cue (pre-listen) bus to a second device — a USB headphone for cueing — and press the headphone button on a deck to pre-listen just that deck while the room keeps hearing the mix. A central **CUE MIX** knob blends to taste, and a **cue buffering** control trades added latency against glitch-safety.
+
+### 🌐 Your music, wherever it lives
+
+**Network drive (NAS) support** — point straight at a library on a share by UNC path or mapped drive, scanned in the background. **Folder cover art** fills in a missing embedded cover from the album folder, and an opt-in lookup can **fetch a missing cover or lyrics online**.
+
+### 🎵 Compare, navigate & tag
+
+**Instant A/B comparison** — drop a second track onto the **Set as B** zone to line it up against what's playing, with a proper **ABX blind test**. **`name?<n>` sub-song selection** in the filename, **Tap BPM** in the playlist menu, the vinyl-scratch toggle next to the loop button, a **settings search** that finds any setting across every tab, **adjustable waveform colours**, a **richer tag editor** (cover, online metadata, musical Key field), and a right-click **Convert to format** entry in Explorer.
+
+### 🌍 Five new languages
+
+Spanish, French, Italian, Polish and Japanese join German and English. Pick your language in Settings; English stays the default.
 
 ---
 
