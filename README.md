@@ -36,7 +36,7 @@
 
 ---
 
-## Why VST3 in an audio player?
+## Why VST3 and Audio Unit effects in an audio player?
 
 More reasons than you would expect.
 
@@ -66,9 +66,6 @@ The complete player now runs natively on Apple Silicon Macs (macOS 14 or newer).
 - **CoreAudio output**: Shared mode by default, Exclusive (hog) mode for the bit-perfect path, mirroring WASAPI Shared and Exclusive on Windows.
 - **Native Apple decoders**: AAC, ALAC and Apple CAF Loops decode through AudioToolbox, and MIDI files play through the built-in Apple synth with no SoundFont needed.
 - **A good Mac citizen**: media keys and Now Playing integration, a Dock menu with transport controls, Finder "Open With" for every supported format, and audio CD playback through the macOS mount.
-- **Signed and notarized**: the macOS installer is a native .pkg wizard, Developer ID signed, notarized and stapled by Apple, so Gatekeeper opens it without warnings.
-
-Windows and macOS share one codebase and one release line, so features land on both platforms.
 
 ---
 
