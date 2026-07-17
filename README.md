@@ -1,11 +1,13 @@
 <h1 align="center">FXChainPlayer</h1>
 
-<p align="center"><strong>A Windows desktop audio player that plays nearly every audio format, with a full VST3 effect chain built into the playback engine and a complete dual deck DJ Mode.</strong></p>
+<p align="center"><strong>A desktop audio player for Windows and macOS that plays nearly every audio format, with a full real-time effect chain built into the playback engine (VST3 on Windows, VST3 and Audio Units on macOS) and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><img src="https://img.shields.io/badge/Download-v1.3.6-0078D6" alt="Download v1.3.6"></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6" alt="Windows 10/11">
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><img src="https://img.shields.io/badge/Windows-v1.3.6-0078D6" alt="Download for Windows v1.3.6"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.10/FXChainPlayer-1.3.10-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.3.10-111111?logo=apple&logoColor=white" alt="Download for macOS v1.3.10"></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2014%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 14+ (Apple Silicon)">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
+  <img src="https://img.shields.io/badge/macOS-Audio%20Units%20(AUv2%2Fv3)%20%2B%20VST3-111111" alt="macOS: Audio Units (AUv2/v3) + VST3">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
   <img src="https://img.shields.io/badge/ASIO%202.3-Steinberg%20licensed-orange" alt="ASIO 2.3">
   <img src="https://img.shields.io/badge/DJ%20Mode-dual--deck%20%C2%B7%20vinyl%20scratch%20%C2%B7%20sync-ff5555" alt="DJ Mode">
@@ -16,7 +18,8 @@
 
 <p align="center"><em>Load your favorite plugins, EQs, compressors, reverbs, spatial processors, headphone correction, directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><strong>⬇ Download FXChainPlayer-Setup-1.3.6.exe</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><strong>⬇ Windows: FXChainPlayer-Setup-1.3.6.exe</strong></a><br>
+<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.10/FXChainPlayer-1.3.10-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.3.10-macos.pkg</strong></a></p>
 
 
 <p align="center">
@@ -50,6 +53,22 @@ More reasons than you would expect.
 - **💾 Bake the effect chain into a file**: render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#export-through-your-vst3-chain).
 
 Up to **16 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
+
+On macOS the same chain also hosts **Audio Units** (AUv2 and AUv3) alongside VST3, so the effect plugins you already use in Logic Pro or GarageBand load right in.
+
+---
+
+## FXChainPlayer on macOS
+
+The complete player now runs natively on Apple Silicon Macs (macOS 14 or newer). Same engine, same features, same design as the Windows version, plus the pieces a Mac player should have:
+
+- **Audio Units and VST3 side by side**: the effect chain hosts AUv2 and AUv3 effects in addition to VST3, in the same browser, the same slots, and the same per-channel chains. Your Logic Pro and GarageBand plugins just work, each opening its own native editor window.
+- **CoreAudio output**: Shared mode by default, Exclusive (hog) mode for the bit-perfect path, mirroring WASAPI Shared and Exclusive on Windows.
+- **Native Apple decoders**: AAC, ALAC and Apple CAF Loops decode through AudioToolbox, and MIDI files play through the built-in Apple synth with no SoundFont needed.
+- **A good Mac citizen**: media keys and Now Playing integration, a Dock menu with transport controls, Finder "Open With" for every supported format, and audio CD playback through the macOS mount.
+- **Signed and notarized**: the macOS installer is a native .pkg wizard, Developer ID signed, notarized and stapled by Apple, so Gatekeeper opens it without warnings.
+
+Windows and macOS share one codebase and one release line, so features land on both platforms.
 
 ---
 
@@ -181,7 +200,9 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 
 **WASAPI** Shared and Exclusive modes are the default Audio Mode. The player picks the device's native sample rate, no system-wide resampling. **WASAPI Exclusive** bypasses the Windows audio engine for the bit-for-bit path; works on any USB DAC, built-in sound, or HDMI output, no ASIO driver required.
 
-**ASIO 2.3** is also supported (Steinberg-licensed) for users with a compliant audio interface. Pick **ASIO** in *Settings → Audio → Audio Mode*. Round-trip latency depends on your audio interface and the buffer size the driver supports, see *Settings → Audio → Latency* for the driver's live in/out frame counts and total ms.
+**On macOS** the same Audio Mode picker drives **CoreAudio**: Shared mode by default, and Exclusive mode takes the device over (hog mode) for the bit-perfect, lowest-latency path.
+
+**ASIO 2.3** is also supported on Windows (Steinberg-licensed) for users with a compliant audio interface. Pick **ASIO** in *Settings → Audio → Audio Mode*. Round-trip latency depends on your audio interface and the buffer size the driver supports, see *Settings → Audio → Latency* for the driver's live in/out frame counts and total ms.
 
 - **Output Pair routing** for multi-output interfaces, route the player's stereo to any pair (1-2, 3-4, …) up to the driver's reported total. Persisted across sessions.
 - **Configure Driver button** opens the driver's hardware panel directly (e.g. RME TotalMix, MOTU CueMix, Apollo Console, ASIO4ALL settings).
@@ -305,7 +326,9 @@ Plugin process calls are wrapped to contain crashes, with automatic crash journa
 
 ### Code-signed installer + DLLs
 
-Every release is signed via Azure Trusted Signing, both the installer AND every shipped DLL (Qt, audio decoders, codec libraries, …) carry a counter-signature. Windows SmartScreen reputation builds quickly, and enterprise WDAC + AppLocker DLL rules allow the player without exception.
+Every Windows release is signed via Azure Trusted Signing, both the installer AND every shipped DLL (Qt, audio decoders, codec libraries, …) carry a counter-signature. Windows SmartScreen reputation builds quickly, and enterprise WDAC + AppLocker DLL rules allow the player without exception.
+
+On macOS every release ships as a Developer ID signed, Apple-notarized and stapled .pkg, with every embedded framework and helper signed under the Hardened Runtime.
 
 ### Full keyboard accessibility
 
