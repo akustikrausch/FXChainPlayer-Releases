@@ -4,8 +4,8 @@
 
 <p align="center">
   <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><img src="https://img.shields.io/badge/Windows-v1.3.6-0078D6" alt="Download for Windows v1.3.6"></a>
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.10/FXChainPlayer-1.3.10-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.3.10-111111?logo=apple&logoColor=white" alt="Download for macOS v1.3.10"></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2014%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 14+ (Apple Silicon)">
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.11/FXChainPlayer-1.3.11-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.3.11-111111?logo=apple&logoColor=white" alt="Download for macOS v1.3.11"></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2026%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 26+ (Apple Silicon)">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/macOS-Audio%20Units%20(AUv2%2Fv3)%20%2B%20VST3-111111" alt="macOS: Audio Units (AUv2/v3) + VST3">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -19,7 +19,7 @@
 <p align="center"><em>Load your favorite plugins, EQs, compressors, reverbs, spatial processors, headphone correction, directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
 <p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><strong>⬇ Windows: FXChainPlayer-Setup-1.3.6.exe</strong></a><br>
-<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.10/FXChainPlayer-1.3.10-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.3.10-macos.pkg</strong></a></p>
+<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.11/FXChainPlayer-1.3.11-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.3.11-macos.pkg</strong></a></p>
 
 
 <p align="center">
@@ -60,7 +60,7 @@ On macOS the same chain also hosts **Audio Units** (AUv2 and AUv3) alongside VST
 
 ## FXChainPlayer on macOS
 
-The complete player now runs natively on Apple Silicon Macs (macOS 14 or newer). Same engine, same features, same design as the Windows version, plus the pieces a Mac player should have:
+The complete player now runs natively on Apple Silicon Macs (macOS 26 or newer). Same engine, same features, same design as the Windows version, plus the pieces a Mac player should have:
 
 - **Audio Units and VST3 side by side**: the effect chain hosts AUv2 and AUv3 effects in addition to VST3, in the same browser, the same slots, and the same per-channel chains. Your Logic Pro and GarageBand plugins just work, each opening its own native editor window.
 - **CoreAudio output**: Shared mode by default, Exclusive (hog) mode for the bit-perfect path, mirroring WASAPI Shared and Exclusive on Windows.
