@@ -3,8 +3,8 @@
 <p align="center"><strong>A desktop audio player for Windows and macOS that plays nearly every audio format, with a full real-time effect chain built into the playback engine (VST3 on Windows, VST3 and Audio Units on macOS) and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><img src="https://img.shields.io/badge/Windows-v1.3.6-0078D6" alt="Download for Windows v1.3.6"></a>
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.11/FXChainPlayer-1.3.11-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.3.11-111111?logo=apple&logoColor=white" alt="Download for macOS v1.3.11"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-Setup-1.4.2.exe"><img src="https://img.shields.io/badge/Windows-v1.4.2-0078D6" alt="Download for Windows v1.4.2"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-1.4.2-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.4.2-111111?logo=apple&logoColor=white" alt="Download for macOS v1.4.2"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2026%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 26+ (Apple Silicon)">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/macOS-Audio%20Units%20(AUv2%2Fv3)%20%2B%20VST3-111111" alt="macOS: Audio Units (AUv2/v3) + VST3">
@@ -18,8 +18,8 @@
 
 <p align="center"><em>Load your favorite plugins, EQs, compressors, reverbs, spatial processors, headphone correction, directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.6/FXChainPlayer-Setup-1.3.6.exe"><strong>⬇ Windows: FXChainPlayer-Setup-1.3.6.exe</strong></a><br>
-<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.3.11/FXChainPlayer-1.3.11-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.3.11-macos.pkg</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-Setup-1.4.2.exe"><strong>⬇ Windows: FXChainPlayer-Setup-1.4.2.exe</strong></a><br>
+<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-1.4.2-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.4.2-macos.pkg</strong></a></p>
 
 
 <p align="center">
@@ -115,7 +115,7 @@ A huge amount of Amiga **demoscene and game music ships as a raw Amiga program**
 
 PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
-### Amiga composer-named players (12 formats)
+### Amiga composer-named players
 
 **Hippel COSO** (`.hip` `.coso`), **Hippel-7V**, **Ben Daglish** (Last Ninja / Trap / Deflektor / Speedball), **David Whittaker** (Speedball / Lazy Jones / Glider Rider), **Fred Editor** (Frank Bros), **Ron Klaren / SoundFX-RK**, **Symphonie Pro 32-voice**, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **Mark II**, **Audio Sculpture**, **Digital Mugician 7-voice** (Pete Cooke). Plus **AMOS Music Bank** (every AMOS BASIC game 1990-95), **DeltaMusic 1+2**, **Art Of Noise**, **JamCracker**, **SoundFX v1+v2** (Saint Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sidmon 1+2** (Tim Wright / Jeroen Tel), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **MaxTrax** (LucasArts Indy/Monkey-Island), **TFMX** (Hülsbeck, Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers, Chaos Engine / Cannon Fodder / Speedball 2 / Gods).
 
@@ -138,14 +138,14 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
 ### DOS Adlib
 
-`.imf` / `.hsc` / `.rad` / `.d00` / `.dro` / `.rix` / `.rol` / `.mus` and ~50 more DOS / Sound Blaster / Adlib / OPL2/3 formats.
+`.imf` / `.hsc` / `.rad` / `.d00` / `.dro` / `.rix` / `.rol` / `.mus` and a broad catalogue of DOS / Sound Blaster / Adlib / OPL2/3 formats.
 
 ### Apple CAF + Sample-pack formats
 
 **Apple CAF** dedicated decoder (PCM 8/16/24/32-bit BE/LE int/float, IMA4, AAC + ALAC, FLAC). Surfaces Logic-Pro Apple-Loops BPM tags.
 **REX / RX2 / RCY** sliced-loop sample-pack format (requires user-side Reason Studios REX SDK).
 
-### Game music & sample-pack (~700 formats)
+### Game music and sample packs
 
 - **Apple `.caf`**: Logic Pro / GarageBand **Apple Loops** library
 - **Nintendo**: BRSTM · BCSTM · BFSTM · BFWAV · DSP-ADPCM family · NUS3AUDIO · Switch Opus
@@ -351,6 +351,100 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
+## What's new in v1.4.2
+
+A big update on top of v1.3.6. Everything below is new since then.
+
+### ✂️ A wave editor, built in
+
+Trim, cut and save audio without leaving the player and without installing
+anything else.
+
+- **Open any track in the editor.** Right-click a playlist entry and choose
+  the editor, or drag a region straight out of the big waveform while holding
+  Alt. There is also a button in the expanded waveform's control column that
+  opens the whole track at once.
+- **Click anywhere to audition from there.** Set the play cursor with a click
+  and the preview starts at that spot instead of jumping back to the
+  beginning every time. Select a region and the preview plays exactly that.
+- **Save in any format the player exports.** WAV, MP3, FLAC, OGG, AAC, AIFF,
+  WavPack, Opus and Apple Lossless, with a switch to bake your VST3 effect
+  chain into the saved file.
+- **Step through subsongs.** Files that hold several tunes (SID, NSF, TFMX,
+  game-music containers) let you pick which one you are editing.
+- **A live playhead** that tracks the preview, and a resume that continues
+  where you paused instead of starting over.
+
+### ⏺️ Record what your computer is playing
+
+- **System audio recording.** Capture whatever is coming out of your speakers
+  into a file, straight from the player.
+- **Pause and resume a running recording.** A paused recording costs no CPU
+  and leaves no gap in the file: the paused time is simply never recorded.
+- **Listen back before you commit.** Preview the take right in the recorder,
+  then send it to the Wave Editor, add it to the playlist, save it or discard
+  it.
+- **Trim silence automatically.** Start on the first sound, and stop by itself
+  after a stretch of silence, both clearly labelled and optional.
+
+### 🎵 Real length and real waveforms for chiptunes
+
+Formats like Commodore 64 SID tunes and many Amiga and tracker replayers carry
+no length at all: the music is a program, not a recording. Until now that meant
+a placeholder time and no waveform.
+
+- **The player measures them.** In the background, faster than real time, it
+  renders the tune to find out how long it actually is and what it looks like,
+  then shows the real duration and the full waveform.
+- **The live view stretches into the finished waveform** with a smooth pull
+  back over the whole tune, instead of cutting abruptly.
+- **You can click into the waveform to seek**, even on replayers that
+  fundamentally cannot seek.
+- **Subsong changes re-measure.** Switch to another tune inside the file and it
+  measures that one too.
+- **Repeat plays are instant.** A measured tune is remembered, so playing it
+  again or switching back to a subsong does not measure it a second time.
+
+### 🎛️ Interface polish
+
+- **A rotating tip card** in the empty player and in the waveform strip,
+  surfacing features that are easy to miss, each one clickable straight to the
+  matching help page.
+- **A close button in the panel headers** for the Analyzer and the FX Chain,
+  so you are not left hunting for how to shut a panel again.
+- **A cleaner overflow menu** in the status bar: shortcuts sit in their own
+  column instead of running into the labels, and entries are grouped.
+- **The waveform expand handle can move** into the toolbar under the waveform
+  if you prefer it there.
+- **The LIM indicator opens the limiter settings** directly instead of
+  wherever the settings were last left.
+- **An optional clock** in the status bar.
+- **The window title keeps the app name** and adds the playing track behind
+  it, instead of replacing it.
+- **Tag lookup works on untagged files.** "Search online" in the tag editor
+  used to need a title or artist before it would look anything up. It now
+  falls back to the filename, which is the whole point on a file that has no
+  tags yet, and it tells you when a lookup failed instead of claiming there
+  was no match.
+- **Privacy Policy and Imprint links** in the About panel.
+- Panels, dialogs and the recorder lay out correctly at 1080p and at high
+  display scaling, where some controls used to overlap or spill past an edge.
+- Faders respond to the left mouse button everywhere, and a right-click resets
+  a fader to its centre.
+
+### 📻 More music, out of the box
+
+- **Demoscene radio stations included.** SceneSat, SLAY Radio (Commodore 64
+  SID remixes) and VGM Radio (game music) are preset, and the Nectarine stream
+  points at a relay that actually stays up.
+
+### 🖥️ macOS
+
+FXChainPlayer runs on Apple Silicon Macs with Audio Unit plugin hosting
+alongside VST3, CoreAudio output and a native installer.
+
+---
+
 ## What's new in v1.3.6
 
 A big update on top of 1.2: DJ Mode's sync and loop engine rebuilt from the ground up, one unified Pattern view across every tracker and chip format, deeper Commodore 64 SID support, and a brand new playable format.
@@ -504,7 +598,7 @@ A massive amount of Amiga **demoscene and game music ships as a raw Amiga progra
 
 ### 📼 Even more of the catalogue
 
-Packed and crunched **ProTracker variants** (the ProWizard family, The Player, Promizer, NoisePacker, ProRunner and ~40 more), Amiga **LZX archives** (`.lzx`, Aminet), more game-music containers, and broader drag-and-drop so library-playable files are never turned away at the door.
+Packed and crunched **ProTracker variants** (the ProWizard family, The Player, Promizer, NoisePacker, ProRunner and many more), Amiga **LZX archives** (`.lzx`, Aminet), more game-music containers, and broader drag-and-drop so library-playable files are never turned away at the door.
 
 ### 🎛️ A sharper DJ booth
 
@@ -631,7 +725,7 @@ Settings tabs are now sorted by frequency-of-use: Audio · Playback · Display (
 
 ## What was new in v0.55.2
 
-Nine major game-music codec families became playable out of the box.
+Major game-music codec families became playable out of the box.
 
 - **Sony ATRAC3, ATRAC3plus, ATRAC9**: PSP / PS3 / PS4 / Vita game soundtracks (`.at3`, `.at9`, `.aa3`).
 - **Microsoft XMA1 and XMA2**: Xbox 360 and Xbox One game soundtracks (`.xma`, `.xma2`).
