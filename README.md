@@ -352,6 +352,30 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
+## Edit, record and compare, inside the player
+
+**A wave editor, built in.** Trim, cut and save audio without leaving the player and without installing anything else. Right-click a playlist entry to open it, or drag a region straight out of the big waveform while holding Alt. Click anywhere to audition from that spot, select a region and the preview plays exactly that, and save in any format the player exports, with a switch that bakes your effect chain into the saved file. Files that hold several tunes let you pick which one you are editing.
+
+**Record what your computer is playing.** Capture whatever is coming out of your speakers into a file, straight from the player. Pause and resume without leaving a gap, listen back before you commit, then send the take to the wave editor or straight to the playlist. Optional silence trimming starts on the first sound and stops by itself.
+
+**A/B and a real blind test.** Drop a second track onto the Set as B zone to line it up against what is playing, switch instantly, and when you want to know whether you can actually hear the difference, run the ABX blind test and let the statistics answer.
+
+**Turn a C64 SID into an editable project.** Export a SID as a GoatTracker `.sng`, a SID-Wizard `.swm`, or a musical MIDI transcription. An opt-in SID chip inspector shows the C64 sound chip live: register table, per-voice activity, voice-routing timeline and a patch card on hover.
+
+---
+
+## Radio, languages and the small things
+
+**Demoscene radio, preset.** SceneSat, SLAY Radio (Commodore 64 SID remixes) and VGM Radio (game music) are built in, and the Nectarine stream points at a relay that actually stays up. Internet radio runs through your effect chain like everything else, so a badly mastered stream can be fixed while you listen.
+
+**Seven languages.** English, German, Spanish, French, Italian, Polish and Japanese. A fresh install picks your system language automatically when it is one of them.
+
+**Configurable playlist columns.** Choose which columns the expanded playlist shows, including play count and a five-star rating, with the data kept locally on your machine.
+
+**Right-click Convert to format in Explorer**, a settings search that finds any option across every tab, ReplayGain scanning, and an interface that scales cleanly from a 1080p laptop to a native 4K monitor.
+
+---
+
 ## What's new in v1.4.2
 
 A big update on top of v1.3.6. Everything below is new since then.
@@ -483,308 +507,6 @@ Old-school Japanese feature-phone ringtones (`.mmf`, Yamaha MA-3 / MA-5 sound ch
 ### 🌍 Setup
 
 - **Language auto-detect.** A fresh install now picks your Windows display language automatically if it's one of the app's supported languages, falling back to English otherwise, instead of always starting in English.
-
----
-
-## What's new in v1.2
-
-A big update on top of 1.1: studio-grade loudness and quality metering, a way to turn C64 SID tunes into editable tracker projects, MIDI mapping for any controller, DJ headphone cueing on a second device, NAS libraries, and five new languages.
-
-### 🎚️ Studio loudness & quality metering
-
-A live **EBU R128 / ITU-R BS.1770** meter: Momentary / Short-term / Integrated **LUFS**, loudness range, and a **True-Peak** readout with a −1 dBTP over-flag, one click from the status bar. In *File Info*, **Analyze** reports a track's **DR** dynamic range and warns when a file looks like a lossy transcode in disguise. **Key and BPM detection are more accurate** too: tuning-compensated, segment-voted key detection and a refined beat grid, in line with pro DJ software.
-
-### 🎹 Turn a C64 SID into music you can edit
-
-Rip a Commodore-64 SID into an editable project: a **GoatTracker 2** `.sng`, a **SID-Wizard** `.swm`, a musical **MIDI** transcription, or per-instrument files. FXChainPlayer now plays GoatTracker `.sng` directly and recognises SID-Wizard `.swm`. A new opt-in **SID chip inspector** shows the C64 sound chip live, register table, per-voice activity, voice-routing timeline, a patch card on hover, and a patch library that spots the same sound across different tunes.
-
-### 🎛️ Map any MIDI controller
-
-**MIDI Learn** that actually learns: switch it on (`Ctrl+Shift+M`), pick an action from a searchable list, move a knob or pad, bound. Save your setup as a **named profile** and recall it in one click; a recognised controller offers a matching profile automatically, and your mappings survive a restart. Jog wheels, endless encoders, control inversion and **soft-takeover** are all supported, and the panel shows the incoming MIDI message live while you learn.
-
-### 🎧 DJ headphone cueing on a second device
-
-Send the master to your speakers and the cue (pre-listen) bus to a second device, a USB headphone for cueing, and press the headphone button on a deck to pre-listen just that deck while the room keeps hearing the mix. A central **CUE MIX** knob blends to taste, and a **cue buffering** control trades added latency against glitch-safety.
-
-### 🌐 Your music, wherever it lives
-
-**Network drive (NAS) support**: point straight at a library on a share by UNC path or mapped drive, scanned in the background. **Folder cover art** fills in a missing embedded cover from the album folder, and an opt-in lookup can **fetch a missing cover or lyrics online**.
-
-### 🎵 Compare, navigate & tag
-
-**Instant A/B comparison**: drop a second track onto the **Set as B** zone to line it up against what's playing, with a proper **ABX blind test**. **`name?<n>` sub-song selection** in the filename, **Tap BPM** in the playlist menu, the vinyl-scratch toggle next to the loop button, a **settings search** that finds any setting across every tab, **adjustable waveform colours**, a **richer tag editor** (cover, online metadata, musical Key field), and a right-click **Convert to format** entry in Explorer.
-
-### 🌍 Five new languages
-
-Spanish, French, Italian, Polish and Japanese join German and English. Pick your language in Settings; English stays the default.
-
----
-
-## What's new in v1.1.0
-
-Building on 1.0, this release lets you shape the playlist exactly how you like it, view scene release art the way it was meant to look, and brings more music to life.
-
-### 🎚️ A playlist you can shape
-
-Configure what every column shows. Reorder, show or hide, resize and rename columns, or apply a ready preset (Default, Minimal, DJ, Technical). Text columns use a flexible title format syntax with fields like artist, album, year, BPM, key, genre and bitrate, with a live preview as you type. Click a header to sort, drag its right edge to resize, and on narrow windows the least important columns tuck into a "+N" chip.
-
-### 📄 Scene NFO viewer
-
-Right click a track from a scene release folder and read the group's `.nfo` art with crisp CP437 and ANSI rendering, SAUCE metadata, zoom and copy.
-
-### 🎵 More music plays
-
-Standalone **Opus** `.opus` files play natively now, the Amiga **Abyss THX** `.thx` synth format joins AHX and HVL, and **OctaMED** songs saved with the `.mmd0` to `.mmd3` extensions are recognized alongside `.med`.
-
-### 📥 Drop files anywhere
-
-Drag and drop audio files, folders or archives onto any part of the window. The Append, Group and Replace zones light up to guide you.
-
----
-
-## What's new in v1.0.0
-
-FXChainPlayer reaches **1.0**. Everything new since v0.65.4, headlined by streaming your processed audio to almost any device on your network, and a real DJ headphone cue on a second output.
-
-### 📡 Stream and cast everywhere
-
-Send the player's **full output, through your VST3 effect chain**: to almost anything on your network:
-
-- **AirPlay 2** to a modern **Apple TV 4K**, a **HomePod**, or a **MacBook / iMac**. Pair once (the on-screen PIN on an Apple TV), then stream encrypted, lossless audio with seamless track changes; the device's own volume controls the player.
-- **Chromecast / Google Cast** speakers and displays, auto-discovered on your network.
-- **DLNA / UPnP** renderers, AV receivers, smart TVs, network speakers. Pick a device and the music follows, effects and all.
-
-### 🎧 A real DJ headphone cue
-
-Master mix to the speakers, **cue/PFL to your headphones on a second device**: a USB headphone DAC, a second interface, or a spare pair of outputs. Pre-listen and beat-match the next track while the room hears the master mix uninterrupted. Pick your main and cue devices in DJ settings; ASIO interfaces can route the cue to a channel pair (3/4, 5/6, 7/8).
-
-### 💿 Play and rip Audio CDs
-
-Drop in a Red-Book CD to play it, or rip it into your library, track names, album info and cover art filled in automatically from MusicBrainz.
-
-### 📤 More export formats, a smarter dialog, and stems
-
-- **AAC, AIFF, WavPack, Opus and Apple Lossless (ALAC)** join WAV, MP3, FLAC and OGG. ALAC renders to a lossless `.m4a` that plays in Apple Music, iTunes and QuickTime, and re-imports here bit-for-bit.
-- A **redesigned export dialog** with format families and a **filename-template engine**, so batch renders land with exactly the names you want.
-- **Per-voice stem export**: one WAV per voice across SID, trackers, TFMX, RJP, MusicLine, AY and more, with silent voices skipped automatically and a live preview.
-
-### 🌊 Pro waveforms and a cohesive look
-
-Loudness-coloured waveforms with a deep peak hull, a bright RMS core and a clear playhead, on the scrubber, the analyzer and both DJ decks, sharp at every zoom. The whole interface now draws from one shared style scale, with a single indigo accent used the same way everywhere.
-
-### 🎮 More formats
-
-**ZX-Spectrum AY trackers** (ProTracker 2, Sound Tracker, Sound Tracker Pro, Vortex) and **Atari-2600 `.tia`** tunes play, with a live ProTracker-style pattern view for the ZX family. **XSPF playlists** load and save alongside `.m3u`.
-
----
-
-## What's new in v0.65.4
-
-Everything new since v0.62.4, a big expansion of the Amiga and demoscene catalogue, plus a sharper DJ booth, smarter tempo detection and a full metadata editor.
-
-### 🎶 Full PreTracker support, including PreTracker 1.5
-
-Every **PreTracker** (`.prt`) song now plays exactly the way its author intended, including the modern **PreTracker 1.5** productions coming out of the current Amiga demoscene. The whole PreTracker catalogue, old and new, plays in tune and on time.
-
-### 💾 Native Amiga executable music, a whole catalogue unlocked
-
-A massive amount of Amiga **demoscene and game music ships as a raw Amiga program** rather than a song file. FXChainPlayer plays them **directly**: including the many that carry **no file extension at all** (the way the Amiga filesystem stores them). Just drop them in. This is also the path by which **PreTracker 2.0** productions play. A piece of Amiga history that most players simply can't open now sits in your playlist like any other track.
-
-### 🎹 MusicLine Editor, TFMX and RJP, fully supported
-
-- **MusicLine Editor** (`.ml`), full synth playback: envelopes, arpeggio, sample loops, **multi-tune songbooks with every subsong selectable** from the transport bar, and the full **8-channel** productions alongside 4-, 5- and 7-channel tunes. The **entire demo catalogue published on musicline.org plays**: verified song by song.
-- **TFMX** (Chris Hülsbeck, *Turrican*, *Apidya*, *Monkey Island* Amiga), accurate, full playback.
-- **RJP** (Bitmap Brothers, *Chaos Engine*, *Cannon Fodder*, *Speedball 2*, *Gods*), plays.
-- **AHX / Hively** and **AY** (ZX Spectrum / Amstrad CPC) chiptunes.
-
-### 📼 Even more of the catalogue
-
-Packed and crunched **ProTracker variants** (the ProWizard family, The Player, Promizer, NoisePacker, ProRunner and many more), Amiga **LZX archives** (`.lzx`, Aminet), more game-music containers, and broader drag-and-drop so library-playable files are never turned away at the door.
-
-### 🎛️ A sharper DJ booth
-
-- **Pro beat-grid** on the deck waveform, beat ticks top and bottom, red markers on every downbeat, so beat-matching by eye is instant.
-- **Scratch that moves the waveform**: the display tracks the platter: backward when you pull back, frozen on a vinyl-stop, snapping back to the groove when you let go (DJ decks **and** the normal player).
-- **Fixed-size, readable console** on a 1080p screen, controls keep a legible size; tighter space steps whole rows aside instead of shrinking everything.
-- **Mix two synth/tracker tunes at once**: SID, PreTracker, MusicLine Editor and TFMX all load onto the decks.
-
-### 🎯 Tempo you can trust
-
-A **third independent beat detector** now cross-checks every track against the other two. When all three agree, the tempo badge locks in solid, and the whole "another tool says 140, this says 70/280" class of octave mistakes is dramatically reduced. Your library re-analyses itself automatically.
-
-### 🏷️ A full metadata editor
-
-The in-app tag editor grew into a complete metadata editor: Album Artist, Composer, Lyricist, Conductor, Arranger, Label, Copyright, URL, Compilation, track and disc as *n/m*, a **0-5 star rating**, and **embedded cover art** you can preview, change or remove. Plus a sortable **Genre column** in the expanded playlist and a **manual BPM** field.
-
----
-
-## What's new in v0.62.4
-
-The Amiga demoscene's modern tracker and the Atari's YM chiptunes now play **natively**: reproduced by emulating the **Motorola 68000 CPU** together with the **Amiga Paula** and **Atari YM2149** sound chips, so they sound exactly as they did on the original hardware, then run through your VST3 chain like anything else.
-
-### Amiga PreTracker (`.prt`) plays, on Windows, with no plugins
-
-**PreTracker** (`.prt`), the modern Amiga demoscene tracker (Pink / Abyss, heard in *Coda* and *Preschool*), now plays start to finish in FXChainPlayer. These are tiny Amiga programs, not audio files, FXChainPlayer emulates the **68000 CPU and the Paula sound chip** to play them note-for-note as on a real Amiga. Almost nothing on Windows can open a `.prt`; here you just drop the folder and listen, through your effect chain, and out to WAV / MP3 / FLAC.
-
-### Atari YM chiptunes (`.ym`) play
-
-Standalone **YM** tunes (`.ym`, direct YM2149 / AY register dumps, including the LHA- and ICE-packed files that fill the YM and modland archives) now play natively alongside the SNDH / SND Atari catalogue, same **68000 + YM2149** engine, same out-of-the-box, no-plugin experience.
-
-### Audition any one-shot, however short
-
-Building a drum kit? The shortest one-shots, single kicks, snares, hats, stabs of a second or less, now play in full straight from the library, whatever your output device's sample rate.
-
----
-
-## What's new in v0.61.6
-
-Everything new since v0.55.2, focused on real new capabilities: Atari chiptunes that run through your effect chain, VST3 plugins in the DJ booth, a DJ console that fits any screen, and sharper tempo detection.
-
-### Atari ST music, played right, and now inside your effect chain
-
-Atari ST / STE chiptunes (**SNDH** / **SND**) play start-to-finish, cleanly and accurately, **out of the box, no plugins, no setup.** These aren't ordinary audio files; they're tiny programs that drive the Atari's sound chip, and most Windows players can't touch them without a separate add-on. Here they just play. And then they do what no chiptune add-on does: **run a 1985 demo tune through your VST3 reverb, EQ or mastering chain in real time, and export it to WAV / MP3 / FLAC.**
-
-### Your VST3 effects, now on the DJ decks
-
-DJ Mode now lets you run **VST3 effect chains on the decks**, not just on the main player. Drop your favourite filters, delays, reverbs or saturators straight into your mix, the same plugins you already use everywhere else in FXChainPlayer, now part of your DJ set.
-
-### A DJ console built for any screen
-
-The two-deck console **scales from a 1080p laptop to a native 4K monitor**: knobs, hot-cue pads, loop and beat-jump buttons, faders, the mixer column and every label grow with the space you give them, and DJ Mode **opens fullscreen automatically** so nothing feels cramped. The key / harmonic-mixing chips, the beat-phase indicator and the BPM read-outs stay crisp and readable, and a loading indicator now shows when a track is being prepared.
-
-### Mix two Commodore 64 SID tunes at once
-
-Load and blend **two C64 SID tunes (`.sid` / `.psid` / `.rsid`) across both decks**: mix the Commodore 64 the way you'd mix records.
-
-### Tempo you can trust
-
-Every track is now analysed by **two independent beat detectors**. When they agree, the tempo badge locks in at full confidence; when a track is genuinely tricky, it tells you honestly instead of guessing, so the BPM you see is one you can actually mix to.
-
-### Even more of the retro & demoscene catalogue
-
-More vintage music plays natively, no conversion needed, including **NEC PC-98** game tunes, **classic DOS AdLib** game music, **high-resolution DSD** (including DST-compressed `.dff`), and a long tail of tracker and chiptune formats. The Nectarine demoscene web-radio stream even shows its own logo now.
-
-### Smoother and lighter
-
-The whole experience is steadier and easier on your machine, visualisers and analyzers go quiet when the window is minimised, big libraries import smoothly in one drop, and the player runs lighter when it's just playing in the background.
-
----
-
-## What was new in v0.59.9
-
-Headline features since the last public release: a way to write your own visualisation shaders, in-app tag editing, synced lyrics, listening-history tracking, the kind of social-presence integrations modern players ship with, and a smarter way to manage your own internet-radio stations. Everything that touches the network is default-OFF and opt-in, privacy first.
-
-### 🎨 Live Shader Editor
-
-Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview. Press **Ctrl+Enter** (or the ▶ button) and your shader recompiles and hot-swaps in 50-200 ms, no app restart, no external tooling.
-
-- **Three overlay states:** hidden (just the visualisation), peek (semi-transparent code over the effect), edit (opaque editor with a TextArea that takes focus).
-- **Audio inputs as a texture:** `iChannel0` carries a 512×2 texture, FFT at `y = 0.25`, raw waveform at `y = 0.75`. Sample with `texture(iChannel0, vec2(x, 0.25)).x` for spectrum, `vec2(x, 0.75)` for wave.
-- **Built-in uniforms:** `iTime` (seconds since shader load), `iResolution` (pixel dims), `qt_TexCoord0` (0..1 UV), `qt_Opacity`.
-- **Template library:** built-in examples ship as `.glsl` resources; your own templates save to `%APPDATA%\Akustikrausch\FXChainPlayer\shader_templates\` as portable plain text, copy them between machines, share, version-control. Built-ins are write-protected; user templates managed by a Lucide-icon toolbar (save / load / delete / reset).
-- **One compile, every backend:** Qt's `QShaderBaker` produces a single QSB containing SPIR-V + HLSL + MSL + GLSL ES 320, so the same shader runs on every Qt RHI backend (D3D11 / D3D12 / Vulkan / Metal / OpenGL). Compiled QSBs land atomically via `QSaveFile` rename, no torn-write window if you crash mid-compile.
-- **Calm-on-silence convention:** the default `audio_trace.glsl` template gates motion magnitude on smoothed amplitude, when there's no audio the visualisation freezes (only a slow heartbeat drift remains). Your own shaders are encouraged to follow the same pattern so the screen doesn't look broken in a quiet section.
-- **Inline error reporting:** GLSL compile errors surface in a red footer with the offending line numbers; click a line to scroll the editor to it. Red highlight on the failing line. Line gutter on the left for quick navigation.
-
-### 🏷️ Tag Editor, fix metadata without leaving the player
-
-Right-click any playlist row → **Edit Tags…**. Modal dialog with eight fields (Title, Artist, Album, Album Artist, Year, Track #, Genre, Comment). Saves back to the file in the right frame format for the container, works across MP3 (ID3v2), FLAC + OGG + Opus (Vorbis comments), M4A (iTunes atoms), APE, WavPack, Musepack, True Audio. Playlist row updates within milliseconds, no library re-scan needed. Empty fields leave existing tags alone, the "I only want to change Year" workflow people actually use.
-
-### 📝 Synced lyrics, Ctrl+L
-
-Press **Ctrl+L** (or open the **Lyrics** panel from the StatusBar) to see scrolling karaoke-style lyrics for the currently playing track. Three sources, in priority order: (1) a `.lrc` sidecar file next to the audio, (2) embedded ID3v2 SYLT synchronized-lyrics frames, (3) embedded plain unsynchronized lyrics. Auto-scrolls the active line into centre view, fades adjacent lines. Supports LRC's standard meta-tags (`[ti:]`, `[ar:]`, `[al:]`, `[by:]`, `[length:]`, `[offset:]` for global time-shift) and multi-timestamp lines for repeating choruses. Source badge in the panel header tells you which kind of lyrics you're reading.
-
-### 💬 Discord Rich Presence
-
-Show your currently-playing track on your Discord profile. Settings → Integrations → toggle on. **Default OFF.** Optional: hide the elapsed timer while paused (so the status doesn't broadcast "stepped away"). Connects via Discord's named-pipe IPC against your local Discord desktop client, your tracks never go to Discord's servers via us; only Discord itself sees the data via your own client. Auto-reconnects if Discord launches after the player.
-
-### 🎵 Last.fm scrobbling
-
-Connect your Last.fm account from Settings → Integrations → **Connect**. Browser opens, you authorise, the player picks up the session key. From there, every track that plays past the **50%-or-4-minutes** industry-standard threshold scrobbles automatically. The Now Playing badge updates the moment a track starts. Offline scrobbles are queued locally (up to 200) and flushed when you reconnect. **Default OFF.** Disconnect button to revoke. Per-track scrobble rules respect the Spotify / Apple Music / Audacious / foobar2000 convention.
-
-### ⭐ Play count + 5-star ratings
-
-Per-track listening history: play counter (increments at the same 50%/4-min threshold as Last.fm), last-played timestamp, first-played timestamp. Plus a 5-star rating widget, click stars to rate, click the current rating to clear. Playlist columns for Plays and Rating (toggleable in Settings → Integrations). **Data lives entirely on your machine** in the local SQLite cache next to your library scan, nothing leaves. Reset-all-stats button in Settings if you want a clean slate.
-
-### 📺 CUE sheet splitting
-
-FLAC + CUE album files automatically split into one playlist row per track. Per-track Title, Performer, BPM, Key, and start/end markers picked up from the sheet. The big "single 60-minute FLAC plus a `.cue`" archive format your audiophile friends use just works. UTF-8 BOM tolerated; foobar2000 + EAC-exported sheets parse cleanly. Seek and skip between sub-tracks like any other playlist row.
-
-### 📡 Custom radio stream channel
-
-The built-in stream-station directory (Demoscene, Classical, Electronic & Ambient, Jazz, BBC, Deutschlandfunk, …) ships locked, we curate, we update with each release, you get new stations automatically. To add your own stations: Settings → Streams → **Edit JSON**. Opens `stream_directory_custom.json` with a one-line example you can copy and edit. Save, click **Reload**, and your stations appear as the **Custom** channel at the bottom of the directory. Schema is a plain JSON array of station objects, five fields per entry, two of them required (name + url).
-
-### 🎛️ Settings reorganised
-
-Settings tabs are now sorted by frequency-of-use: Audio · Playback · Display (everyday) → Library (where your music lives) → Shortcuts · MIDI (input controls) → DJ · Integrations (optional feature subsystems) → Advanced (reset / danger zone, last). "Advanced" no longer sits in the middle of the tab list tempting accidental clicks.
-
-### 🎚️ Visualisation polish
-
-- **RGB Split Wave** redesigned as a true 3-channel chromatic-split waveform with calmer background and louder amplitude response on peaks.
-- **Pulse Thread** is the new default analyzer for non-tracker formats (tracker formats still auto-pick Pattern View, SID files still auto-pick SID Voices).
-- **Audio Trace** (the default Live Shader template), clean blue-tinted Lissajous-style curve with rounded corners and calm-on-silence gating so it doesn't strobe during quiet passages.
-
-## What was new in v0.55.2
-
-Major game-music codec families became playable out of the box.
-
-- **Sony ATRAC3, ATRAC3plus, ATRAC9**: PSP / PS3 / PS4 / Vita game soundtracks (`.at3`, `.at9`, `.aa3`).
-- **Microsoft XMA1 and XMA2**: Xbox 360 and Xbox One game soundtracks (`.xma`, `.xma2`).
-- **Microsoft xWMA**: XAudio2 streaming WMA-Pro.
-- **FMOD FSB with Vorbis and CELT payloads**: used by roughly 1000+ game titles via FMOD audio middleware (`.fsb`, `.fsb5`).
-- **Nintendo Switch NUS3-Opus**: Super Smash Bros. Ultimate, Splatoon 2 / 3, Super Mario Odyssey, Animal Crossing: New Horizons and many other Switch titles (`.nus3audio`).
-- **Older Bink Audio (Speex variant).**
-- **Ericsson G.719**: used by some reference video-conferencing recordings.
-
-The bundled FFmpeg quartet is dynamically linked under LGPL-2.1+; the exact FFmpeg n5.1.2 source we use is bundled alongside the installer in the GitHub Release.
-
-Plus DJ Mode highlights: **mix two C64 SID tunes at once** (load one onto Deck A, another onto Deck B, crossfade), and **waveform overviews for every chiptune format** in both DJ decks and the standard player transport bar, SID, GameBoy `.gbs`, NES `.nsf` / `.nsfe`, SNES `.spc`, Sega `.gym` / `.vgm` / `.vgz`, MSX `.kss`, ZX-Spectrum AY `.ay`, Atari `.sap`, PC-Engine `.hes`, plus every clean-room composer-named Amiga, Sharp X68000 and FM-TOWNS player.
-
-
-## What was new in v0.49.0
-
-The focus of that release was new functionality for C64 SID music, far wider DJ-controller support, and per-channel effects.
-
-### C64 SID tunes
-
-- **Per-voice VST effects for SID tunes.** A Commodore-64 SID tune is built from three independent chip voices. You can load a separate VST3 effect chain onto each voice and hear the result live, put a reverb on the lead, a filter sweep on the bassline, leave the third voice clean.
-- **SID tunes on the DJ decks.** Load a `.sid` file straight onto a DJ deck and mix it like any other track.
-
-### Per-channel VST effects
-
-- **Live per-channel effects for tracker modules.** Apply a separate VST3 effect chain to each individual channel of a MOD / XM / IT tracker module and hear it during normal playback, not only when exporting.
-
-### DJ controllers & MIDI
-
-- **61 built-in DJ controller profiles.** Plug in a supported controller and it works straight away, full Pioneer DDJ family (DDJ-400, FLX4, FLX6, FLX10, REV1, DDJ-1000, DDJ-800, SB2, SB3, SX, 200), Native Instruments Traktor Kontrol S4 + Z1, plus a wide range of Numark, Denon, Hercules, Rane, Roland, Vestax and Reloop models.
-- **Any USB MIDI controller works out of the box.** Even with no built-in profile, transport and mixer controls respond immediately. Anything the player can't guess is one click away in MIDI Learn Mode.
-- **Searchable controller picker.** Type the first letters of your controller's name to jump straight to its profile.
-
-### Playlist & export
-
-- **Drag-and-drop M3U playlists.** Drop an `.m3u` or `.m3u8` file onto the playlist to load it.
-- **Jump straight to your exports.** When a batch export finishes, "Open folder" and "Show file" buttons take you directly to the rendered files.
-
-### Display
-
-- **Plugin editors follow your monitors.** Drag the app between a 4K and an HD screen with a VST3 plugin editor open and the plugin re-renders crisply at the new monitor's resolution.
-
-## Highlights since v0.37.2
-
-A condensed summary of the bigger user-facing additions across the v0.38 → v0.46 cycle:
-
-- **DJ Mode** (v0.39), Dual-deck console, crossfader, sync engine, hot cues, loops, beat-jump, per-deck 3-band EQ, dual audio output, MIDI controller support, **tracker DJing** unique to FXChainPlayer.
-- **Per-Channel VST Chains** (v0.45), Each separable channel of trackers, SIDs, NSFs and other multi-channel formats carries its own dedicated VST3 chain up to 16 plugins. Real-time playback and export-path integration. VST3 chain limit lifted from 8 to 16 slots.
-- **Format coverage**: Major expansion across the catalogue: Atari ST native (`.sndh`), PSF1 PlayStation OST, TFE TFM Music Maker, MDX Sharp X68000, Euphony FM-TOWNS, MSX `.kss`, 12 Amiga composer-named players (Hippel / Daglish / Whittaker / Symphonie / TFMX / RJP / many more), demoscene + retro synths (TIATracker / Organya / GoatTracker / SAP / ZxTracker / FutureComposer / Farbrausch V2), DOS Adlib, broader game-music coverage (ATRAC9 / XMA / FSB-Vorbis / Switch Opus), Apple CAF dedicated decoder, DST-compressed `.dff` DSD.
-- **Vinyl Scratch, Newtonian physics** (v0.38), Full platter physics for click-and-drag waveform scratching, forward + reverse, with Technics SL-1200 inertia and slipmat-friction restore. Works in single-track AND DJ mode. Even works while paused.
-- **GPU shader visualisers** (v0.39), Pulse Thread (new default), Chroma Drift, Studio LED.
-- **BPM consensus + Camelot key detection** (v0.38 / v0.43), Multi-source BPM aggregation with confidence tiers, offline key detection, Camelot wheel chips per track AND per deck, cross-deck harmonic-mix hint (experimental, treat as a starting point).
-- **MIDI controller input** (v0.38), Hardware-detected mappings, Learn Mode, 50+ DJ-specific trigger targets.
-- **Sample-accurate visual playhead**: The waveform position matches what is being heard, not what was written to the buffer 10-42 ms ago.
-- **Code-signed installer AND DLLs**: Every release is now signed end-to-end (relevant for enterprise WDAC / AppLocker deployments).
-- Many stability improvements: mid-track playback recovery on transient decoder errors, concurrency hardening for bulk-add, gapless-transition fixes, DJ-Mode auto-recovery on tracker EOF, scratch-while-pitched safety, and dozens of smaller bug fixes across the v0.38 → v0.46 cycle.
-
-For per-release detail, see the individual release pages on the GitHub Releases tab.
 
 ---
 
