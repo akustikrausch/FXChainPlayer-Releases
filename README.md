@@ -109,7 +109,7 @@ And then they do what no chiptune add-on does: run a 1985 Atari demo tune **thro
 
 ### Amiga executable music
 
-A huge amount of Amiga **demoscene and game music ships as a raw Amiga program**, not a song file, and FXChainPlayer plays these executables **directly**. This includes the many that carry **no file extension at all** (the way the Amiga filesystem stores them): just drop them in and they play. It covers native exe-tunes and **AmigaKlang** productions, plus the path by which **PreTracker 2.0** productions play, and File Info identifies them on sight.
+A huge amount of Amiga **demoscene and game music ships as a raw Amiga program**, not a song file, and FXChainPlayer plays these executables **directly**. This includes the many that carry **no file extension at all** (the way the Amiga filesystem stores them): just drop them in and they play. It covers native exe-tunes, plus the path by which **PreTracker 2.0** productions play, and File Info identifies them on sight.
 
 ### PSF1 family (PlayStation OST)
 
@@ -117,7 +117,9 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
 ### Amiga composer-named players
 
-**Hippel COSO** (`.hip` `.coso`), **Hippel-7V**, **Ben Daglish** (Last Ninja / Trap / Deflektor / Speedball), **David Whittaker** (Speedball / Lazy Jones / Glider Rider), **Fred Editor** (Frank Bros), **Ron Klaren / SoundFX-RK**, **Symphonie Pro 32-voice**, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **Mark II**, **Audio Sculpture**, **Digital Mugician 7-voice** (Pete Cooke). Plus **AMOS Music Bank** (every AMOS BASIC game 1990-95), **DeltaMusic 1+2**, **Art Of Noise**, **JamCracker**, **SoundFX v1+v2** (Saint Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sidmon 1+2** (Tim Wright / Jeroen Tel), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **MaxTrax** (LucasArts Indy/Monkey-Island), **TFMX** (Hülsbeck, Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers, Chaos Engine / Cannon Fodder / Speedball 2 / Gods).
+**Symphonie Pro** 32-voice, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **AMOS Music Bank** (every AMOS BASIC game 1990-95), **SoundFX v1+v2** (Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **MaxTrax** (LucasArts Indy and Monkey Island), **TFMX** (Hülsbeck, Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers, Chaos Engine / Cannon Fodder / Speedball 2 / Gods), **FutureComposer**.
+
+Hippel, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Mark II, Audio Sculpture, Digital Mugician, DeltaMusic, Art Of Noise, JamCracker and Sidmon are recognised and identified, but do not produce audio yet. The work on them is tracked in the open.
 
 ### Demoscene + retro synths
 
@@ -143,7 +145,6 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 ### Apple CAF + Sample-pack formats
 
 **Apple CAF** dedicated decoder (PCM 8/16/24/32-bit BE/LE int/float, IMA4, AAC + ALAC, FLAC). Surfaces Logic-Pro Apple-Loops BPM tags.
-**REX / RX2 / RCY** sliced-loop sample-pack format (requires user-side Reason Studios REX SDK).
 
 ### Game music and sample packs
 
@@ -158,9 +159,9 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 - **`.txtp`** text-playlists with effects
 - **Multi-subsong navigation** for game-OST archives
 
-### Furnace + IFF SMUS
+### DefleMask + IFF SMUS
 
-**Furnace `.fur` / `.dmf`** multi-chip tracker.
+**DefleMask `.dmf`** multi-chip tracker modules.
 **IFF SMUS** Amiga MIDI-style score with INS1 + 8SVX sample resolution.
 
 ---
@@ -587,7 +588,7 @@ Every **PreTracker** (`.prt`) song now plays exactly the way its author intended
 
 ### 💾 Native Amiga executable music, a whole catalogue unlocked
 
-A massive amount of Amiga **demoscene and game music ships as a raw Amiga program** rather than a song file. FXChainPlayer plays them **directly**: including the many that carry **no file extension at all** (the way the Amiga filesystem stores them). Just drop them in. This also covers **AmigaKlang** productions and is the path by which **PreTracker 2.0** productions play. A piece of Amiga history that most players simply can't open now sits in your playlist like any other track.
+A massive amount of Amiga **demoscene and game music ships as a raw Amiga program** rather than a song file. FXChainPlayer plays them **directly**: including the many that carry **no file extension at all** (the way the Amiga filesystem stores them). Just drop them in. This is also the path by which **PreTracker 2.0** productions play. A piece of Amiga history that most players simply can't open now sits in your playlist like any other track.
 
 ### 🎹 MusicLine Editor, TFMX and RJP, fully supported
 
@@ -841,3 +842,150 @@ Join the FXChainPlayer Discord for questions, feedback, plugin recommendations, 
 ---
 
 <p align="center"><em>Tools disappear. Music remains.</em></p>
+
+---
+
+## Complete format reference
+
+Everything below plays out of the box: no plugins, no codec packs, no setup.
+Each one runs through your VST3 chain and exports to WAV, MP3, FLAC, OGG, AAC,
+AIFF, WavPack, Opus or Apple Lossless like any other track. The same list is
+searchable inside the player under **Format Library**.
+
+### Everyday audio
+
+**WAV** `.wav` · **FLAC** `.flac` · **ALAC** Apple Lossless `.alac` `.m4a` ·
+**AIFF** `.aiff` `.aif` · **Sony Wave64** `.w64` · **WavPack** `.wv` ·
+**Monkey's Audio** `.ape` · **True Audio** `.tta` · **MP3** `.mp3` ·
+**OGG Vorbis** `.ogg` `.oga` · **AAC** `.aac` · **MPEG-4 audio** `.m4a` `.mp4` ·
+**Windows Media Audio** `.wma` · **Opus** `.opus` · **AC-3** `.ac3` ·
+**Musepack** `.mpc` `.mp+` `.mpp` · **Apple Core Audio Format** `.caf`
+
+**DSD**: `.dsf` `.dff` at DSD64, DSD128, DSD256 and DSD512, including
+DST-compressed `.dff`.
+
+### Tracker modules
+
+**ProTracker / Soundtracker** `.mod` `.nst` `.m15` `.stk` `.pt36` ·
+**FastTracker 2** `.xm` · **ScreamTracker 3** `.s3m` · **ScreamTracker 2** `.stm` ·
+**Impulse Tracker** `.it` · **OpenMPT** `.mptm` · **Composer 669** `.669` ·
+**MultiTracker** `.mtm` · **Velvet Studio** `.ams` · **DSMI / Asylum** `.amf` ·
+**X-Tracker** `.dmf` `.xtr` · **DSIK** `.dsm` · **DigiTrakker** `.dtm` `.mdl` ·
+**Farandole Composer** `.far` · **General DigiMusic** `.gdm` ·
+**Graoumf Tracker** `.gtk` `.gt2` · **Imago Orpheus** `.imf` ·
+**Galaxy Sound System** `.j2b` · **Liquid Tracker** `.liq` · **MO3** `.mo3` ·
+**MadTracker 2** `.mt2` · **Disorder Tracker 2** `.plm` ·
+**ProTracker Studio** `.psm` · **PolyTracker** `.ptm` · **Sample Tracker** `.stx` ·
+**TCB Tracker** `.tcb` · **UltraTracker** `.ult` · **Unreal Music** `.umx` ·
+**DigiBooster Pro** `.dbm` · **DigiBooster** `.digi` ·
+**OctaMED** `.med` `.mmd0` `.mmd1` `.mmd2` `.mmd3` · **Oktalyzer** `.okt` `.okta` ·
+**SoundFX** `.sfx` `.sfx2` · **Soundtracker Pro II** `.stp` ·
+**Soundtracker 2.6** `.st26` `.st` · **Ice Tracker** `.ice` ·
+**Composer 670** `.c67` `.667` · **Digital Symphony** `.dsym` ·
+**Funktracker** `.fnk` · **Magnetic Fields Packer** `.mfp` · **Grave** `.wow` ·
+**Imperium Galactica** `.xmf` · **Octalyser** `.oct`
+
+**Packed and crunched ProTracker modules** play directly, no unpacking step:
+The Player 4.0 to 6.1 `.p40` `.p41` `.p4x` `.p50` `.p50a` `.p60` `.p60a` `.p61`
+`.p61a`, Promizer `.pru` `.pru1` `.pru2`, NoisePacker `.np1` `.np2` `.np3`,
+NoiseRunner `.nru`, NoiseTracker Pak `.ntp`, ProPacker `.pm0` `.pm1` `.pm2`
+`.pm4`, ProRunner `.prom`, Tracker Packer `.tp1` `.tp2` `.tp3`, PowerPacker
+`.pp10` `.pp21` `.pp30`, Heatseeker `.heat`, Kefrens Sound Machine `.ksm`,
+UNIC Tracker `.unic`, Zen Packer `.zen`
+
+### Commodore 64
+
+**SID** `.sid` `.psid` `.rsid` with cycle-accurate 6581 and 8580 emulation,
+2SID and 3SID stereo tunes, per-voice muting, a live pattern view and per-voice
+stem export. HVSC song lengths and subtune navigation included.
+**GoatTracker** `.gt2` `.sng` · **SID-Wizard** `.swm`
+
+### Amiga
+
+**PreTracker** `.prt` including PreTracker 1.5 · **MusicLine Editor** `.ml` `.mle` ·
+**TFMX** Chris Hülsbeck, `MDAT.` / `SMPL.` pairs · **Richard Joseph Player**
+`RDAT.` / `RSMP.` pairs · **StarTrekker** `.mod` `.nt` · **GMC** `.gmc` `.mus` ·
+**GlueMon** `.glue` · **Face The Music** `.ftm` · **Puma Tracker** `.puma` ·
+**BP SoundMon** `.bp` `.bp2` `.bp3` · **Sonic Arranger** `.sa` `.sonic` ·
+**MED Advanced** `.med` · **FutureComposer** `.fc` `.fc13` `.fc14` ·
+**Symphonie Pro** `.symmod` `.sym` · **SoundFactory** `.sfc` ·
+**AHX** `.ahx` · **THX** `.thx` · **HVL** Hively Tracker `.hvl` ·
+**IFF 8SVX** `.8svx` `.iff` · **IFF SMUS** `.smus` · **AMOS Music Bank** `.abk`
+
+**Amiga executable music** plays directly, including files with no extension at
+all, the way the Amiga filesystem stored them. This is also how PreTracker 2.0
+productions play.
+
+**Archives and crunchers** unpack transparently: PowerPacker `.pp`, Imploder
+`.imp`, StoneCracker `.s404`, CrunchMania `.crm` `.crm2`, XPK `.xpk` `.impl`
+`.sqsh`, Pack-Ice, DiskMasher `.dms`, Unix compress `.z`, Freeze, Compact,
+ByteKiller `.bk` `.bky` and others.
+
+### Atari, ZX Spectrum, Amstrad, MSX
+
+**SNDH** `.sndh` `.snd` and **YM register dumps** `.ym` `.ym2` `.ym3` `.ym5`
+`.ym6` with full YM2149 and Motorola 68000 emulation, Timer-C, DigiDrum and STE
+DMA samples, including the LHA- and ICE-packed files that fill the YM and
+Modland archives.
+**TIATracker** Atari 2600 `.tia` `.ttt` · **SAP** Atari 8-bit `.sap` ·
+**Quartet** `.qtr` · **KSS** MSX `.kss` · **AY** ZX Spectrum and Amstrad `.ay` ·
+**VTX** `.vtx` · **Pro Tracker 2 and 3** `.pt2` `.pt3` · **Sound Tracker** `.stc`
+`.stp`
+
+### Console chiptunes
+
+**Game Boy** `.gbs` · **SNES SPC700** `.spc` · **Sega VGM** `.vgm` `.vgz` for
+Mega Drive, 32X, Master System, Game Gear, Mega CD, SG-1000, SC-3000, BBC Micro
+and ColecoVision · **NES** `.nsf` `.nsfe` · **PC Engine / TurboGrafx-16** `.hes` ·
+**Sega Genesis** `.gym` · **Master System** `.sgc` · **NSD** `.nsd` ·
+**Game Boy RGBDS** `.gbr` · **DefleMask** `.dmf`
+
+**PlayStation and the PSF family** `.psf` `.minipsf` `.psf2` `.ssf` `.dsf`
+`.usf` `.gsf` `.qsf` `.2sf` `.snsf` with a built-in MIPS R3000A and SPU-1
+emulator for PSF1.
+
+### DOS and PC-98
+
+**AdLib and OPL2/OPL3** via AdPlug: id Software IMF `.imf`, HSC `.hsc`,
+Reality ADlib Tracker `.rad`, EdLib `.d00`, DOSBox raw `.dro`, Softstar RIX
+`.rix`, AdLib Visual Composer `.rol`, MUS `.mus` and a long tail of further DOS
+and Sound Blaster formats.
+
+**PC-98** Professional Music Driver `.m` `.m2` and FMP `.opi` `.zun`, the
+formats behind the pre-Windows Touhou, Falcom and Compile soundtracks.
+**Sharp X68000 MDX** `.mdx` · **FM-TOWNS Euphony** `.eup` ·
+**TFM Music Maker** `.tfe`
+
+### Game-music containers
+
+**Nintendo** BRSTM `.brstm`, BCSTM `.bcstm`, BFSTM `.bfstm`, BFWAV `.bfwav`,
+DSP-ADPCM `.dsp`, NUS3AUDIO `.nus3audio`, Switch Opus ·
+**Sony** VAG `.vag`, HPS `.hps`, NUB `.nub`, ATRAC3 and ATRAC9 `.at3` `.at9`
+`.aa3` `.oma` · **Microsoft** XMA `.xma`, xWMA `.xwma` ·
+**CRI** ADX `.adx`, HCA `.hca`, ACB and AWB containers ·
+**FMOD** FSB `.fsb` `.fsb5` including Vorbis and CELT ·
+**Square Enix** SCD `.scd` · **Wwise** WEM `.wem` ·
+**Genesis / Wii** `.genh` `.txth` · **text playlists** `.txtp`
+
+Multi-subsong containers expand into one entry per tune, and export can render
+each subsong to its own file.
+
+### MIDI, ringtones, playlists, archives
+
+**MIDI** `.mid` `.midi` `.rmi` through TinySoundFont with a configurable
+SoundFont: drop a `.sf2` into Settings, or drag one onto the player to audition
+it live. **Yamaha SMAF** `.mmf` mobile ringtones with an in-house FM engine.
+**Playlists** `.m3u` `.m3u8` `.pls` `.xspf` and **cue sheets** `.cue` with
+per-track splitting. **Archives** `.zip` `.rar` `.7z` `.lha` play without
+unpacking.
+
+### Recognised, not yet playing
+
+Honesty matters more than a long list. These are detected and identified, and
+the work to make them play is tracked in the open, but they do not produce
+audio yet:
+
+Amiga composer players Hippel `.hip` `.coso`, David Whittaker `.dw`, Ben
+Daglish `.bd`, Digital Mugician `.dmu`, JamCracker `.jam`, Mark II `.mk2`,
+Ron Klaren `.rk`, Audio Sculpture, Sidmon; DeltaMusic `.dm` `.dm2`; Art of
+Noise `.aon`; Furnace `.fur`; ASC Sound Master `.asc`; ATRAC1 `.aea`.
