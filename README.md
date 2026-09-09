@@ -36,9 +36,7 @@
 
 ---
 
-## New in 1.5: three things the player could not do before
-
-Everything else on this page it could already do. These three are new in kind.
+## New in 1.5
 
 ### 1. FXChain Stems: your tracker's voices, live inside your DAW
 
@@ -130,19 +128,11 @@ a file never runs it, and nothing is ever written back into it.
 
 ### What you get back, from either route
 
-Both routes end in the same result list. Every find is decoded in a helper
-program of its own, so a file that makes a decoder hang cannot stall the player,
-and every row carries its verdict as a badge: how long it plays, that nothing
-was audible in the stretch examined, or which companion file it needs. Confirmed
-headers sort above rescued buffers, so the order is itself a recommendation.
-Preview any find in place with a loudness coloured waveform, correct the sample
-rate of a raw buffer by ear, tick a selection and save it from one bar that
-names the count and the total size, optionally writing a playable copy beside
-every rip in a format any player opens.
-
-Where a recovered file carries a Content Credential, the find says so, including
-when the credential names an AI as the source. It only ever reports what is
-actually in the file.
+Both routes end in the same result list. Every row carries its verdict as a
+badge, and the surest finds sort to the top. Preview any of them in place with a
+loudness coloured waveform, correct the sample rate of a raw buffer by ear, then
+tick a selection and save it from one bar, optionally writing a playable copy
+beside every rip in a format any player opens.
 
 ---
 
