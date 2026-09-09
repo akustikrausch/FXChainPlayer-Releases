@@ -160,7 +160,7 @@ On macOS the same chain also hosts **Audio Units** (AUv2 and AUv3) alongside VST
 
 ## FXChainPlayer on macOS
 
-The complete player now runs natively on Apple Silicon Macs (macOS 26 or newer). Same engine, same features, same design as the Windows version, plus the pieces a Mac player should have:
+The complete player runs natively on Apple Silicon Macs, from macOS 14.4. Same engine, same features, same design as the Windows version, plus the pieces a Mac player should have:
 
 - **Audio Units and VST3 side by side**: the effect chain hosts AUv2 and AUv3 effects in addition to VST3, in the same browser, the same slots, and the same per-channel chains. Your Logic Pro and GarageBand plugins just work, each opening its own native editor window.
 - **CoreAudio output**: Shared mode by default, Exclusive (hog) mode for the bit-perfect path, mirroring WASAPI Shared and Exclusive on Windows.
