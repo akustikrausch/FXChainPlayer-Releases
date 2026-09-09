@@ -3,9 +3,9 @@
 <p align="center"><strong>A desktop audio player for Windows and macOS that plays nearly every audio format, with a full real-time effect chain built into the playback engine (VST3 on Windows, VST3 and Audio Units on macOS) and a complete dual deck DJ Mode.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-Setup-1.4.2.exe"><img src="https://img.shields.io/badge/Windows-v1.4.2-0078D6" alt="Download for Windows v1.4.2"></a>
-  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-1.4.2-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.4.2-111111?logo=apple&logoColor=white" alt="Download for macOS v1.4.2"></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2026%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 26+ (Apple Silicon)">
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.5.8/FXChainPlayer-Setup-1.5.8.exe"><img src="https://img.shields.io/badge/Windows-v1.5.8-0078D6" alt="Download for Windows v1.5.8"></a>
+  <a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.5.8/FXChainPlayer-1.5.8-macos.pkg"><img src="https://img.shields.io/badge/macOS-v1.5.8-111111?logo=apple&logoColor=white" alt="Download for macOS v1.5.8"></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20%C2%B7%20macOS%2014.4%2B%20(Apple%20Silicon)-0078D6" alt="Windows 10/11 and macOS 14.4+ (Apple Silicon)">
   <img src="https://img.shields.io/badge/VST3-16%20slots%20%C2%B7%20per--channel%20chains-brightgreen" alt="VST3 16 slots + per-channel chains">
   <img src="https://img.shields.io/badge/macOS-Audio%20Units%20(AUv2%2Fv3)%20%2B%20VST3-111111" alt="macOS: Audio Units (AUv2/v3) + VST3">
   <img src="https://img.shields.io/badge/WASAPI-Shared%20%2B%20Exclusive-blueviolet" alt="WASAPI Shared + Exclusive">
@@ -18,17 +18,17 @@
 
 <p align="center"><em>Load your favorite plugins, EQs, compressors, reverbs, spatial processors, headphone correction, directly into the signal path and hear them in real time while you listen to music. Pitch records like vinyl. Mix tracks across two decks with sync, hot cues, loops and Pioneer-DJM-style filter. No DAW required.</em></p>
 
-<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-Setup-1.4.2.exe"><strong>⬇ Windows: FXChainPlayer-Setup-1.4.2.exe</strong></a><br>
-<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.4.2/FXChainPlayer-1.4.2-macos.pkg"><strong>⬇ macOS (Apple Silicon): FXChainPlayer-1.4.2-macos.pkg</strong></a></p>
+<p align="center"><a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.5.8/FXChainPlayer-Setup-1.5.8.exe"><strong>Windows: FXChainPlayer-Setup-1.5.8.exe</strong></a><br>
+<a href="https://github.com/akustikrausch/FXChainPlayer-Releases/releases/download/v1.5.8/FXChainPlayer-1.5.8-macos.pkg"><strong>macOS (Apple Silicon): FXChainPlayer-1.5.8-macos.pkg</strong></a></p>
 
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=a2XQ1KDnYSk">
-    <img src="https://img.youtube.com/vi/a2XQ1KDnYSk/maxresdefault.jpg" alt="▶ Watch the FXChainPlayer demo on YouTube" width="720">
+    <img src="https://img.youtube.com/vi/a2XQ1KDnYSk/maxresdefault.jpg" alt="Watch the FXChainPlayer demo on YouTube" width="720">
   </a>
 </p>
 
-<p align="center"><a href="https://www.youtube.com/watch?v=a2XQ1KDnYSk"><strong>▶ Watch the demo on YouTube</strong></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=a2XQ1KDnYSk"><strong>Watch the demo on YouTube</strong></a></p>
 
 <p align="center">
   <img src="screenshots/fx-chain-waveform-spectrum.png" alt="FXChainPlayer main view, expanded waveform with VST3 FX Chain and the LED HiFi spectrum analyzer">
@@ -36,21 +36,131 @@
 
 ---
 
+## New in 1.5: three things the player could not do before
+
+Everything else on this page it could already do. These three are new in kind.
+
+### 1. FXChain Stems: your tracker's voices, live inside your DAW
+
+Exporting stems writes files. **FXChain Stems** does it while you work: a
+separate VST3 plug-in, installed with the player on Windows and macOS, that
+plays a tracker module or a console chiptune inside your DAW and puts every
+voice on its own stereo bus.
+
+- **Load it on an instrument track**, click **Load Module** and pick a file.
+  The voice list fills with the module's own channel names, each with gain,
+  mute and solo, plus a master level. Everything automates from the host.
+- **Output 1 is the complete mix**, audible before you route anything. Switch
+  the plug-in's additional outputs on in your host and every voice arrives on
+  its own channel of your mixer, ready for separate processing.
+- **It follows your transport.** Start, stop and locate in the project and the
+  module stays in step instead of running on its own clock.
+- **The panel fits any window** your DAW grants it, at any display scaling, and
+  its About page lists the supported formats and how to activate the extra
+  outputs, host by host.
+
+### 2. The Memory Ripper: music out of a running program
+
+Old games, demos and intros carry their music inside the program, where no file
+manager will ever find it. Pick a running program, scan it, and the music living
+in its memory comes back as real files you can save and play.
+
+- **It reads formats by their own structure.** Tracker modules, C64 tunes,
+  console music from SNES, NES, Game Boy, Sega and MSX, Atari SAP, standard
+  MIDI, whole audio containers such as WAV, AIFF, OGG and FLAC, MP3 streams,
+  raw sound buffers from intro softsynths, and packed Amiga modules that are
+  unpacked on the way out. Lengths come from each format's own header, so what
+  you save is a working file rather than a guess.
+- **A scan of a large program is quick.** Reading and recognising run on several
+  processor cores at once, and one bar names the target, shows how far it is and
+  about how long remains.
+- **Scan again keeps what you have.** A second pass skips memory that has not
+  changed and adds only what is new, which is what demos that load their music
+  a few seconds in are for.
+- **See where a find sits while the scan runs.** The memory map fills as it
+  goes, each find lands as a block on the same axis, and clicking one jumps to
+  its row.
+- **When the program is the instrument, you get the performance.** Some
+  demoscene programs carry no music file at all: they build their sounds while
+  they run. Scan one of those and you are handed what it played, recorded from
+  the emulated machine and labelled as a recording.
+- **Record one program, not the whole machine.** Send a program to the recorder
+  and the recording holds that program and nothing else: not the player, not a
+  notification, not a browser tab. That is what makes recording a real answer
+  for music that is never a file, such as an arcade or console game whose chip
+  plays the tune live.
+- **It only ever reads.** No writing into the other program, no code injection.
+  Protected programs simply stay closed.
+- **It is its own window**, so the demo you are ripping can have one half of the
+  screen and the ripper the other, with the player out of the way.
+
+### 3. The File Ripper: music out of files, archives and game packs
+
+The same engine, pointed at your disk. Drop files or whole folders on it and it
+works through them one after another, opening what it meets on the way. Reading
+a file never runs it, and nothing is ever written back into it.
+
+- **It opens what the music is wrapped in.** Archives, crunched files and disk
+  images, however deep the nesting: a crunched module inside an archive inside a
+  disk image still comes out as a file you can play. A packed program is
+  unpacked in memory without being executed, and music parked behind the end of
+  an installer or a cracktro is found there.
+- **It opens what today's games ship in.** Godot packs, GameMaker data files,
+  Ren'Py archives, Valve packages, Adventure Game Studio voice and music, the
+  resource bundles of desktop apps built on web technology, Unity asset bundles
+  including brotli-compressed web builds, and the table-of-contents plus data
+  file pair a current Unreal Engine title ships, read selectively so the whole
+  thing never has to be loaded.
+- **Game audio comes out playable.** Bink Audio, the Wwise formats current games
+  use for music and voice, Bethesda's Skyrim and Fallout soundtracks, and
+  Godot's container-less sound, which is handed back with its container put
+  back on so it plays anywhere.
+- **Music a browser already saved.** Point it at the profile folder of Chrome,
+  Edge, Brave or Opera and it reads the cache entries the way the browser wrote
+  them, names each find by the address it came from, and unpacks what the server
+  had compressed on the way.
+- **It knows far more music than a file manager does.** Atari ST chip tunes, the
+  Amiga composer formats behind countless game soundtracks, Sharp X68000, the
+  DOS AdLib and FM catalogue, Furnace, and the long tail of tracker variants,
+  including the many older formats that carry no header at all: those are handed
+  to the player's own decoder and kept only when the file really makes a sound.
+- **A song is carved to its own end,** and a whole song comes back rather than
+  its first few megabytes, because each format's own tables and declared sizes
+  decide where it stops.
+
+### What you get back, from either route
+
+Both routes end in the same result list. Every find is decoded in a helper
+program of its own, so a file that makes a decoder hang cannot stall the player,
+and every row carries its verdict as a badge: how long it plays, that nothing
+was audible in the stretch examined, or which companion file it needs. Confirmed
+headers sort above rescued buffers, so the order is itself a recommendation.
+Preview any find in place with a loudness coloured waveform, correct the sample
+rate of a raw buffer by ear, tick a selection and save it from one bar that
+names the count and the total size, optionally writing a playable copy beside
+every rip in a format any player opens.
+
+Where a recovered file carries a Content Credential, the find says so, including
+when the credential names an AI as the source. It only ever reports what is
+actually in the file.
+
+---
+
 ## Why VST3 and Audio Unit effects in an audio player?
 
 More reasons than you would expect.
 
-- **🎧 Headphone surround & spatial audio**: Run binauralizers like **dearVR MONITOR**, **Waves Nx**, or **Dolby Atmos Production Suite** to turn stereo into a full spatial soundstage on any pair of headphones. No system-wide wrapper, no virtual audio cable.
-- **🎚️ Headphone calibration & correction**: Use frequency-response plugins like **Sonarworks SoundID Reference**, **Beyerdynamic Headphone Lab**, **Waves Nx Virtual Mix Room**, or **Morphit** to flatten your specific headphone model to a neutral reference.
-- **📻 Internet radio & streaming cleanup**: Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-compressed "loudness war" tracks to tame them while you listen.
-- **🔌 Plugin auditioning**: Want to hear how that new reverb, saturator, or tape emulation sounds on real music? Drop it in. No DAW boot-up, no empty session, no audio import.
-- **🔊 Loudness normalization & limiting**: Keep playback levels consistent across tracks from wildly different sources (old CDs vs. modern streaming).
-- **🏠 Room correction**: Apply convolution IRs or parametric EQ profiles to compensate for your listening room and speaker setup.
-- **🅰️🅱️ A/B plugin comparison**: Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
-- **♿ Accessibility**: Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
-- **🎛️ Mix referencing**: Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
-- **🎚️ Per-channel chains for trackers, SIDs, multi-channel chiptunes**: Each channel of a `.mod` / `.xm` / `.it` / SID / NSF file gets its OWN VST3 chain. Reverb only on channel 1, LP filter only on the bass channel, distortion only on the lead. Configure once per file (auto-loaded on track-change), bake into the export.
-- **💾 Bake the effect chain into a file**: render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#export-through-your-vst3-chain).
+- **Headphone surround & spatial audio**: Run binauralizers like **dearVR MONITOR**, **Waves Nx**, or **Dolby Atmos Production Suite** to turn stereo into a full spatial soundstage on any pair of headphones. No system-wide wrapper, no virtual audio cable.
+- **Headphone calibration & correction**: Use frequency-response plugins like **Sonarworks SoundID Reference**, **Beyerdynamic Headphone Lab**, **Waves Nx Virtual Mix Room**, or **Morphit** to flatten your specific headphone model to a neutral reference.
+- **Internet radio & streaming cleanup**: Load a compressor, EQ, de-esser, or multiband processor on poorly-mastered streams or dynamic-range-compressed "loudness war" tracks to tame them while you listen.
+- **Plugin auditioning**: Want to hear how that new reverb, saturator, or tape emulation sounds on real music? Drop it in. No DAW boot-up, no empty session, no audio import.
+- **Loudness normalization & limiting**: Keep playback levels consistent across tracks from wildly different sources (old CDs vs. modern streaming).
+- **Room correction**: Apply convolution IRs or parametric EQ profiles to compensate for your listening room and speaker setup.
+- **A/B plugin comparison**: Quickly toggle effects in and out on familiar reference tracks to hear exactly how they color the sound.
+- **Accessibility**: Hearing aid profiles, frequency boosting, dynamic range compression, or custom EQ curves for listeners who need tailored audio processing.
+- **Mix referencing**: Drop your mix in, compare A/B against a reference master, hear your monitor chain on someone else's material.
+- **Per-channel chains for trackers, SIDs, multi-channel chiptunes**: Each channel of a `.mod` / `.xm` / `.it` / SID / NSF file gets its OWN VST3 chain. Reverb only on channel 1, LP filter only on the bass channel, distortion only on the lead. Configure once per file (auto-loaded on track-change), bake into the export.
+- **Bake the effect chain into a file**: render any track or the whole playlist through the VST chain to WAV / MP3 / FLAC / OGG, faster than real-time. Take your processed audio anywhere. [Details below](#export-through-your-vst3-chain).
 
 Up to **16 VST3 plugins in a serial chain**. Drag-and-drop reorder. Per-slot bypass and dry/wet. Smooth global chain mix. Native plugin GUIs. Everything runs at **64-bit double precision** end-to-end.
 
@@ -75,7 +185,7 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 
 ### Lossless & Hi-Res
 
-**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512, including DST-compressed `.dff`).
+**FLAC**, **WAV**, **WavPack** `.wv`, **ALAC** (Apple Lossless), **APE** (Monkey's Audio), **TTA** (True Audio), **AIFF**, **Opus**, **W64** (Sony Wave64), **DSD** `.dsf` / `.dff` (DSD64/128/256/512).
 
 ### Lossy
 
@@ -97,9 +207,9 @@ FXChainPlayer is built for music listeners who do not want format juggling. Drop
 - **SAP**: Atari 8-bit
 - **GYM**: Sega Genesis / Mega Drive
 
-### Atari ST & YM2149 chiptunes (`.sndh` / `.snd` / `.ym`)
+### Atari ST & YM2149 chiptunes (`.sndh` / `.snd` / `.ym` / `.sc68`)
 
-Native **YM2149** sound-chip emulation with full **Motorola 68000** support (Timer-C, DigiDrum, STE DMA samples), Atari ST and STE chiptunes (**SNDH** / **SND**) and standalone **YM** register-dump tunes (**`.ym`**, including the LHA- and ICE-packed files that fill the YM and modland archives) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive.
+Native **YM2149** sound-chip emulation with full **Motorola 68000** support (Timer-C, DigiDrum, STE DMA samples), Atari ST and STE chiptunes (**SNDH** / **SND**) and standalone **YM** register-dump tunes (**`.ym`**, including the LHA- and ICE-packed files that fill the YM and modland archives) play **start to finish, out of the box, with no plugins and no setup.** Most players on Windows can't touch these without a separate add-on; here they just play, accurately, across the entire ~25,000-file sndh.atari.org archive. Tunes distributed as **`.sc68`** play too: most of the official collection's Atari ST side works out of the box, and they load on the DJ decks.
 
 And then they do what no chiptune add-on does: run a 1985 Atari demo tune **through your VST3 reverb, EQ or mastering chain in real time, and export it to WAV / MP3 / FLAC.** A piece of demoscene history, baked through modern studio effects into a file that plays anywhere.
 
@@ -127,13 +237,12 @@ Hippel, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Mark II, Audio Sc
 
 ### MIDI / SoundFont
 
-`.mid` / `.midi` / `.rmi` via TinySoundFont. Configurable SoundFont (drop a `.sf2` file in *Settings → Audio → MIDI SoundFont*; live `.sf2` audition by dragging the file onto the player).
+`.mid` / `.midi` / `.rmi` via TinySoundFont. Configurable SoundFont (drop a `.sf2` file in *Settings → Audio → MIDI SoundFont*; live `.sf2` audition by dragging the file onto the player). A `.sf2` with the same name sitting next to a MIDI file loads automatically for exactly that file.
 
-### TFMX / RJP / TFE / PMD / FMP
+### TFMX / RJP / PMD / FMP
 
 **TFMX**: full Hülsbeck macro-engine support (4-voice MDAT/SMPL pairs).
 **RJP**: Bitmap Brothers RDAT/RSMP pairs.
-**TFE** (TFM Music Maker), dual YM2203 OPN-FM playback.
 **PMD / FMP**: PC-98 (Touhou-pre-Windows / Falcom / Compile).
 **MSX** `.kss`.
 **SMS / PC-Engine / RGBDS Game Boy** `.sgc` / `.nsd` / `.gbr`.
@@ -176,13 +285,14 @@ Press `D` (or click the DJ button in the status bar) to switch to a **dual-deck 
 
 - **Two decks side by side**, each with: per-deck waveform (overview + 10-second close-up), title / artist / BPM / Key / Camelot, 8 hot cues (numbered, persisted across sessions, set / clear / colour-coded), click-free, sample-accurate gapless Loop In/Out + Reloop, auto-loop chips (1/8 1/4 1/2 1 2 4 8 beats) that snap to the beat grid, beat-jump (`<<` `<` `>` `>>`), 3-band EQ (LO / MID / HI knobs, ±12 dB), gain knob, Play / Cue / Sync, SLIP / QUANT / BRAKE, and a **Pioneer-DJM-style filter knob** (sweep LP from 20 kHz down to 70 Hz on the left half, sweep HP from 20 Hz up to 17 kHz on the right half, magnetic dead-zone at the centre).
 - **Crossfader**: four industry-standard curves (Linear / Smooth / Sharp / Hamster), per-sample smoothing (no zipper noise), right-click snaps to centre.
-- **Instant sync lock, Mixxx-style phase-lock.** Single-click SYNC snaps tempo immediately (no drifting into place) and holds beat phase to master with a bounded, click-free phase servo. Right-click SYNC = make THIS deck master. Octave-fold so 175 BPM follower against 87 BPM leader stays at perceived-equal speed.
+- **Instant sync lock, Mixxx-style phase-lock.** Single-click SYNC snaps tempo immediately (no drifting into place) and holds beat phase to master with a bounded, click-free, kick-aware phase servo that lands kick on kick. Right-click SYNC = make THIS deck master. Octave-fold so 175 BPM follower against 87 BPM leader stays at perceived-equal speed. **SYNCED is a measurement, not a button state:** it lights when the beat phase is actually locked. Arm SYNC on a paused deck and it engages the moment playback starts; take the follower's pitch by hand and it hands the deck back to you.
 - **Vinyl scratch on the waveform.** Click + drag the close-up OR overview waveform like a Pioneer-CDJ jog wheel. Newtonian-physics platter integrator with viscous + Coulomb friction. Forward + reverse. Release lets the slipmat catch the platter back to slider rate. Works in single-track mode AND DJ mode with the same physics.
 - **Vinyl-spin while paused.** Even when audio is paused or stopped, dragging the waveform spins the platter in the dragged direction. Friction decays the platter back to 0. Like spinning a turntable when the motor is off.
-- **Per-deck Pitch ⇄ Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together). Gauge icon = Stretch (phase-vocoder, pitch stays constant while tempo varies).
+- **Per-deck Pitch/Stretch toggle.** Disc icon = Pitch (vinyl turntable, pitch + tempo move together). Gauge icon = Stretch (phase-vocoder, pitch stays constant while tempo varies).
 - **Per-deck Echo + Gater FX.** Tempo-locked beat-rate chips (1/4, 1/2, 1, 2, 4 beats). Auto-syncs to deck BPM × pitch ratio in real time.
-- **Your own VST3 effects on the decks.** DJ Mode taps the same per-channel VST3 chains as the main player, drop your favourite filters, delays, reverbs or saturators straight onto a deck and make them part of your mix, not just the master out. The exact plugins you already use everywhere else in FXChainPlayer, now in the booth.
-- **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
+- **Your own VST3 effects in the booth.** The chain you built for listening runs on the DJ mix too, with the same bypass, dry compare and wet/dry controls you use everywhere else. Your saturator, your mastering reverb, your headphone correction: they are part of what the room hears. The cue output stays clean, so what you pre-listen to is the track itself and not the processing.
+- **Saved Loops + Smart Cueing.** Per-track named loop slots persisted across sessions, and any loop opens in the built-in wave editor trimmed exactly to the loop region: polish it there and save it as a file in any export format, with the deck BPM already in the suggested name. First-time-load auto-creates hot-cue 1 at the detected first downbeat. Quantize-seek snaps hot-cue jumps to the nearest beat.
+- **Load Cue.** Freshly loaded tracks stand ready at their first actual sound, leading silence skipped, club-CDJ style. Threshold selectable in eight steps, optional beat snap, and manually set cues always win.
 - **Camelot wheel + harmonic-mix hint (experimental).** Per-deck Camelot key chip derived from a background key-detection pass or the file's existing key tag, with a colour-coded cross-deck compatibility hint (Match / Relative / Adjacent / EnergyLift / Discord). Treat the suggestions as a starting point, real-world key detection is imperfect across genres. Trust your ears.
 - **Dual audio output.** Three modes: single device (DJ Mode runs without cue), dual WASAPI device (Main + Cue on independent endpoints, works with any USB DAC + Bluetooth combo), or ASIO channel-pair (Main on 1+2, Cue on 3+4 of the same multi-out interface). Pre-listen cue mix balance knob.
 - **Tracker DJing, unique to FXChainPlayer.** Drop a `.mod` onto Deck A, an MP3 onto Deck B, hit SYNC. The tracker-tempo engine + offline beat-detector consensus matches Protracker / Fasttracker / Impulse Tracker and other tracker formats against modern dance productions accurately enough to mix demoscene tracks alongside MP3s on the same crossfader. **No other DJ tool can do this.**
@@ -233,7 +343,7 @@ Click + drag the waveform like a Pioneer-CDJ jog wheel. The mouse becomes your *
 
 ### Turntable Pitch Slider (Technics-style)
 
-A vertical pitch fader on the right edge of the expanded waveform AND DJ-mode view. Selectable range (**±8 % / ±16 % / ±50 %**), **0 % center detent** (snaps to neutral within ±0.3 %), **33 ⇄ 45 RPM toggle**, and a per-deck **Pitch ⇄ Stretch toggle** (disc icon = vinyl-style pitch+tempo move together; gauge icon = phase-vocoder time-stretch with constant pitch).
+A vertical pitch fader on the right edge of the expanded waveform AND DJ-mode view. Selectable range (**±8 % / ±16 % / ±50 %**), **0 % center detent** (snaps to neutral within ±0.3 %), **33/45 RPM toggle**, and a per-deck **Pitch/Stretch toggle** (disc icon = vinyl-style pitch+tempo move together; gauge icon = phase-vocoder time-stretch with constant pitch).
 
 **At 0 % the slider is bit-exact pass-through**: the resampler is bypassed entirely. Auto-resets to neutral on every track change.
 
@@ -279,7 +389,7 @@ Low Shelf / Mid Bell / High Shelf with two draggable crossover-frequency handles
 
 Plus dedicated **Channel Scopes** (per-channel oscilloscopes for trackers up to 4 channels) and one unified live **Pattern View** shared across tracker modules, Commodore 64 SID tunes and AY-3-8910 chiptunes (ZX Spectrum / Amstrad CPC / Atari ST), with a clickable order list, a Compact / Detailed density toggle, effect-command tooltips and a one-click Properties copy panel.
 
-### 🎨 Live Shader Editor
+### Live Shader Editor
 
 Write your own audio-reactive visualisation directly inside the player. A GLSL fragment-shader editor sits next to a live preview, press **Ctrl+Enter** and your shader recompiles and hot-swaps in a fraction of a second, no app restart. Audio reaches the shader as a texture (FFT spectrum + raw waveform), alongside built-in `iTime` / `iResolution` uniforms. Ships with a template library, and your own templates save as portable plain-text `.glsl` files you can share or keep under version control. One compile runs on every graphics backend (D3D11 / D3D12 / Vulkan / Metal / OpenGL).
 
@@ -303,7 +413,7 @@ Point it at your music library, a local folder **or a NAS / network share** by U
 
 ### Export through your VST3 chain
 
-Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, or **Ctrl+E** for the full batch dialog.
+Route **any file or whole playlist** through your VST3 effect chain and render the result to disk. Faster-than-real-time, offline, sample-accurate. Right-click a track in the playlist → **Export to format…** for a single file, right-click a multi-selection to export exactly those tracks, or **Ctrl+E** for the full batch dialog. An optional switch writes a SHA-256 checksum sidecar next to every exported file.
 
 Output formats:
 
@@ -311,10 +421,15 @@ Output formats:
 - **MP3**: 128 / 192 / 320 kbps CBR
 - **FLAC**: 16-bit and 24-bit lossless (compression level 5)
 - **OGG Vorbis**: q3 / q5 / q7 (≈ 112 / 160 / 224 kbps VBR)
+- **AAC** `.m4a`: 96 / 128 / 160 / 192 kbps
+- **AIFF**: 16-bit and 24-bit
+- **WavPack** `.wv`: 16-bit and 24-bit lossless
+- **Opus**: 96 / 128 / 192 kbps
+- **ALAC** (Apple Lossless `.m4a`): 16-bit and 24-bit
 
 Multi-tune containers (NSF / NSFE / SAP, multi-tune SIDs from HVSC, multi-subsong game-OST archives) can optionally expand into one file per subsong via the **Export all subsongs** checkbox. **Multi-selection** support, Shift-click a range, Ctrl-click individual rows, then export only the selected subset. **Per-row subsong picker** for choosing exactly which tune from a multi-tune file. **4-mode FX-chain selector**: Master / Per-channel / Both (cascade) / None.
 
-**Turn a C64 SID into an editable tracker project.** Pick the *Tracker* format family and rip a Commodore-64 SID tune into a **GoatTracker 2** `.sng`, a **SID-Wizard** `.swm`, a **MIDI** transcription, or per-instrument files. The MIDI transcription is musical, not a note-per-frame dump: notes come from the real gate edges, vibrato and slides become pitch-bend, arpeggios fold back into chords, noise hits go to drums, and the true tempo is detected. FXChainPlayer also plays GoatTracker `.sng` tunes directly and recognises SID-Wizard `.swm`.
+**Turn a C64 SID into an editable tracker project.** Pick the *Tracker* format family and rip a Commodore-64 SID tune into a **GoatTracker 2** `.sng`, a **SID-Wizard** `.swm`, a **MIDI** transcription, or per-instrument files. It goes the other way too: export any SID as a runnable C64 **`.prg`** program or a **`.d64`** disk image ready for a real 1541 drive or any emulator. The MIDI transcription is musical, not a note-per-frame dump: notes come from the real gate edges, vibrato and slides become pitch-bend, arpeggios fold back into chords, noise hits go to drums, and the true tempo is detected. FXChainPlayer also plays GoatTracker `.sng` tunes directly and recognises SID-Wizard `.swm`.
 
 Export is included in every build, no separate "Pro" tier.
 
@@ -360,7 +475,7 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 **A/B and a real blind test.** Drop a second track onto the Set as B zone to line it up against what is playing, switch instantly, and when you want to know whether you can actually hear the difference, run the ABX blind test and let the statistics answer.
 
-**Turn a C64 SID into an editable project.** Export a SID as a GoatTracker `.sng`, a SID-Wizard `.swm`, or a musical MIDI transcription. An opt-in SID chip inspector shows the C64 sound chip live: register table, per-voice activity, voice-routing timeline and a patch card on hover.
+**Turn a C64 SID into an editable project.** Export a SID as a GoatTracker `.sng`, a SID-Wizard `.swm`, or a musical MIDI transcription. An opt-in SID chip inspector shows the C64 sound chip live: register table, per-voice activity, voice-routing timeline and a patch card on hover. Drop the HVSC archive's `STIL.txt` next to your song-length file and File Info shows the archive's own hand-written notes (composers, covers, game origins); the playlist filter searches them too.
 
 ---
 
@@ -376,11 +491,101 @@ Native C++20, lock-free audio thread, GPU-accelerated rendering throughout. Idle
 
 ---
 
+## What's new in v1.5.8
+
+A big update on top of v1.4.2. Everything below is new since then.
+
+The three big ones, **FXChain Stems**, the **Memory Ripper** and the
+**File Ripper**, are described at the top of this page. What follows is
+everything else that grew.
+
+### DJ Mode
+
+- **Keep the loop you found.** A pencil button next to the loop controls, and on every saved loop slot, opens exactly that loop in the built-in wave editor, trimmed to the loop region, with the mix paused underneath. Polish it, then save it in any export format; the suggested file name already carries the deck BPM.
+- **Hear the seam before you save.** The wave editor gained a loop mode: the selection plays round and round with a sample-exact join, so you know a loop is clean before it becomes a file.
+- **Load Cue.** Every track dropped on a deck stands ready at its first actual sound, leading silence skipped, the way club CDJs do it. The threshold is selectable in eight steps, beat snap is optional, and your own cues always win.
+- **Sync was optimised further**, so two tracks lock more reliably and hold that lock.
+- **Atari ST chiptunes on the decks.** SNDH and YM tunes load onto both decks at once as finite, scrubbable audio, ready to mix like anything else.
+
+### C64 tunes, deeper than ever
+
+- **Export any SID as a real C64 program**: a .prg to LOAD and RUN in an
+  emulator or on hardware, and a .d64 disk image ready for a 1541.
+- **Every voice of a multi-SID tune on its own switch.** Solo one chip
+  against the other, mute a lead and keep the bass, with the tune running on
+  undisturbed.
+- **The pattern view follows you when you jump**, landing on the rows that
+  belong to the new position.
+- **The HVSC's own notes in File Info.** Drop the archive's STIL.txt next to
+  your song-length file and the hand-written archive notes appear: original
+  composers, covers, which game a tune came from. The playlist filter
+  searches that text too.
+
+### More music plays
+
+- **PlayStation music.** PSF and miniPSF files from the PS1 archive render
+  audio: the console's timers, its sound chip and the wavetable upload are
+  emulated, so a game's own music driver produces its soundtrack.
+- **Sharp X68000 MDX** plays, and rewinding keeps each channel's instrument,
+  volume and octave.
+- **Amiga BP SoundMon tunes play through to the end.**
+- **Amiga music with its original hardware character**: sample interpolation
+  up to a band-limited Paula model and the Amiga's fixed output filter, as
+  settings and as clickable chips in the Pattern view.
+- **sc68 files play.** Most of the official collection's Atari ST side plays
+  out of the box, and `.sc68` tunes load on the DJ decks too.
+- **A SoundFont next to the MIDI file loads itself.** Put `Song.sf2` beside
+  `Song.mid` and that tune plays with that sound, no settings visit needed.
+- **Chiptunes know their own length.** A looping SID, MusicLine or Amiga tune
+  shows its real playing time, and its waveform covers the music instead of
+  five copies of it.
+
+### Export, rounded out
+
+- **Export a whole selection from the right-click menu.** Select several
+  tracks, right-click, and one entry exports exactly those.
+- **The batch window behaves like a real window.** Maximise it, drag any edge
+  or corner, and it keeps the size you gave it.
+- **Optional SHA-256 checksums.** One switch writes a `.sha256` sidecar next
+  to every exported file, verifiable with the standard tools.
+
+### Every keyboard shortcut is yours
+
+Settings has a shortcut editor now. Click a shortcut, press the new keys, and
+it takes effect at once. A key can never belong to two actions, every row has
+its own reset, and the help page names the keys you actually have. The same
+help page gained a print view that turns your live key map into a printable
+sheet, and Ctrl+Shift+S saves a screenshot of just the player window, ready
+for a bug report.
+
+### A new face, and steadier ground
+
+- **A new app icon**: the energy coloured waveform, quiet passages in teal
+  and loud peaks in blue, drawn fresh at every size from the taskbar to the
+  macOS dock, with the loudest bar glowing at the centre.
+- **Menus and popups open in a direction that fits the screen** instead of
+  running off the edge, on every panel.
+- **Click a cover to really see it.** Embedded artwork opens in a zoomable
+  viewer; save the original image or drag it out as a file, and Escape
+  closes it.
+- **The settings search opens what it finds.** Searching for a file extension
+  lands on the file-association card and unfolds it.
+- **Feature tips are now a choice.** A switch under Settings, Display turns
+  the rotating tips off, and on again, without a restart.
+- **Updates keep your choices.** Installing over an existing version carries
+  your plug-in, file associations and desktop icon forward. What you opted out
+  of stays opted out.
+- **The installer is readable in Windows light and dark mode alike**, and
+  wears the same icon as the player.
+- **On macOS, the player runs from macOS 14.4** on Apple Silicon, and the
+  package carries the Stems plug-in and the ripper, both fully working in the
+  signed and notarized package.
+
 ## What's new in v1.4.2
 
 A big update on top of v1.3.6. Everything below is new since then.
 
-### ✂️ A wave editor, built in
+### A wave editor, built in
 
 Trim, cut and save audio without leaving the player and without installing
 anything else.
@@ -400,7 +605,7 @@ anything else.
 - **A live playhead** that tracks the preview, and a resume that continues
   where you paused instead of starting over.
 
-### ⏺️ Record what your computer is playing
+### Record what your computer is playing
 
 - **System audio recording.** Capture whatever is coming out of your speakers
   into a file, straight from the player.
@@ -412,7 +617,7 @@ anything else.
 - **Trim silence automatically.** Start on the first sound, and stop by itself
   after a stretch of silence, both clearly labelled and optional.
 
-### 🎵 Real length and real waveforms for chiptunes
+### Real length and real waveforms for chiptunes
 
 Formats like Commodore 64 SID tunes and many Amiga and tracker replayers carry
 no length at all: the music is a program, not a recording. Until now that meant
@@ -430,7 +635,7 @@ a placeholder time and no waveform.
 - **Repeat plays are instant.** A measured tune is remembered, so playing it
   again or switching back to a subsong does not measure it a second time.
 
-### 🎛️ Interface polish
+### Interface polish
 
 - **A rotating tip card** in the empty player and in the waveform strip,
   surfacing features that are easy to miss, each one clickable straight to the
@@ -457,64 +662,26 @@ a placeholder time and no waveform.
 - Faders respond to the left mouse button everywhere, and a right-click resets
   a fader to its centre.
 
-### 📻 More music, out of the box
+### More music, out of the box
 
 - **Demoscene radio stations included.** SceneSat, SLAY Radio (Commodore 64
   SID remixes) and VGM Radio (game music) are preset, and the Nectarine stream
   points at a relay that actually stays up.
 
-### 🖥️ macOS
+### macOS
 
 FXChainPlayer runs on Apple Silicon Macs with Audio Unit plugin hosting
 alongside VST3, CoreAudio output and a native installer.
 
 ---
 
-## What's new in v1.3.6
-
-A big update on top of 1.2: DJ Mode's sync and loop engine rebuilt from the ground up, one unified Pattern view across every tracker and chip format, deeper Commodore 64 SID support, and a brand new playable format.
-
-### 🎚️ DJ Mode: sync and loops rebuilt from the ground up
-
-The biggest DJ Mode update yet, built from a close study of how Traktor, Serato, Rekordbox and Pioneer CDJ hardware handle sync and loops.
-
-- **Instant beat sync.** Press SYNC and the tempo locks immediately, matching professional DJ hardware, instead of drifting into place over a couple of seconds. Once two tracks lock, they stay locked.
-- **Click-free, gapless loops.** Loops wrap sample-accurately with no audible gap or click, and they hold their exact musical length no matter how far you push the pitch fader.
-- **Sharper beat matching.** Auto-loops, beat-jump and quantized hot-cues land precisely on the beat, even on tracks recorded at a different sample rate than your audio device.
-- **More accurate BPM and beat grids.** The tempo detector resolves conflicting readings with one confident decision instead of guessing, and the beat grid locks onto the track's actual downbeat.
-- **Better key detection for harmonic mixing.** Musical key analysis now uses profiles tuned for electronic dance music, giving more reliable Camelot wheel matches.
-
-### 🎹 One Pattern view for every format
-
-Tracker modules, Commodore 64 SID tunes and AY-3-8910 chiptunes (ZX Spectrum, Amstrad CPC, Atari ST) now share a single live Pattern view instead of several separate, differently shaped ones.
-
-- **A clickable order list** for tracker files, so you can jump straight to any position in the song instead of stepping through it one pattern at a time.
-- **A Compact / Detailed toggle.** Detailed view shows the note, instrument, volume and effect columns side by side, with a hover tooltip that explains what each effect command does.
-- **A Properties panel** with a one-click copy button for the song title, format, channel count and the full instrument list, so you can paste everything straight into a forum post or a notes file.
-- AY-3-8910 chiptunes (ZX Spectrum / Amstrad CPC / Atari ST) now scroll through their note history the same way SID and tracker files always did.
-- A SID tune written for two or three SID chips shows a Pattern View column for every voice the tune actually uses, six columns for a 2-SID tune, nine for a 3-SID tune, instead of always showing three; each column is labelled by chip and voice.
-
-### 🔬 Deeper Commodore 64 SID support
-
-- **Digi sample detection.** The SID chip view now flags when a tune is playing sampled drums or speech through the sound chip's volume register, a trick many C64 musicians used to squeeze extra sounds out of the hardware.
-- **Multi-SID stereo.** Tunes written for two or three SID chips now show the chip count and play with a genuine stereo spread instead of collapsing everything onto a single voice.
-- **SID-Wizard modules play.** `.swm` files used to be recognised with metadata only. They now convert on the fly and play through the same engine as GoatTracker tunes, no extra step needed.
-
-### 📱 New format: Yamaha SMAF mobile ringtones
-
-Old-school Japanese feature-phone ringtones (`.mmf`, Yamaha MA-3 / MA-5 sound chips) now play through an in-house FM synthesis engine built from scratch, the polyphonic ringtones that shipped on Yamaha-powered Samsung, LG, Sharp, Panasonic and Motorola handsets in the late 1990s and 2000s.
-
-### 🌍 Setup
-
-- **Language auto-detect.** A fresh install now picks your Windows display language automatically if it's one of the app's supported languages, falling back to English otherwise, instead of always starting in English.
-
----
-
 ## Download
 
-**[⬇ Latest installer on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest)**
+**[Latest installer on GitHub](https://github.com/akustikrausch/FXChainPlayer-Releases/releases/latest)**
 
-One installer, one click: `FXChainPlayer-Setup-X.Y.Z.exe` (Inno Setup). Full install with file associations, Start menu entries, uninstaller. All required Qt DLLs and the VST3 host process are included. **Both the installer and every shipped DLL are signed via Azure Trusted Signing.**
+**Windows**: one installer, one click: `FXChainPlayer-Setup-1.5.8.exe` (Inno Setup). Full install with file associations, Start menu entries, uninstaller. All required Qt DLLs, the VST3 host process and the FXChain Stems plug-in are included. **Both the installer and every shipped DLL are signed via Azure Trusted Signing.**
+
+**macOS (Apple Silicon)**: one package, one click: `FXChainPlayer-1.5.8-macos.pkg`, signed and notarized. The FXChain Stems plug-in installs into the system VST3 folder as a selectable component.
 
 ### Auto-update
 
@@ -524,7 +691,7 @@ FXChainPlayer checks GitHub Releases for new versions and offers one-click insta
 
 ## System Requirements
 
-- **Windows 10** or **Windows 11**, 64-bit
+- **Windows 10** or **Windows 11**, 64-bit, or **macOS 14.4+** on Apple Silicon
 - ~100 MB disk space
 - An audio output device (WASAPI, any built-in sound, USB DAC, or HDMI audio works; ASIO 2.3 supported on any compliant interface)
 - Optionally: a VST3 plugin folder with your favorite effects
@@ -583,8 +750,7 @@ searchable inside the player under **Format Library**.
 **Windows Media Audio** `.wma` · **Opus** `.opus` · **AC-3** `.ac3` ·
 **Musepack** `.mpc` `.mp+` `.mpp` · **Apple Core Audio Format** `.caf`
 
-**DSD**: `.dsf` `.dff` at DSD64, DSD128, DSD256 and DSD512, including
-DST-compressed `.dff`.
+**DSD**: `.dsf` `.dff` at DSD64, DSD128, DSD256 and DSD512.
 
 ### Tracker modules
 
@@ -710,4 +876,5 @@ audio yet:
 Amiga composer players Hippel `.hip` `.coso`, David Whittaker `.dw`, Ben
 Daglish `.bd`, Digital Mugician `.dmu`, JamCracker `.jam`, Mark II `.mk2`,
 Ron Klaren `.rk`, Audio Sculpture, Sidmon; DeltaMusic `.dm` `.dm2`; Art of
-Noise `.aon`; Furnace `.fur`; ASC Sound Master `.asc`; ATRAC1 `.aea`.
+Noise `.aon`; Furnace `.fur`; ASC Sound Master `.asc`; TFM Music Maker
+`.tfe`; ATRAC1 `.aea`.
