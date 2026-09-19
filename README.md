@@ -217,13 +217,13 @@ PSF1 audio playback via a built-in MIPS R3000A + PS1 SPU-1 emulator.
 
 ### Amiga composer-named players
 
-**Symphonie Pro** 32-voice, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **AMOS Music Bank** (every AMOS BASIC game 1990-95), **SoundFX v1+v2** (Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **MaxTrax** (LucasArts Indy and Monkey Island), **TFMX** (Hülsbeck, Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers, Chaos Engine / Cannon Fodder / Speedball 2 / Gods), **FutureComposer**.
+**Symphonie Pro** 32-voice, **Quartet Microdeal** (Atari ST 4-voice PCM), **SoundFactory**, **AMOS Music Bank** (every AMOS BASIC game 1990-95), **SoundFX v1+v2** (Cinemaware), **BP SoundMon v2+v3** (Brian Postma), **Sonic Arranger** (Tower of Souls / Ambermoon / Albion), **TFMX** (Hülsbeck, Turrican / Apidya / Monkey Island Amiga), **RJP** (Bitmap Brothers, Chaos Engine / Cannon Fodder / Speedball 2 / Gods), **FutureComposer**.
 
 Hippel, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Mark II, Audio Sculpture, Digital Mugician, DeltaMusic, Art Of Noise, JamCracker and Sidmon are recognised and identified, but do not produce audio yet. The work on them is tracked in the open.
 
 ### Demoscene + retro synths
 
-**MusicLine Editor** (`.ml`), **AHX / HVL / THX** (Hively Tracker, plus the Abyss THX precursor), **`.v2m`** (Farbrausch V2, `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000, YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS, YM2612 OPN2), **Yamaha SMAF** (`.mmf`, late-1990s/2000s feature-phone ringtones, MA-3/MA-5 FM synthesis).
+**MusicLine Editor** (`.ml`), **AHX / HVL / THX** (Hively Tracker, plus the Abyss THX precursor), **`.v2m` on Windows** (Farbrausch V2, `.kkrieger` / `.fr-08`), **TIATracker** (Atari 2600), **Organya** (Cave Story), **GoatTracker** (C64), **SAP** (Atari 8-bit), **ZxTracker** (Vortex Tracker II / Pro Tracker 3 / Sound Tracker), **MED Advanced** (OctaMED MMD0/1/2/3), **FutureComposer** (`.fc` / `.fc13` / `.fc14`), **MDX** (Sharp X68000, YM2151 OPM + MSM6258 ADPCM), **Euphony** (FM-TOWNS, YM2612 OPN2), **Yamaha SMAF** (`.mmf`, melodic MA-3/MA-5 FM ringtones).
 
 ### MIDI / SoundFont
 
@@ -258,10 +258,9 @@ Hippel, Ben Daglish, David Whittaker, Fred Editor, Ron Klaren, Mark II, Audio Sc
 - **`.txtp`** text-playlists with effects
 - **Multi-subsong navigation** for game-OST archives
 
-### DefleMask + IFF SMUS
+### DefleMask
 
 **DefleMask `.dmf`** multi-chip tracker modules.
-**IFF SMUS** Amiga MIDI-style score with INS1 + 8SVX sample resolution.
 
 ---
 
@@ -708,6 +707,15 @@ ASIO is a trademark and software of Steinberg Media Technologies GmbH. FXChainPl
 
 ---
 
+## Support and diagnostic log
+
+Open the log from *About > Quick Access > Open Log File*. On Windows it is
+`%APPDATA%\Akustikrausch\FXChainPlayer\fxchainplayer.log`. On macOS it is
+`~/Library/Application Support/Akustikrausch/FXChainPlayer/fxchainplayer.log`.
+Finder hides `~/Library`; choose *Go > Go to Folder* and paste the directory.
+
+---
+
 ## Community
 
 Join the FXChainPlayer Discord for questions, feedback, plugin recommendations, and bug reports: **<https://discord.gg/sfHBZFhG>**
@@ -763,14 +771,6 @@ searchable inside the player under **Format Library**.
 **Funktracker** `.fnk` · **Magnetic Fields Packer** `.mfp` · **Grave** `.wow` ·
 **Imperium Galactica** `.xmf` · **Octalyser** `.oct`
 
-**Packed and crunched ProTracker modules** play directly, no unpacking step:
-The Player 4.0 to 6.1 `.p40` `.p41` `.p4x` `.p50` `.p50a` `.p60` `.p60a` `.p61`
-`.p61a`, Promizer `.pru` `.pru1` `.pru2`, NoisePacker `.np1` `.np2` `.np3`,
-NoiseRunner `.nru`, NoiseTracker Pak `.ntp`, ProPacker `.pm0` `.pm1` `.pm2`
-`.pm4`, ProRunner `.prom`, Tracker Packer `.tp1` `.tp2` `.tp3`, PowerPacker
-`.pp10` `.pp21` `.pp30`, Heatseeker `.heat`, Kefrens Sound Machine `.ksm`,
-UNIC Tracker `.unic`, Zen Packer `.zen`
-
 ### Commodore 64
 
 **SID** `.sid` `.psid` `.rsid` with cycle-accurate 6581 and 8580 emulation,
@@ -782,22 +782,20 @@ stem export. HVSC song lengths and subtune navigation included.
 
 **PreTracker** `.prt` including PreTracker 1.5 · **MusicLine Editor** `.ml` `.mle` ·
 **TFMX** Chris Hülsbeck, `MDAT.` / `SMPL.` pairs · **Richard Joseph Player**
-`RDAT.` / `RSMP.` pairs · **StarTrekker** `.mod` `.nt` · **GMC** `.gmc` `.mus` ·
+`RDAT.` / `RSMP.` pairs · **GMC** `.gmc` `.mus` ·
 **GlueMon** `.glue` · **Face The Music** `.ftm` · **Puma Tracker** `.puma` ·
 **BP SoundMon** `.bp` `.bp2` `.bp3` · **Sonic Arranger** `.sa` `.sonic` ·
 **MED Advanced** `.med` · **FutureComposer** `.fc` `.fc13` `.fc14` ·
 **Symphonie Pro** `.symmod` `.sym` · **SoundFactory** `.sfc` ·
 **AHX** `.ahx` · **THX** `.thx` · **HVL** Hively Tracker `.hvl` ·
-**IFF 8SVX** `.8svx` `.iff` · **IFF SMUS** `.smus` · **AMOS Music Bank** `.abk`
+**IFF 8SVX** `.8svx` `.iff` · **AMOS Music Bank** `.abk`
 
 **Amiga executable music** plays directly, including files with no extension at
 all, the way the Amiga filesystem stored them. This is also how PreTracker 2.0
 productions play.
 
-**Archives and crunchers** unpack transparently: PowerPacker `.pp`, Imploder
-`.imp`, StoneCracker `.s404`, CrunchMania `.crm` `.crm2`, XPK `.xpk` `.impl`
-`.sqsh`, Pack-Ice, DiskMasher `.dms`, Unix compress `.z`, Freeze, Compact,
-ByteKiller `.bk` `.bky` and others.
+**Classic Amiga crunchers** with verified playback unpack transparently:
+PowerPacker `.pp`, Imploder `.imp` and StoneCracker `.s404`.
 
 ### Atari, ZX Spectrum, Amstrad, MSX
 
@@ -852,7 +850,7 @@ each subsong to its own file.
 
 **MIDI** `.mid` `.midi` `.rmi` through TinySoundFont with a configurable
 SoundFont: drop a `.sf2` into Settings, or drag one onto the player to audition
-it live. **Yamaha SMAF** `.mmf` mobile ringtones with an in-house FM engine.
+it live. **Yamaha SMAF** `.mmf` melodic FM ringtones with an in-house engine.
 **Playlists** `.m3u` `.m3u8` `.pls` `.xspf` and **cue sheets** `.cue` with
 per-track splitting. **Archives** `.zip` `.rar` `.7z` `.lha` play without
 unpacking.
@@ -863,8 +861,13 @@ Honesty matters more than a long list. These are detected and identified, and
 the work to make them play is tracked in the open, but they do not produce
 audio yet:
 
-Amiga composer players Hippel `.hip` `.coso`, David Whittaker `.dw`, Ben
+Amiga composer players MaxTrax `.mxtx`, Hippel `.hip` `.coso`, David Whittaker `.dw`, Ben
 Daglish `.bd`, Digital Mugician `.dmu`, JamCracker `.jam`, Mark II `.mk2`,
 Ron Klaren `.rk`, Audio Sculpture, Sidmon; DeltaMusic `.dm` `.dm2`; Art of
 Noise `.aon`; Furnace `.fur`; ASC Sound Master `.asc`; TFM Music Maker
-`.tfe`; ATRAC1 `.aea`.
+`.tfe`; ATRAC1 `.aea`. Direct
+playback of ProWizard-packed modules is not advertised: the File Ripper can
+recognise and reconstruct many families, but the real ProRunner fixtures are
+currently declined by the player. StarTrekker AM, IFF SMUS, compressed Amiga
+LZX archives and DMS images remain off the playback list until their release
+QA is complete.
